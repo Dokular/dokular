@@ -7,16 +7,19 @@ import Chart from '../views/Charts.vue'
 export const routes = [
     {
         path: '/',
+        meta: { layout: 'default'},
         component: Welcome,
         name: 'index',
     },
     {
         path: '/login',
+        meta: { layout: 'default'},
         component: Login,
         name: 'login',
     },
     {
         path: '/register',
+        meta: { layout: 'default'},
         component: Register,
         name: 'register',
     },
