@@ -2,7 +2,7 @@
     <div class="page-wrapper">
       <MobileHeader></MobileHeader>
       <SideBar></SideBar>
-      <div class="page-container">
+      <div class="page-container2">
         <DesktopHeader></DesktopHeader>
         <!-- <MainContent></MainContent> -->
         <div class="main-content">

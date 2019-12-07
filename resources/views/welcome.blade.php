@@ -43,5 +43,33 @@
         <script src="{{ asset('js/aos.js') }}"></script>
 
         <script src="{{ asset('js/main.js') }}"></script>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="{{ asset('bootstrap-4.1/popper.min.js') }}"></script>
+    <script src="{{ asset('bootstrap-4.1/bootstrap.min.js') }}"></script>
+    <!-- Vendor JS       -->
+    <script src="{{ asset('slick/slick.min.js') }}">
+    </script>
+    <script src="{{ asset('wow/wow.min.js') }}"></script>
+    <script src="{{ asset('animsition/animsition.min.js') }}"></script>
+    <script src="{{ asset('bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
+    </script>
+    <script src="{{ asset('counter-up/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('counter-up/jquery.counterup.min.js') }}">
+    </script>
+    <script src="{{ asset('circle-progress/circle-progress.min.js') }}"></script>
+    <script src="{{ asset('perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <script src=" {{ asset('chartjs/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('select2/select2.min.js') }}">
+    </script>
+    <script src="{{ asset('vector-map/jquery.vmap.js') }}"></script>
+    <script src="{{ asset('vector-map/jquery.vmap.min.js')}}"></script>
+    <script src="{{ asset('vector-map/jquery.vmap.sampledata.js') }}"></script>
+    <script src="{{ asset('vector-map/jquery.vmap.world.js') }}"></script>
+
+    <!-- Main JS-->
+    <script src="{{ asset('js/admin.js') }}"></script>
     </body>
 </html>

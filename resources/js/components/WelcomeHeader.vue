@@ -19,7 +19,9 @@
             <nav class="site-navigation text-right ml-auto " role="navigation">
               <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                 <li>
-                    <a href="#home-section" class="nav-link">Home</a>
+                    <router-link :to="{ name: 'index'}">
+                        Home
+                    </router-link>
                 </li>
                 <li>
                     <router-link :to="{ name: 'login'}">
