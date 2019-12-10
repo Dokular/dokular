@@ -1,13 +1,13 @@
 <template>
     <div >
-      <OrderList></OrderList>
+      <MyOrders></MyOrders>
     </div>
 </template>
 <script>
-import OrderList from '../components/OrderList'
+import MyOrders from '../components/MyOrders'
 export default {
   components: {
-      OrderList
+    MyOrders
   }
 
 }
