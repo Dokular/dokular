@@ -9,31 +9,39 @@
                     <h3 class="text-center title-2">Pay Invoice</h3>
                 </div>
                 <hr>
-                <form novalidate="novalidate">
+                <form novalidate="novalidate" @submit.prevent="preCart(index)">
                     <div>
-                        <b-button v-b-modal="'my-modal'+index">Show Modal</b-button>
+                        <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                            <i class="fa fa-lock fa-lg"></i>&nbsp;
+                            <span id="payment-button-amount">Pay $100.00</span>
+                            <span id="payment-button-sending" style="display:none;">Sending…</span>
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
-        <b-modal :id="'my-modal'+index"
-            :title="products[index].name"
-            @ok="handleOk">
-            <form action="" method="post" novalidate="novalidate">
-                <input type="text" v-model="products[index].id" class="form-control">
-                <div class="form-group">
-                    <label for="cc-payment" class="control-label mb-1">Identification number</label>
-                    <input type="text" v-model="form.id_number" class="form-control" aria-required="true" aria-invalid="false">
-                </div>
-                <div class="form-group has-success">
-                    <label for="cc-name" class="control-label mb-1">Type of vehicle</label>
-                    <input id="cc-name" v-model="form.type" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
-                        autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
-                    <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                </div>
-            </form>
-        </b-modal>
     </div>
+    <b-modal v-if="form.product_id != 0" :title="products[form.product_id - 1].name"
+        v-model="show">
+        <div class="form-group">
+            <label for="cc-payment" class="control-label mb-1">Identification number</label>
+            <input type="text" v-model="form.id_number" class="form-control" aria-required="true" aria-invalid="false">
+        </div>
+        <div class="form-group has-success">
+            <label for="cc-name" class="control-label mb-1">Type of vehicle</label>
+            <input id="cc-name" v-model="form.type" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
+                autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+            <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+        </div>
+    <template v-slot:modal-footer="{ ok, cancel, hide }">
+    <b-button size="sm" variant="success" @click="addToCart()">
+        Add to cart
+    </b-button>
+    <b-button size="sm" variant="danger" @click="cancel()">
+        Cancel
+    </b-button>
+    </template>
+    </b-modal>
 </div>
 </template>
 <script>
@@ -49,6 +57,7 @@ export default {
     },
     data() {
         return {
+            show: false,
             products: [
                 {
                     id: 1,
@@ -71,6 +80,7 @@ export default {
             ],
             form: {
                 product_id: 0,
+                product_name: '',
                 id_number: '',
                 type: '',
             }
@@ -81,19 +91,15 @@ export default {
 
         addToCart() {
             this.ADD_TO_CART(this.form)
+            this.form.product_id = ''
+            this.form.id_number = ''
+            this.form.type = ''
+            this.show = false
         },
-
-        handleOk(bvModalEvt) {
-            // Prevent modal from closing
-            bvModalEvt.preventDefault()
-            // Trigger submit handler
-            this.addToCart()
-        },
-
-        hideModal() {
-            this.$refs['my-modal'].hide()
-        },
-
+        preCart(index){
+            this.form.product_id = this.products[index].id
+            this.show = true
+        }
     },
 }
 </script>

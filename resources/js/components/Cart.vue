@@ -3,6 +3,7 @@
         <div class="top-campaign" v-if="carts.length">
             <h3 class="title-3 m-b-30">Add to cart</h3>
             <div class="table-responsive">
+                {{ carts }}
                 <table class="table table-top-campaign">
                     <tbody>
                         <tr v-for="(cart, index) in carts" :key="index">
