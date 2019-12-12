@@ -13,7 +13,7 @@
                     <div>
                         <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                             <i class="fa fa-lock fa-lg"></i>&nbsp;
-                            <span id="payment-button-amount">Pay $100.00</span>
+                            <span id="payment-button-amount">Price N{{ product.price }}.00</span>
                             <span id="payment-button-sending" style="display:none;">Sending…</span>
                         </button>
                     </div>
@@ -45,7 +45,7 @@
 </div>
 </template>
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations, mapActions, mapGetters} from 'vuex'
 import Licence from '../assets/images/licence.jpg'
 import Insurance from '../assets/images/insurance.jpg'
 import Worthiness from '../assets/images/rw.jpeg'
@@ -57,27 +57,8 @@ export default {
     },
     data() {
         return {
+
             show: false,
-            products: [
-                {
-                    id: 1,
-                    name: "Vehicle License",
-                    img: Licence,
-                    price: 3500
-                },
-                {
-                    id: 2,
-                    name: "3rd party Insurance",
-                    img: Insurance,
-                    price: 4500
-                },
-                {
-                    id: 3,
-                    name: "Road Worthiness",
-                    img: Worthiness,
-                    price: 2500
-                }
-            ],
             form: {
                 product_id: 0,
                 product_name: '',
@@ -86,9 +67,12 @@ export default {
             }
         }
     },
+    computed: {
+        ...mapGetters(["products"]),
+    },
     methods: {
         ...mapMutations(["ADD_TO_CART"]),
-
+        ...mapActions(["loadProducts"]),
         addToCart() {
             this.ADD_TO_CART(this.form)
             this.form.product_id = ''
@@ -101,5 +85,8 @@ export default {
             this.show = true
         }
     },
+    created() {
+        this.loadProducts()
+    }
 }
 </script>
