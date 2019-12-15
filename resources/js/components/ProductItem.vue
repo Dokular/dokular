@@ -9,7 +9,7 @@
                     <h3 class="text-center title-2">Pay Invoice</h3>
                 </div>
                 <hr>
-                <form novalidate="novalidate" @submit.prevent="preCart(index)">
+                <form novalidate="novalidate" @submit.prevent="preCart(product)">
                     <div>
                         <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                             <i class="fa fa-lock fa-lg"></i>&nbsp;
@@ -64,6 +64,7 @@ export default {
                 product_name: '',
                 id_number: '',
                 type: '',
+                price: 0,
             }
         }
     },
@@ -71,20 +72,31 @@ export default {
         ...mapGetters(["products"]),
     },
     methods: {
-        ...mapMutations(["ADD_TO_CART"]),
-        ...mapActions(["loadProducts"]),
+        ...mapActions([
+            "loadProducts",
+            "addProductToCart"
+        ]),
+
         addToCart() {
-            this.ADD_TO_CART(this.form)
-            this.form.product_id = ''
-            this.form.id_number = ''
+            this.addProductToCart(this.form)
+            this.form.product_id = 0
+            this.form.price = 0
+            this.form.product_name = ''
+            this.form.id_number = 0
             this.form.type = ''
             this.show = false
         },
-        preCart(index){
-            this.form.product_id = this.products[index].id
+
+        preCart(product){
+            console.log(product)
+            this.form.product_id = product.id
+            this.form.price = product.price
+            this.form.product_name = product.name
             this.show = true
+
         }
     },
+
     created() {
         this.loadProducts()
     }

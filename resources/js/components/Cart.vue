@@ -3,7 +3,6 @@
         <div class="top-campaign" v-if="carts.length">
             <h3 class="title-3 m-b-30">Add to cart</h3>
             <div class="table-responsive">
-                {{ carts }}
                 <table class="table table-top-campaign">
                     <tbody>
                         <tr v-for="(cart, index) in carts" :key="index">
@@ -11,6 +10,7 @@
                             <td>{{ cart.id_number}}</td>
                             <td>{{ cart.type }}</td>
                             <td>$ {{ cart.price }}</td>
+                            <td><span @click="removeCart(cart)" class="delspan">X</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -19,10 +19,23 @@
     </div>
 </template>
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 export default {
     computed: {
-        ...mapGetters(['carts']),
-    }
+        ...mapGetters(["carts"]),
+    },
+
+    methods: {
+        ...mapActions(["removeFromCarts"]),
+
+        removeCart(cart){
+            this.removeFromCarts(cart)
+        }
+    },
 }
 </script>
+<style scoped>
+.delspan{
+    cursor: pointer;
+}
+</style>
