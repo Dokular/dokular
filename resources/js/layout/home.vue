@@ -1,7 +1,7 @@
 <template>
     <div class="page-wrapper">
       <MobileHeader></MobileHeader>
-      <SideBar></SideBar>
+      <!-- <SideBar></SideBar> -->
       <div class="page-container2">
         <DesktopHeader></DesktopHeader>
         <!-- <MainContent></MainContent> -->
