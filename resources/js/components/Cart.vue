@@ -9,17 +9,24 @@
                             <td>{{ cart.product_id }}</td>
                             <td>{{ cart.id_number}}</td>
                             <td>{{ cart.type }}</td>
-                            <td>$ {{ cart.price }}</td>
+                            <td>N {{ cart.price }}</td>
                             <td><span @click="removeCart(cart)" class="delspan">X</span></td>
-                        </tr>
-                       <tr>
+                        <!-- </tr>
+                        <tr>
+                            <td></td>
+                            <td>Delivery</td>
+                            <td>N 1000</td>
+                        </tr> -->
+                        <tr>
                            <td colspan="5">
-                               Total: {{ total }}
+                               Total: N{{ total }}
                            </td>
                        </tr>
                        <tr>
                            <td colspan="5">
-                               
+                               <b-button size="sm" variant="success">
+                                    Checkout
+                                </b-button>
                            </td>
                        </tr>
                     </tbody>

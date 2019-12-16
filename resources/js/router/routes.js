@@ -3,6 +3,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Dashboard from '../views/Dashboard.vue'
 import Order from '../views/Order.vue'
+import Checkout from '../views/Checkout.vue'
 
 export const routes = [
     {
@@ -32,5 +33,10 @@ export const routes = [
         path: '/order',
         component: Order,
         name: 'order',
+    },
+    {
+        path: '/checkout',
+        component: Checkout,
+        name: 'checkout',
     }
 ]
