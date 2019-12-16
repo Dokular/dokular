@@ -3,9 +3,9 @@
     <div class="section__content section__content--p35">
         <div class="header3-wrap">
             <div class="header__logo">
-                <a href="#">
-                    <img src="images/icon/logo-white.png" alt="CoolAdmin" />
-                </a>
+                <router-link :to="{ name: 'index'}">
+                    <img :src="logo" alt="Cool Admin" />
+                </router-link>
             </div>
             <div class="header__navbar">
                 <ul class="list-unstyled">
@@ -226,6 +226,8 @@ import Avatar6 from '../assets/images/icon/avatar-06.jpg'
 import Avatar5 from '../assets/images/icon/avatar-05.jpg'
 import Avatar4 from '../assets/images/icon/avatar-04.jpg'
 import Avatar1 from '../assets/images/icon/avatar-01.jpg'
+import Logo from '../assets/images/icon/logo-white.png'
+import Icon from '../assets/images/icon/avatar-big-01.jpg'
 
 export default {
 
@@ -235,6 +237,8 @@ export default {
             avatar5: Avatar5,
             avatar4: Avatar4,
             avatar1: Avatar1,
+            logo: Logo,
+            icon: Icon
         }
     }
 }

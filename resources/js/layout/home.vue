@@ -1,9 +1,9 @@
 <template>
     <div class="page-wrapper">
       <MobileHeader></MobileHeader>
+      <DesktopHeader></DesktopHeader>
       <!-- <SideBar></SideBar> -->
       <div class="page-container2">
-        <DesktopHeader></DesktopHeader>
         <!-- <MainContent></MainContent> -->
         <div class="main-content">
           <div class="section__content section__content--p30">
