@@ -1,24 +1,6 @@
 <template>
 <div>
 <div class="ftco-blocks-cover-1">
-    <div class="ftco-cover-1 overlay" :style="{backgroundImage: `url(${bgimg})`}">
-    <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-        <div class="col-lg-6">
-            <h1>Transportations &amp; Logistics</h1>
-            <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolorem eius eligendi esse quod?</p>
-            <form action="#">
-            <div class="form-group d-flex">
-                <input type="text" class="form-control" placeholder="Your tracking number">
-                <input type="submit" class="btn btn-primary text-white px-4" value="Track Now">
-            </div>
-            </form>
-        </div>
-        </div>
-    </div>
-    </div>
-    <!-- END .ftco-cover-1 -->
-
     <div class="site-section ftco-service-image-1 pb-5">
     <div class="container">
         <div class="row">

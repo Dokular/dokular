@@ -2533,24 +2533,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -37400,15 +37382,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "ftco-blocks-cover-1" }, [
-      _c(
-        "div",
-        {
-          staticClass: "ftco-cover-1 overlay",
-          style: { backgroundImage: "url(" + _vm.bgimg + ")" }
-        },
-        [_vm._m(0)]
-      ),
-      _vm._v(" "),
       _c("div", { staticClass: "site-section ftco-service-image-1 pb-5" }, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
@@ -37420,7 +37393,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _vm._m(1)
+              _vm._m(0)
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col service text-center" }, [
@@ -37431,7 +37404,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _vm._m(2)
+              _vm._m(1)
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col service text-center" }, [
@@ -37442,7 +37415,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(2)
             ])
           ])
         ])
@@ -37451,45 +37424,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "row align-items-center justify-content-center text-center"
-        },
-        [
-          _c("div", { staticClass: "col-lg-6" }, [
-            _c("h1", [_vm._v("Transportations & Logistics")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "mb-5" }, [
-              _vm._v(
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolorem eius eligendi esse quod?"
-              )
-            ]),
-            _vm._v(" "),
-            _c("form", { attrs: { action: "#" } }, [
-              _c("div", { staticClass: "form-group d-flex" }, [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Your tracking number" }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "btn btn-primary text-white px-4",
-                  attrs: { type: "submit", value: "Track Now" }
-                })
-              ])
-            ])
-          ])
-        ]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
