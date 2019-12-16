@@ -12,6 +12,16 @@
                             <td>$ {{ cart.price }}</td>
                             <td><span @click="removeCart(cart)" class="delspan">X</span></td>
                         </tr>
+                       <tr>
+                           <td colspan="5">
+                               Total: {{ total }}
+                           </td>
+                       </tr>
+                       <tr>
+                           <td colspan="5">
+                               
+                           </td>
+                       </tr>
                     </tbody>
                 </table>
             </div>
@@ -22,7 +32,7 @@
 import {mapGetters, mapActions} from 'vuex'
 export default {
     computed: {
-        ...mapGetters(["carts"]),
+        ...mapGetters(["carts", "total"]),
     },
 
     methods: {

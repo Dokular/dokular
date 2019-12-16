@@ -1895,9 +1895,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["carts"])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["carts", "total"])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["removeFromCarts"]), {
     removeCart: function removeCart(cart) {
       this.removeFromCarts(cart);
@@ -36052,33 +36062,47 @@ var render = function() {
             _c("table", { staticClass: "table table-top-campaign" }, [
               _c(
                 "tbody",
-                _vm._l(_vm.carts, function(cart, index) {
-                  return _c("tr", { key: index }, [
-                    _c("td", [_vm._v(_vm._s(cart.product_id))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(cart.id_number))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(cart.type))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("$ " + _vm._s(cart.price))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "delspan",
-                          on: {
-                            click: function($event) {
-                              return _vm.removeCart(cart)
+                [
+                  _vm._l(_vm.carts, function(cart, index) {
+                    return _c("tr", { key: index }, [
+                      _c("td", [_vm._v(_vm._s(cart.product_id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cart.id_number))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cart.type))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("$ " + _vm._s(cart.price))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "span",
+                          {
+                            staticClass: "delspan",
+                            on: {
+                              click: function($event) {
+                                return _vm.removeCart(cart)
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("X")]
+                          },
+                          [_vm._v("X")]
+                        )
+                      ])
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { attrs: { colspan: "5" } }, [
+                      _vm._v(
+                        "\n                           Total: " +
+                          _vm._s(_vm.total) +
+                          "\n                       "
                       )
                     ])
-                  ])
-                }),
-                0
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ],
+                2
               )
             ])
           ])
@@ -36086,7 +36110,14 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [_c("td", { attrs: { colspan: "5" } })])
+  }
+]
 render._withStripped = true
 
 
@@ -55637,8 +55668,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     carts: function carts(state) {
       return state.cartlists;
     },
-    total: function total(state) {
-      return 0;
+    total: function total(state, getters) {
+      var total = 0;
+      getters.carts.forEach(function (cart) {
+        total += Number(cart.price);
+      });
+      return total;
     },
     products: function products(state) {
       return state.products;
