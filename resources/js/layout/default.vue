@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import TopBar from '../components/WelcomeTopBar'
+import TopBar from '../components/TopHeader'
 import Header from '../components/WelcomeHeader'
 import Footer from '../components/WelcomeFooter'
 

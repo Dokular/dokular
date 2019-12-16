@@ -43,7 +43,7 @@
                             <div class="info clearfix">
                                 <div class="image">
                                     <a href="#">
-                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                        <img :src="icon" alt="John Doe" />
                                     </a>
                                 </div>
                                 <div class="content">

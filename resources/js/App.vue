@@ -1,11 +1,8 @@
 <template>
 <div>
     <component :is="layout">
-    <transition name="leave">
     <router-view></router-view>
-    </transition>
     </component>
-
 </div>
 </template>
 <script>
