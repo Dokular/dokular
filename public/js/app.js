@@ -1941,6 +1941,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_images_icon_avatar_04_jpg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_images_icon_avatar_04_jpg__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _assets_images_icon_avatar_01_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/images/icon/avatar-01.jpg */ "./resources/js/assets/images/icon/avatar-01.jpg");
 /* harmony import */ var _assets_images_icon_avatar_01_jpg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_images_icon_avatar_01_jpg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _assets_images_icon_logo_white_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/images/icon/logo-white.png */ "./resources/js/assets/images/icon/logo-white.png");
+/* harmony import */ var _assets_images_icon_logo_white_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_images_icon_logo_white_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_images_icon_avatar_big_01_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/images/icon/avatar-big-01.jpg */ "./resources/js/assets/images/icon/avatar-big-01.jpg");
+/* harmony import */ var _assets_images_icon_avatar_big_01_jpg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_images_icon_avatar_big_01_jpg__WEBPACK_IMPORTED_MODULE_5__);
 //
 //
 //
@@ -2022,28 +2026,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 
@@ -2054,7 +2038,9 @@ __webpack_require__.r(__webpack_exports__);
       avatar6: _assets_images_icon_avatar_06_jpg__WEBPACK_IMPORTED_MODULE_0___default.a,
       avatar5: _assets_images_icon_avatar_05_jpg__WEBPACK_IMPORTED_MODULE_1___default.a,
       avatar4: _assets_images_icon_avatar_04_jpg__WEBPACK_IMPORTED_MODULE_2___default.a,
-      avatar1: _assets_images_icon_avatar_01_jpg__WEBPACK_IMPORTED_MODULE_3___default.a
+      avatar1: _assets_images_icon_avatar_01_jpg__WEBPACK_IMPORTED_MODULE_3___default.a,
+      logo: _assets_images_icon_logo_white_png__WEBPACK_IMPORTED_MODULE_4___default.a,
+      icon: _assets_images_icon_avatar_big_01_jpg__WEBPACK_IMPORTED_MODULE_5___default.a
     };
   }
 });
@@ -2601,14 +2587,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_DashboardMobileHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/DashboardMobileHeader */ "./resources/js/components/DashboardMobileHeader.vue");
 /* harmony import */ var _components_DashboardSideBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/DashboardSideBar */ "./resources/js/components/DashboardSideBar.vue");
 /* harmony import */ var _components_DashboardDesktopHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/DashboardDesktopHeader */ "./resources/js/components/DashboardDesktopHeader.vue");
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -36137,176 +36115,152 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("header", { staticClass: "header-desktop3 d-none d-lg-block" }, [
+    _c("div", { staticClass: "section__content section__content--p35" }, [
+      _c("div", { staticClass: "header3-wrap" }, [
+        _c(
+          "div",
+          { staticClass: "header__logo" },
+          [
+            _c("router-link", { attrs: { to: { name: "index" } } }, [
+              _c("img", { attrs: { src: _vm.logo, alt: "Cool Admin" } })
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "header__navbar" }, [
+          _c("ul", { staticClass: "list-unstyled" }, [
+            _c(
+              "li",
+              { staticClass: "has-sub" },
+              [
+                _c("router-link", { attrs: { to: { name: "dashboard" } } }, [
+                  _c("i", { staticClass: "fas fa-tachometer-alt" }),
+                  _vm._v("Dashboard\n                            "),
+                  _c("span", { staticClass: "bot-line" })
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c("router-link", { attrs: { to: { name: "order" } } }, [
+                  _c("i", { staticClass: "fas fa-shopping-basket" }),
+                  _vm._v(
+                    "\n                            Order\n                        "
+                  )
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "header__tool" }, [
+          _c("div", { staticClass: "account-wrap" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "account-item account-item--style2 clearfix js-item-menu"
+              },
+              [
+                _c("div", { staticClass: "image" }, [
+                  _c("img", { attrs: { src: _vm.icon, alt: "John Doe" } })
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2)
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "header-desktop2" }, [
-      _c("div", { staticClass: "section__content section__content--p30" }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _c("div", { staticClass: "header-wrap2" }, [
-            _c("div", { staticClass: "logo d-block d-lg-none" }, [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("img", {
-                  attrs: { src: "images/icon/logo-white.png", alt: "CoolAdmin" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "header-button2" }, [
-              _c("div", { staticClass: "header-button-item js-item-menu" }, [
-                _c("i", { staticClass: "zmdi zmdi-search" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "search-dropdown js-dropdown" }, [
-                  _c("form", { attrs: { action: "" } }, [
-                    _c("input", {
-                      staticClass: "au-input au-input--full au-input--h65",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Search for datas & reports..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "search-dropdown__icon" }, [
-                      _c("i", { staticClass: "zmdi zmdi-search" })
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "header-button-item has-noti js-item-menu" },
-                [
-                  _c("i", { staticClass: "zmdi zmdi-notifications" }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "notifi-dropdown js-dropdown" }, [
-                    _c("div", { staticClass: "notifi__title" }, [
-                      _c("p", [_vm._v("You have 3 Notifications")])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "notifi__item" }, [
-                      _c("div", { staticClass: "bg-c1 img-cir img-40" }, [
-                        _c("i", { staticClass: "zmdi zmdi-email-open" })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "content" }, [
-                        _c("p", [_vm._v("You got a email notification")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("April 12, 2018 06:50")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "notifi__item" }, [
-                      _c("div", { staticClass: "bg-c2 img-cir img-40" }, [
-                        _c("i", { staticClass: "zmdi zmdi-account-box" })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "content" }, [
-                        _c("p", [_vm._v("Your account has been blocked")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("April 12, 2018 06:50")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "notifi__item" }, [
-                      _c("div", { staticClass: "bg-c3 img-cir img-40" }, [
-                        _c("i", { staticClass: "zmdi zmdi-file-text" })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "content" }, [
-                        _c("p", [_vm._v("You got a new file")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("April 12, 2018 06:50")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "notifi__footer" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _vm._v("All notifications")
-                      ])
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "header-button-item mr-0 js-sidebar-btn" },
-                [_c("i", { staticClass: "zmdi zmdi-menu" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "setting-menu js-right-sidebar d-none d-lg-block"
-                },
-                [
-                  _c("div", { staticClass: "account-dropdown__body" }, [
-                    _c("div", { staticClass: "account-dropdown__item" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", { staticClass: "zmdi zmdi-account" }),
-                        _vm._v("Account")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "account-dropdown__item" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", { staticClass: "zmdi zmdi-settings" }),
-                        _vm._v("Setting")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "account-dropdown__item" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", { staticClass: "zmdi zmdi-money-box" }),
-                        _vm._v("Billing")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "account-dropdown__body" }, [
-                    _c("div", { staticClass: "account-dropdown__item" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", { staticClass: "zmdi zmdi-globe" }),
-                        _vm._v("Language")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "account-dropdown__item" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", { staticClass: "zmdi zmdi-pin" }),
-                        _vm._v("Location")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "account-dropdown__item" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", { staticClass: "zmdi zmdi-email" }),
-                        _vm._v("Email")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "account-dropdown__item" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("i", { staticClass: "zmdi zmdi-notifications" }),
-                        _vm._v("Notifications")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ])
+    return _c("li", [
+      _c("a", { attrs: { href: "table.html" } }, [
+        _c("i", { staticClass: "fas fa-trophy" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "bot-line" }),
+        _vm._v(
+          "\n                            Transactions\n                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [
+      _c("a", { staticClass: "js-acc-btn", attrs: { href: "#" } }, [
+        _vm._v("john doe")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "account-dropdown js-dropdown" }, [
+      _c("div", { staticClass: "info clearfix" }, [
+        _c("div", { staticClass: "image" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              attrs: { src: "images/icon/avatar-01.jpg", alt: "John Doe" }
+            })
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "content" }, [
+          _c("h5", { staticClass: "name" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("john doe")])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "email" }, [_vm._v("johndoe@example.com")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-dropdown__body" }, [
+        _c("div", { staticClass: "account-dropdown__item" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "zmdi zmdi-account" }),
+            _vm._v("Account")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-dropdown__item" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "zmdi zmdi-settings" }),
+            _vm._v("Setting")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-dropdown__item" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "zmdi zmdi-money-box" }),
+            _vm._v("Billing")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-dropdown__footer" }, [
+        _c("a", { attrs: { href: "#" } }, [
+          _c("i", { staticClass: "zmdi zmdi-power" }),
+          _vm._v("Logout")
         ])
       ])
     ])
@@ -37990,31 +37944,9 @@ var render = function() {
     [
       _c("MobileHeader"),
       _vm._v(" "),
-      _c("SideBar"),
+      _c("DesktopHeader"),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "page-container2" },
-        [
-          _c("DesktopHeader"),
-          _vm._v(" "),
-          _c("div", { staticClass: "main-content" }, [
-            _c(
-              "div",
-              { staticClass: "section__content section__content--p30" },
-              [
-                _c(
-                  "div",
-                  { staticClass: "container-fluid" },
-                  [_vm._t("default")],
-                  2
-                )
-              ]
-            )
-          ])
-        ],
-        1
-      )
+      _c("div", { staticClass: "page-content--bgf7" }, [_vm._t("default")], 2)
     ],
     1
   )
