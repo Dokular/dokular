@@ -2,16 +2,8 @@
     <div class="page-wrapper">
       <MobileHeader></MobileHeader>
       <DesktopHeader></DesktopHeader>
-      <!-- <SideBar></SideBar> -->
-      <div class="page-container2">
-        <!-- <MainContent></MainContent> -->
-        <div class="main-content">
-          <div class="section__content section__content--p30">
-            <div class="container-fluid">
-                <slot/>
-            </div>
-          </div>
-        </div>
+      <div class="page-content--bgf7">
+        <slot/>
       </div>
     </div>
 </template>
