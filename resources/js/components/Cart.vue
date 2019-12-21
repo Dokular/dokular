@@ -2,13 +2,14 @@
     <div>
         <div class="top-campaign" v-if="carts.length">
             <h3 class="title-3 m-b-30">Add to cart</h3>
+            {{ carts }}
             <div class="table-responsive">
                 <table class="table table-top-campaign">
                     <tbody>
                         <tr v-for="(cart, index) in carts" :key="index">
-                            <td>{{ cart.product_id }}</td>
-                            <td>{{ cart.id_number}}</td>
-                            <td>{{ cart.type }}</td>
+                            <td>{{ cart.owner_name }}</td>
+                            <td>{{ cart.vehicle_make}}</td>
+                            <td v-for="(product, index) in cart[index]" :key="index">{{ product.name }}</td>
                             <td>N {{ cart.price }}</td>
                             <td><span @click="removeCart(cart)" class="delspan">X</span></td>
                         <!-- </tr>

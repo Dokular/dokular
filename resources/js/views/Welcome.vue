@@ -1,17 +1,17 @@
 <template>
   <div>
-  <top-section></top-section>
+  <Products></Products>
   <service />
   </div>
 </template>
 <script>
-import TopSection from '../components/WelcomeFirstSection'
+import Products from '../components/Products'
 import Service from '../components/WelcomeServiceSection'
 
 export default {
   components: {
       Service,
-      TopSection,
+      Products,
   },
   data() {
     return{
