@@ -77,7 +77,7 @@ export const store = new Vuex.Store({
         total: (state, getters) => {
             let total = 0;
             getters.carts.forEach( cart => {
-                total += Number(cart.price)
+                total += Number(cart.total)
             })
             return total;
         },
@@ -93,14 +93,6 @@ export const store = new Vuex.Store({
         preCarts: state => {
            return state.precarts;
         },
-
-        preCartTotal: (state, getters) => {
-            let total = 0;
-            getters.preCarts.forEach( precart => {
-                total += Number(precart.price)
-            })
-            return total
-        }
 
     },
 })

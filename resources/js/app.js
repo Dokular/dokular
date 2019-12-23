@@ -9,7 +9,10 @@ import Default from './layout/default'
 import Home from './layout/home'
 import {store }from './store/store'
 import BootstrapVue from 'bootstrap-vue'
+import VueFormWizard from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 
+Vue.use(VueFormWizard)
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 
