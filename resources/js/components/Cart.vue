@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="top-campaign" v-if="carts.length">
-            <h3 class="title-3 m-b-30">Add to cart</h3>
+            <h3 class="title-3 m-b-30">My cart</h3>
             <div class="table-responsive">
                 <table class="table table-top-campaign">
                     <tbody>
@@ -24,7 +24,9 @@
                        <tr>
                            <td colspan="5">
                                <b-button size="sm" variant="success">
+                                   <router-link to="/checkout">
                                     Checkout
+                                    </router-link>
                                 </b-button>
                            </td>
                        </tr>
