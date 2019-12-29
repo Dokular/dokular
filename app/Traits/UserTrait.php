@@ -1,8 +1,6 @@
 <?php
 namespace App\Traits;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
 use App\User;
 
 trait UserTrait{
