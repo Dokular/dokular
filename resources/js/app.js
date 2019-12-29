@@ -15,6 +15,7 @@ import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 Vue.use(VueFormWizard)
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
+//Vue.use(ValidationProvider)
 
 const router = new VueRouter({
     mode: 'history',

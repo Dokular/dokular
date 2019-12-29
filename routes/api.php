@@ -21,3 +21,5 @@ Route::get('products', 'ProductController@get');
 Route::get('category', 'CategoryController@get');
 
 Route::post('order', 'OrderController@store');
+
+Route::post('user', 'UserController@store');

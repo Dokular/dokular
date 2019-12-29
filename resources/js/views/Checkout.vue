@@ -9,16 +9,19 @@
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
                 <CheckOutCart></CheckOutCart>
-                <paystack
+                <Paystack
                         :amount="amount"
-                        :email="delivery.email"
+                        :email="email"
                         :paystackkey="paystackkey"
                         :reference="reference"
                         :callback="callback"
+                        :triggerPayment="trigger"
                         :close="close"
                         :embed="false">
-                    <button class="btn btn-primary btn-lg btn-block">Continue to checkout</button>
-                </paystack>
+                </Paystack>
+                <button class="btn btn-primary btn-lg btn-block" @click="Prepayment">
+                    Continue to checkout
+                </button>
             </div>
             <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Delivery address</h4>
@@ -27,9 +30,8 @@
                     <label for="firstName">First name</label>
                     <input type="text"
                            class="form-control"
-                           v-model="delivery.firstName"
+                           v-model="first_name"
                            placeholder=""
-                           value=""
                            required>
                     <div class="invalid-feedback">
                         Valid first name is required.
@@ -42,9 +44,8 @@
                     </label>
                     <input type="text"
                             class="form-control"
-                            v-model="delivery.lastName"
+                            v-model="last_name"
                             placeholder=""
-                            value=""
                             required>
                     <div class="invalid-feedback">
                         Valid last name is required.
@@ -55,7 +56,7 @@
                     <label for="phone">Phone </label>
                     <input type="phone"
                             class="form-control"
-                            v-model="delivery.phone"
+                            v-model="phone"
                             placeholder="08030000000">
                     <div class="invalid-feedback">
                         Please enter a valid mobile number
@@ -65,7 +66,7 @@
                     <label for="email">Email </label>
                     <input type="email"
                             class="form-control"
-                            v-model="delivery.email"
+                            v-model="email"
                             placeholder="you@example.com">
                     <div class="invalid-feedback">
                         Please enter a valid email address
@@ -77,7 +78,7 @@
                     <label for="address">Delivery address</label>
                     <input type="text"
                             class="form-control"
-                            v-model="delivery.address"
+                            v-model="address"
                             placeholder="1234 Main St"
                             required>
                     <div class="invalid-feedback">
@@ -88,7 +89,7 @@
                 <div class="row">
                 <div class="col-md-5 mb-3">
                     <label for="state">State</label>
-                    <select class="custom-select d-block w-100" v-model="delivery.state" required>
+                    <select class="custom-select d-block w-100" v-model="state" required>
                         <option value="">
                             Choose...
                         </option>
@@ -103,7 +104,7 @@
                 <div class="col-md-4 mb-3">
                     <label for="lga">L.G.A</label>
                     <select class="custom-select d-block w-100"
-                            v-model="delivery.lga"
+                            v-model="lga"
                             required>
                     <option value="">
                         Choose...
@@ -124,29 +125,31 @@
     </div>
 </template>
 <script>
+import { ValidationProvider } from 'vee-validate';
 import {mapGetters, mapActions} from 'vuex'
 import CheckOutCart from '../components/CheckOutCart'
-import paystack from 'vue-paystack'
+import Paystack from '../components/Paystack'
 import axios from 'axios'
 
 export default {
     data(){
         return{
-          paystackkey: process.env.MIX_PAYSTACK_PK,
-          delivery: {
-              firstName:'',
-              lastName:'',
-              phone: '',
-              email: '',
-              address:'',
-              state:'',
-              lga: ''
-          }
+            paystackkey: process.env.MIX_PAYSTACK_PK,
+            first_name:'',
+            last_name:'',
+            phone: '',
+            email: '',
+            address:'',
+            state:'',
+            lga: '',
+            trigger: false,
+            user: 0
         }
     },
     components: {
         CheckOutCart,
-        paystack
+        Paystack,
+        ValidationProvider
     },
     computed: {
         ...mapGetters(["carts", "total"]),
@@ -165,15 +168,20 @@ export default {
     },
     methods: {
         callback: function(response){
-
             // console.log(response)
             //console.log(res.reference)
             var self = this;
 
             axios.post(process.env.MIX_API+'order',{
-              order: self.carts,
-              email: self.email,
-              reference: response.reference
+                order: self.carts,
+                reference: this.reference,
+                first_name : this.first_name,
+                last_name : this.last_name,
+                phone : this.phone,
+                email : this.email,
+                address : this.address,
+                state : this.state,
+                lga : this.lga
             }).then(response => {
                 console.log(response)
             }).catch(error => {
@@ -182,6 +190,25 @@ export default {
         },
         close(){
             console.log("Payment closed")
+        },
+        Prepayment() {
+            alert('payment!!!');
+            this.trigger = true;
+            // axios.post(process.env.MIX_API+'user',{
+            //     first_name : this.first_name,
+            //     last_name : this.last_name,
+            //     phone : this.phone,
+            //     email : this.email,
+            //     address : this.address,
+            //     state : this.state,
+            //     lga : this.lga
+            // }).then(response => {
+            //     this.trigger = true;
+            //     this.user = response.data.user
+            //     console.log(response.data.user)
+            // }).catch(error => {
+            //     console.log(error)
+            // })
         }
     }
 }
