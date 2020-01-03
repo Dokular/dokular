@@ -1,23 +1,21 @@
 <template>
     <div>
         <div class="top-campaign" v-if="carts.length">
-            <h3 class="title-3 m-b-30">Add to cart</h3>
-            {{ carts }}
+            <h3 class="title-3 m-b-30">My cart</h3>
             <div class="table-responsive">
                 <table class="table table-top-campaign">
                     <tbody>
                         <tr v-for="(cart, index) in carts" :key="index">
-                            <td>{{ cart.owner_name }}</td>
-                            <td>{{ cart.vehicle_make}}</td>
-                            <td v-for="(product, index) in cart[index]" :key="index">{{ product.name }}</td>
-                            <td>N {{ cart.price }}</td>
+                            <td>{{ cart.owner }}</td>
+                            <td>{{ cart.make}}</td>
+                            <td>
+                                <p v-for="(product, index) in cart.products" :key="index">
+                                {{ product.name }} - {{ product.price }}
+                                </p>
+                            </td>
+                            <td>total: {{ cart.total }} </td>
                             <td><span @click="removeCart(cart)" class="delspan">X</span></td>
-                        <!-- </tr>
-                        <tr>
-                            <td></td>
-                            <td>Delivery</td>
-                            <td>N 1000</td>
-                        </tr> -->
+                        </tr>
                         <tr>
                            <td colspan="5">
                                Total: N{{ total }}
@@ -26,7 +24,9 @@
                        <tr>
                            <td colspan="5">
                                <b-button size="sm" variant="success">
+                                   <router-link to="/checkout">
                                     Checkout
+                                    </router-link>
                                 </b-button>
                            </td>
                        </tr>
