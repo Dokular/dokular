@@ -168,8 +168,6 @@ export default {
     },
     methods: {
         callback: function(response){
-            // console.log(response)
-            //console.log(res.reference)
             var self = this;
 
             axios.post(process.env.MIX_API+'order',{
@@ -194,22 +192,18 @@ export default {
         Prepayment() {
             alert('payment!!!');
             this.trigger = true;
-            // axios.post(process.env.MIX_API+'user',{
-            //     first_name : this.first_name,
-            //     last_name : this.last_name,
-            //     phone : this.phone,
-            //     email : this.email,
-            //     address : this.address,
-            //     state : this.state,
-            //     lga : this.lga
-            // }).then(response => {
-            //     this.trigger = true;
-            //     this.user = response.data.user
-            //     console.log(response.data.user)
-            // }).catch(error => {
-            //     console.log(error)
-            // })
+        },
+
+        clearData() {
+            this.first_name = '',
+            this.last_name = '',
+            this.phone = '',
+            this.email = '',
+            this.address = '',
+            this.state = '',
+            this.lga = ''
         }
+
     }
 }
 </script>

@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Traits\PasswordLessAuth;
+use Illuminate\Http\Request;
+use App\Http\Requests\LoginEmailRequest;
+use App\Http\Requests\LoginTokenRequest;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use JWTAuth;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -17,21 +23,73 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    use PasswordLessAuth;
 
-    use AuthenticatesUsers;
+    public function attempt(LoginEmailRequest $request)
+    {
+        //return response()->json(['success' => true]);
+        return $this->loginMail($request);
+    }
+
+    // verify token
+    public function verify(LoginTokenRequest $request)
+    {
+        return $this->login($request['token']);
+    }
+
+    public function login($etoken){
+        $input = $this->signIn($etoken);
+
+        try{
+
+            $user = User::where('email', $input)->first();
+            //return $input;
+            $token = null;
+
+            if (!$token = JWTAuth::fromUser($user)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Invalid Email or Password',
+                ], 401);
+            }
+
+            $this->clearEmailToken($etoken);
+
+            return response()->json([
+                'success' => true,
+                'token' => $token,
+            ]);
+
+        }catch(\Exception $e) {
+            echo 'Message: ' .$e->getMessage();
+        }
+    }
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
-    protected $redirectTo = '/home';
+    public function logout(Request $request){
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+        try {
+            JWTAuth::invalidate($request->token);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'User logged out successfully'
+            ]);
+        } catch (JWTException $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, the user cannot be logged out'
+            ], 500);
+        }
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

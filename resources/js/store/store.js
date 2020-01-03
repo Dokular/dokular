@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import { stat } from 'fs'
+import { getToken, setToken, removeToken } from './auth'
 
 Vue.use(Vuex, axios)
 
@@ -13,6 +14,7 @@ export const store = new Vuex.Store({
         products: [],
         categories: [],
         precarts: [],
+        token: getToken(),
     },
 
     mutations: {
@@ -39,7 +41,12 @@ export const store = new Vuex.Store({
 
         CALCULATE_PRECART_TOTAL: (state, payload) => {
             state.precarts = payload
-        }
+        },
+
+        SET_TOKEN: (state, token) => {
+            state.token = token;
+            setToken(token);
+        },
     },
 
     actions: {
@@ -67,7 +74,7 @@ export const store = new Vuex.Store({
         removeFromCarts({commit}, payload){
             commit('REMOVE_FROM_CART', payload)
             commit('STORE_CART')
-        }
+        },
     },
 
     getters: {
@@ -94,5 +101,11 @@ export const store = new Vuex.Store({
            return state.precarts;
         },
 
+        loggedInStatus: state => {
+            if(!state.token){
+                return false
+            }
+            return true;
+        }
     },
 })
