@@ -11,14 +11,14 @@
 </template>
 <script>
 import MobileHeader from '../components/DashboardMobileHeader'
-import TopBar from '../components/TopHeader'
 import DesktopHeader from '../components/DashboardDesktopHeader'
+import TopBar from '../components/TopHeader'
 import Footer from '../components/Footer'
 export default {
   components: {
       MobileHeader,
-      TopBar,
       DesktopHeader,
+      TopBar,
       Footer
   }
 

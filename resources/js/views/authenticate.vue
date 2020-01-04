@@ -22,11 +22,10 @@ export default {
             }).then(response => {
                 console.log(response.data.token)
                 this.SET_TOKEN(response.data.token)
-                this.$router.push('dashboard')
+                this.$router.push({'name': 'dashboard'})
             }).catch(error => {
                 console.log(error)
             })
-            console.log(this.token);
         }
     },
 

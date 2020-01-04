@@ -1,3 +1,6 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
 import Welcome from '../views/Welcome.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
@@ -6,12 +9,14 @@ import Order from '../views/Order.vue'
 import Checkout from '../views/Checkout.vue'
 import Auth from '../views/authenticate'
 
+Vue.use(VueRouter)
+
 export const routes = [
     {
         path: '/',
         meta: { layout: 'default'},
         component: Welcome,
-        name: 'index',
+        name: 'landing',
     },
     {
         path: '/login',
@@ -52,3 +57,13 @@ export const routes = [
         name: 'checkout',
     }
 ]
+
+const createRouter = () => new VueRouter({
+    mode: 'history',
+    routes
+})
+
+const router = createRouter()
+
+
+export default router

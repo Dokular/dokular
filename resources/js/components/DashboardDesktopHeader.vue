@@ -3,12 +3,12 @@
     <div class="section__content section__content--p35">
         <div class="header3-wrap">
             <div class="header__logo">
-                <router-link :to="{ name: 'index'}">
+                <router-link :to="{ name: 'landing'}">
                     <img :src="logo" alt="Cool Admin" />
                 </router-link>
             </div>
             <div class="header__navbar">
-                <ul class="list-unstyled">
+                <!-- <ul class="list-unstyled">
                     <li class="has-sub">
                         <router-link :to="{ name: 'dashboard'}">
                             <i class="fas fa-tachometer-alt"></i>Dashboard
@@ -28,7 +28,7 @@
                             Transactions
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
             <div class="header__tool">
                 <div class="account-wrap">
@@ -37,39 +37,32 @@
                             <img :src="icon" alt="John Doe" />
                         </div>
                         <div class="content">
-                            <a class="js-acc-btn" href="#">john doe</a>
+                            <a class="js-acc-btn" href="#">guest</a>
                         </div>
                         <div class="account-dropdown js-dropdown">
-                            <div class="info clearfix">
-                                <div class="image">
-                                    <a href="#">
-                                        <img :src="icon" alt="John Doe" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="name">
-                                        <a href="#">john doe</a>
-                                    </h5>
-                                    <span class="email">johndoe@example.com</span>
-                                </div>
-                            </div>
                             <div class="account-dropdown__body">
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                <div class="account-dropdown__item" v-if="loggedInStatus">
+                                    <router-link :to="{ name: 'dashboard'}">
+                                        <i class="fas fa-tachometer-alt"></i>Dashboard
+                                        <span class="bot-line"></span>
+                                    </router-link>
                                 </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting</a>
+                                <div class="account-dropdown__item" v-if="loggedInStatus">
+                                    <router-link :to="{ name: 'order'}">
+                                        <i class="zmdi zmdi-account"></i>
+                                        Order
+                                    </router-link>
                                 </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                <div class="account-dropdown__item" v-if="!loggedInStatus">
+                                    <router-link :to="{ name: 'login'}">
+                                        <i class="zmdi zmdi-money-box"></i>Sign in
+                                    </router-link>
                                 </div>
                             </div>
-                            <div class="account-dropdown__footer">
-                                <a href="#">
-                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                            <div class="account-dropdown__footer" v-if="loggedInStatus">
+                                <a @click="logMeOut()">
+                                    <i class="zmdi zmdi-power"></i>Logout
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -86,7 +79,7 @@ import Avatar4 from '../assets/images/icon/avatar-04.jpg'
 import Avatar1 from '../assets/images/icon/avatar-01.jpg'
 import Logo from '../assets/images/icon/logo-white.png'
 import Icon from '../assets/images/icon/avatar-big-01.jpg'
-
+import {mapActions, mapGetters} from 'vuex'
 export default {
 
     data() {
@@ -97,6 +90,20 @@ export default {
             avatar1: Avatar1,
             logo: Logo,
             icon: Icon
+        }
+    },
+    computed: {
+        ...mapGetters(['loggedInStatus'])
+    },
+    methods:{
+        ...mapActions(['logout']),
+        logMeOut() {
+            this.logout().then(ok => {
+                console.log(ok)
+                this.$router.push({'name': 'landing'})
+            }).catch(err => {
+                console.log(err)
+            })
         }
     }
 }

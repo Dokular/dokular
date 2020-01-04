@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import { stat } from 'fs'
 import { getToken, setToken, removeToken } from './auth'
+import { resetRouter } from '../router/routes'
 
 Vue.use(Vuex, axios)
 
@@ -75,6 +76,21 @@ export const store = new Vuex.Store({
             commit('REMOVE_FROM_CART', payload)
             commit('STORE_CART')
         },
+
+        logout({commit, state}){
+            return new Promise((resolve, reject) => {
+                axios.post(process.env.MIX_API+'logout',{
+                    token: state.token
+                }).then(response => {
+                    commit('SET_TOKEN', '')
+                    removeToken()
+                    resolve(response.data.success)
+                }).catch(error => {
+                    console.log(error)
+                    reject(error)
+                })
+            })
+        }
     },
 
     getters: {
@@ -101,8 +117,12 @@ export const store = new Vuex.Store({
            return state.precarts;
         },
 
-        loggedInStatus: state => {
-            if(!state.token){
+        getToken: state => {
+            return state.token;
+        },
+
+        loggedInStatus: (state, getters) => {
+            if(!getters.getToken){
                 return false
             }
             return true;
