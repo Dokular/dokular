@@ -2047,29 +2047,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3073,8 +3050,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return text;
     }
   }),
-  methods: {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])(['CLEAR_CART']), {
     callback: function callback(response) {
+      var _this = this;
+
       var self = this;
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("http://127.0.0.1:8000/api/" + 'order', {
         order: self.carts,
@@ -3088,6 +3067,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         lga: this.lga
       }).then(function (response) {
         console.log(response);
+
+        _this.CLEAR_CART();
+
+        _this.$router.push({
+          'name': 'landing'
+        });
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3102,7 +3087,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     clearData: function clearData() {
       this.first_name = '', this.last_name = '', this.phone = '', this.email = '', this.address = '', this.state = '', this.lga = '';
     }
-  }
+  })
 });
 
 /***/ }),
@@ -39022,8 +39007,6 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "header__navbar" }),
-        _vm._v(" "),
         _c("div", { staticClass: "header__tool" }, [
           _c("div", { staticClass: "account-wrap" }, [
             _c(
@@ -59245,6 +59228,9 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       var index = state.cartlists.indexOf(payload);
       state.cartlists.splice(index, 1);
     },
+    CLEAR_CART: function CLEAR_CART(state) {
+      window.localStorage.removeItem('carts');
+    },
     LOAD_CATEGORY: function LOAD_CATEGORY(state, payload) {
       state.categories = payload;
     },
@@ -59268,7 +59254,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     },
     loadCategory: function loadCategory(_ref2) {
       var commit = _ref2.commit;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("http://127.0.0.1:8000/api/" + 'category').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("http://127.0.0.1:8000/api/" + 'categories').then(function (response) {
         // console.log(response.data.data)
         commit('LOAD_CATEGORY', response.data.data);
       })["catch"](function (error) {
@@ -59819,8 +59805,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/rapulu/Documents/github/rapulu/regidital-1/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/rapulu/Documents/github/rapulu/regidital-1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/rapulu/Documents/github/rapulu/dokular/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/rapulu/Documents/github/rapulu/dokular/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

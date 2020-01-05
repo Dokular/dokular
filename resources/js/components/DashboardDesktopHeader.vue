@@ -7,29 +7,6 @@
                     <img :src="logo" alt="Cool Admin" />
                 </router-link>
             </div>
-            <div class="header__navbar">
-                <!-- <ul class="list-unstyled">
-                    <li class="has-sub">
-                        <router-link :to="{ name: 'dashboard'}">
-                            <i class="fas fa-tachometer-alt"></i>Dashboard
-                            <span class="bot-line"></span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{ name: 'order'}">
-                        <i class="fas fa-shopping-basket"></i>
-                            Order
-                        </router-link>
-                    </li>
-                    <li>
-                        <a href="table.html">
-                            <i class="fas fa-trophy"></i>
-                            <span class="bot-line"></span>
-                            Transactions
-                        </a>
-                    </li>
-                </ul> -->
-            </div>
             <div class="header__tool">
                 <div class="account-wrap">
                     <div class="account-item account-item--style2 clearfix js-item-menu">

@@ -1,7 +1,7 @@
 <?php
 namespace App\Traits;
 
-use App\Login;
+use App\Models\Login;
 use App\Mail\LoginEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;

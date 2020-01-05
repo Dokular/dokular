@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Owner;
+use App\Models\User;
+use App\Models\Owner;
 use App\Traits\UserTrait;
 
 class OrderController extends Controller

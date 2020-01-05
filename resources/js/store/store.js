@@ -36,6 +36,10 @@ export const store = new Vuex.Store({
             state.cartlists.splice(index, 1)
         },
 
+        CLEAR_CART: (state) => {
+            window.localStorage.removeItem('carts')
+        },
+
         LOAD_CATEGORY: (state, payload) => {
             state.categories = payload
         },
@@ -60,7 +64,7 @@ export const store = new Vuex.Store({
             })
         },
         loadCategory({commit}) {
-            axios.get(process.env.MIX_API+'category').then(response => {
+            axios.get(process.env.MIX_API+'categories').then(response => {
                 // console.log(response.data.data)
                 commit('LOAD_CATEGORY',response.data.data)
             }).catch(error => {

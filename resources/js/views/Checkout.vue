@@ -126,7 +126,7 @@
 </template>
 <script>
 import { ValidationProvider } from 'vee-validate';
-import {mapGetters, mapActions} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 import CheckOutCart from '../components/CheckOutCart'
 import Paystack from '../components/Paystack'
 import axios from 'axios'
@@ -167,6 +167,7 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(['CLEAR_CART']),
         callback: function(response){
             var self = this;
 
@@ -182,6 +183,8 @@ export default {
                 lga : this.lga
             }).then(response => {
                 console.log(response)
+                this.CLEAR_CART()
+                this.$router.push({'name': 'landing'})
             }).catch(error => {
                 console.log(error)
             })

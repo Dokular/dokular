@@ -13,7 +13,9 @@ use Illuminate\Http\Request;
 */
 Route::get('products', 'ProductController@get');
 
-Route::get('category', 'CategoryController@get');
+Route::get('categories', 'CategoryController@get');
+
+Route::post('category', 'CategoryController@create');
 
 Route::post('order', 'OrderController@store');
 
