@@ -17,6 +17,10 @@ Route::get('categories', 'CategoryController@get');
 
 Route::post('category', 'CategoryController@create');
 
+Route::get('category/{id}', 'CategoryController@getCategory');
+
+Route::post('product/{id}', 'ProductController@create');
+
 Route::post('order', 'OrderController@store');
 
 Route::post('login/attempt', 'Auth\LoginController@attempt');

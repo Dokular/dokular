@@ -21,4 +21,9 @@ class CategoryController extends Controller
         $category->img = 'img';
         $category->save();
     }
+
+    public function getCategory(Category $id)
+    {
+        return response()->json(['data' => $id->load('products')], 200);
+    }
 }
