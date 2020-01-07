@@ -89,7 +89,8 @@ export default {
                 mark: '',
                 total: '',
                 products: []
-            }
+            },
+            base_url: process.env.MIX_APP_URL
         }
     },
 

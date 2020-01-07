@@ -2368,7 +2368,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         mark: '',
         total: '',
         products: []
-      }
+      },
+      base_url: "http://127.0.0.1:8000"
     };
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['CALCULATE_PRECART_TOTAL']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["loadCategory", "addProductToCart"]), {
