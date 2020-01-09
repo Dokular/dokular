@@ -18,6 +18,10 @@ class CreateVehiclesTable extends Migration
             $table->bigInteger('category_id');
             $table->string('name');
             $table->timestamps();
+
+            $table->foreign('category_id')
+                    ->references('id')->on('categories')
+                    ->onDelete('cascade');
         });
     }
 

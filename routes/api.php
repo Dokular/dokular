@@ -15,12 +15,6 @@ Route::get('products', 'ProductController@get');
 
 Route::get('categories', 'CategoryController@get');
 
-Route::post('category', 'CategoryController@create');
-
-Route::get('category/{id}', 'CategoryController@getCategory');
-
-Route::post('product/{id}', 'ProductController@create');
-
 Route::post('order', 'OrderController@store');
 
 Route::post('login/attempt', 'Auth\LoginController@attempt');
@@ -35,4 +29,11 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 
     Route::post('logout', 'Auth\LoginController@logout');
 
+});
+
+Route::namespace('Admin')->prefix('admin')->group(function () {
+    Route::get('categories', 'CategoryController@get');
+    Route::post('category', 'CategoryController@create');
+    Route::post('product/{id}', 'ProductController@create');
+    Route::get('category/{id}', 'CategoryController@getCategory');
 });

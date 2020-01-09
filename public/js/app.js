@@ -2272,6 +2272,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_images_depot_img_3_jpg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_images_depot_img_3_jpg__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _assets_images_depot_hero_1_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/images/depot_hero_1.jpg */ "./resources/js/assets/images/depot_hero_1.jpg");
 /* harmony import */ var _assets_images_depot_hero_1_jpg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_images_depot_hero_1_jpg__WEBPACK_IMPORTED_MODULE_4__);
+var _props$data$computed$;
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2337,12 +2339,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_props$data$computed$ = {
   props: {
     title: {
       type: String,
@@ -2372,6 +2387,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       base_url: "http://127.0.0.1:8000"
     };
   },
+  computed: {
+    makeState: function makeState() {
+      return this.cart.make.length > 2 ? true : false;
+    },
+    validate: function validate() {
+      this.makeState;
+    }
+  },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['CALCULATE_PRECART_TOTAL']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(["loadCategory", "addProductToCart"]), {
     openPreCart: function openPreCart(category) {
       this.category = category;
@@ -2382,21 +2405,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.addProductToCart(this.cart);
       this.cart.owner = '', this.cart.make = '', this.cart.mark = '', this.cart.total = '', this.cart.products = [];
       this.show = false;
+    },
+    validateFirstStep: function validateFirstStep() {
+      //    return new Promise((resolve, reject) => {
+      //      this.$refs.ruleForm.validate((valid) => {
+      //        resolve(valid);
+      //      });
+      //    })
+      this.validate;
     }
-  }),
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["categories", "preCarts"]), {
-    preCartTotal: function preCartTotal() {
-      var total = 0;
-      this.cart.products.forEach(function (cart) {
-        total += Number(cart.price);
-      });
-      return total;
-    }
-  }),
-  created: function created() {
-    this.loadCategory();
+  })
+}, _defineProperty(_props$data$computed$, "computed", _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["categories", "preCarts"]), {
+  preCartTotal: function preCartTotal() {
+    var total = 0;
+    this.cart.products.forEach(function (cart) {
+      total += Number(cart.price);
+    });
+    return total;
   }
-});
+})), _defineProperty(_props$data$computed$, "created", function created() {
+  this.loadCategory();
+  this.validate;
+}), _props$data$computed$);
 
 /***/ }),
 
@@ -39541,131 +39571,148 @@ var render = function() {
                   on: { "on-complete": _vm.addToCart }
                 },
                 [
-                  _c("tab-content", { attrs: { title: "Vehicle info" } }, [
-                    _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "tab-content",
+                    {
+                      attrs: {
+                        title: "Vehicle info",
+                        "before-change": _vm.validateFirstStep
+                      }
+                    },
+                    [
                       _c(
-                        "label",
-                        {
-                          staticClass: "control-label mb-1",
-                          attrs: { for: "cc-payment" }
-                        },
-                        [_vm._v("Vehicle make")]
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label mb-1",
+                              attrs: { for: "cc-payment" }
+                            },
+                            [_vm._v("Vehicle make")]
+                          ),
+                          _vm._v(" "),
+                          _c("b-form-input", {
+                            attrs: {
+                              id: "input-live",
+                              state: _vm.makeState,
+                              "aria-describedby":
+                                "input-live-help input-live-feedback",
+                              placeholder: "Enter your name",
+                              trim: ""
+                            },
+                            model: {
+                              value: _vm.cart.make,
+                              callback: function($$v) {
+                                _vm.$set(_vm.cart, "make", $$v)
+                              },
+                              expression: "cart.make"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "b-form-invalid-feedback",
+                            { attrs: { id: "input-live-feedback" } },
+                            [
+                              _vm._v(
+                                "\n                        Enter at least 3 letters\n                    "
+                              )
+                            ]
+                          )
+                        ],
+                        1
                       ),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
+                      _c("div", { staticClass: "form-group has-success" }, [
+                        _c(
+                          "label",
                           {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.cart.make,
-                            expression: "cart.make"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          "aria-required": "true",
-                          "aria-invalid": "false"
-                        },
-                        domProps: { value: _vm.cart.make },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                            staticClass: "control-label mb-1",
+                            attrs: { for: "cc-name" }
+                          },
+                          [_vm._v("Identification mark")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.cart.mark,
+                              expression: "cart.mark"
                             }
-                            _vm.$set(_vm.cart, "make", $event.target.value)
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "cc-name",
+                            type: "text",
+                            "data-val": "true",
+                            "data-val-required":
+                              "Please enter the name on card",
+                            autocomplete: "cc-name",
+                            "aria-required": "true",
+                            "aria-invalid": "false",
+                            "aria-describedby": "cc-name-error"
+                          },
+                          domProps: { value: _vm.cart.mark },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.cart, "mark", $event.target.value)
+                            }
                           }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group has-success" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label mb-1",
-                          attrs: { for: "cc-name" }
-                        },
-                        [_vm._v("Identification mark")]
-                      ),
+                        }),
+                        _vm._v(" "),
+                        _c("span", {
+                          staticClass: "help-block field-validation-valid",
+                          attrs: {
+                            "data-valmsg-for": "cc-name",
+                            "data-valmsg-replace": "true"
+                          }
+                        })
+                      ]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "label",
                           {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.cart.mark,
-                            expression: "cart.mark"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "cc-name",
-                          type: "text",
-                          "data-val": "true",
-                          "data-val-required": "Please enter the name on card",
-                          autocomplete: "cc-name",
-                          "aria-required": "true",
-                          "aria-invalid": "false",
-                          "aria-describedby": "cc-name-error"
-                        },
-                        domProps: { value: _vm.cart.mark },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                            staticClass: "control-label mb-1",
+                            attrs: { for: "cc-payment" }
+                          },
+                          [_vm._v("Name of owner")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.cart.owner,
+                              expression: "cart.owner"
                             }
-                            _vm.$set(_vm.cart, "mark", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", {
-                        staticClass: "help-block field-validation-valid",
-                        attrs: {
-                          "data-valmsg-for": "cc-name",
-                          "data-valmsg-replace": "true"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "control-label mb-1",
-                          attrs: { for: "cc-payment" }
-                        },
-                        [_vm._v("Name of owner")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.cart.owner,
-                            expression: "cart.owner"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          "aria-required": "true",
-                          "aria-invalid": "false"
-                        },
-                        domProps: { value: _vm.cart.owner },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            "aria-required": "true",
+                            "aria-invalid": "false"
+                          },
+                          domProps: { value: _vm.cart.owner },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.cart, "owner", $event.target.value)
                             }
-                            _vm.$set(_vm.cart, "owner", $event.target.value)
                           }
-                        }
-                      })
-                    ])
-                  ]),
+                        })
+                      ])
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "tab-content",

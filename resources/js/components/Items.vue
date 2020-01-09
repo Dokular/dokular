@@ -5,7 +5,9 @@
     <div class="container">
         <div class="row">
         <div class="col service text-center" v-for="(category, index) in categories" :key="index">
-            <a href="#"><img :src="category.img" alt="Image" class="img-fluid"></a>
+            <a href="#">
+              <img :src="category.img" alt="Image" class="img-fluid">
+            </a>
             <div class="px-md-3">
             <h3><a href="#">{{ category.name }}</a></h3>
             <p>{{ category.description }}</p>
@@ -18,10 +20,21 @@
   </div>
     <b-modal v-if="category" v-model="show" hide-footer >
         <form-wizard :title="title" :subtitle="subtitle" @on-complete="addToCart">
-            <tab-content title="Vehicle info">
+            <tab-content title="Vehicle info" :before-change="validateFirstStep">
                 <div class="form-group">
                     <label for="cc-payment" class="control-label mb-1">Vehicle make</label>
-                    <input type="text" class="form-control" v-model="cart.make" aria-required="true" aria-invalid="false">
+                    <b-form-input
+                    id="input-live"
+                    v-model="cart.make"
+                    :state="makeState"
+                    aria-describedby="input-live-help input-live-feedback"
+                    placeholder="Enter your name"
+                    trim
+                    ></b-form-input>
+                    <b-form-invalid-feedback id="input-live-feedback">
+                        Enter at least 3 letters
+                    </b-form-invalid-feedback>
+                    <!-- <input type="text" class="form-control" v-model="cart.make" aria-required="true" aria-invalid="false"> -->
                 </div>
                 <div class="form-group has-success">
                     <label for="cc-name" class="control-label mb-1">Identification mark</label>
@@ -90,10 +103,17 @@ export default {
                 total: '',
                 products: []
             },
-            base_url: process.env.MIX_APP_URL
+            base_url: process.env.MIX_APP_URL,
         }
     },
-
+    computed: {
+      makeState() {
+        return this.cart.make.length > 2 ? true : false
+      },
+      validate() {
+          this.makeState
+      }
+    },
     methods: {
         ...mapMutations(['CALCULATE_PRECART_TOTAL']),
         ...mapActions([
@@ -116,6 +136,14 @@ export default {
             this.cart.products = []
             this.show = false;
         },
+        validateFirstStep() {
+        //    return new Promise((resolve, reject) => {
+        //      this.$refs.ruleForm.validate((valid) => {
+        //        resolve(valid);
+        //      });
+        //    })
+            this.validate;
+         }
     },
 
     computed: {
@@ -133,6 +161,7 @@ export default {
 
     created() {
         this.loadCategory()
+        this.validate
     },
 }
 </script>
