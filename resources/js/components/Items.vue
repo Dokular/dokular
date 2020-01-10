@@ -21,33 +21,33 @@
     <b-modal v-if="category" v-model="show" hide-footer >
         <form-wizard :title="title" :subtitle="subtitle" @on-complete="addToCart">
             <tab-content title="Vehicle info" :before-change="validateFirstStep">
-                <div class="form-group">
-                    <label for="cc-payment" class="control-label mb-1">Vehicle make</label>
-                    <b-form-input
-                    id="input-live"
-                    v-model="cart.make"
-                    :state="makeState"
-                    aria-describedby="input-live-help input-live-feedback"
-                    placeholder="Enter your name"
-                    trim
-                    ></b-form-input>
-                    <b-form-invalid-feedback id="input-live-feedback">
-                        Enter at least 3 letters
-                    </b-form-invalid-feedback>
-                    <!-- <input type="text" class="form-control" v-model="cart.make" aria-required="true" aria-invalid="false"> -->
-                </div>
-                <div class="form-group has-success">
-                    <label for="cc-name" class="control-label mb-1">Identification mark</label>
-                    <input id="cc-name" type="text" class="form-control" v-model="cart.mark" data-val="true" data-val-required="Please enter the name on card"
-                        autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
-                    <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                </div>
-                <div class="form-group">
-                    <label for="cc-payment" class="control-label mb-1">Name of owner</label>
-                    <input type="text" class="form-control" v-model="cart.owner" aria-required="true" aria-invalid="false">
-                </div>
+                 <ValidationObserver ref="observer" v-slot="{ invalid }">
+                    <div class="form-group">
+                        <ValidationProvider name="car make" rules="required" v-slot="{ errors }">
+                            <label for="cc-payment" class="control-label mb-1">Vehicle make</label>
+                            <input type="text" class="form-control" v-model="cart.make" aria-required="true" aria-invalid="false">
+                            <span>{{ errors[0] }}</span>
+                        </ValidationProvider>
+                    </div>
+                    <div class="form-group has-success">
+                        <ValidationProvider name="Identification mark" rules="required" v-slot="{ errors }">
+                            <label for="cc-name" class="control-label mb-1">Identification mark</label>
+                            <input id="cc-name" type="text" class="form-control" v-model="cart.mark" data-val="true" data-val-required="Please enter the name on card"
+                                autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+                            <span>{{ errors[0] }}</span>
+                        </ValidationProvider>
+                    </div>
+                    <div class="form-group">
+                        <ValidationProvider name="Owner name" rules="required" v-slot="{ errors }">
+                            <label for="cc-payment" class="control-label mb-1">Name of owner</label>
+                            <input type="text" class="form-control" v-model="cart.owner" aria-required="true" aria-invalid="false">
+                            <span>{{ errors[0] }}</span>
+                        </ValidationProvider>
+                    </div>
+                </ValidationObserver>
             </tab-content>
-            <tab-content title="Renew">
+            <tab-content title="Renew" :before-change="validateSecondStep">
                 <b-form-checkbox
                     v-for="product in category.products"
                     v-model="cart.products"
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { ValidationObserver, ValidationProvider } from "vee-validate";
 import {mapMutations, mapActions, mapGetters} from 'vuex'
 import Img1 from '../assets/images/depot_img_1.jpg'
 import Img2 from '../assets/images/depot_img_2.jpg'
@@ -106,13 +107,9 @@ export default {
             base_url: process.env.MIX_APP_URL,
         }
     },
-    computed: {
-      makeState() {
-        return this.cart.make.length > 2 ? true : false
-      },
-      validate() {
-          this.makeState
-      }
+    components: {
+        ValidationObserver,
+        ValidationProvider
     },
     methods: {
         ...mapMutations(['CALCULATE_PRECART_TOTAL']),
@@ -137,13 +134,11 @@ export default {
             this.show = false;
         },
         validateFirstStep() {
-        //    return new Promise((resolve, reject) => {
-        //      this.$refs.ruleForm.validate((valid) => {
-        //        resolve(valid);
-        //      });
-        //    })
-            this.validate;
-         }
+            return this.$refs.observer.validate()
+        },
+        validateSecondStep() {
+            return this.checked[0];
+        }
     },
 
     computed: {
@@ -155,8 +150,12 @@ export default {
                 total += Number(cart.price)
             })
             return total
+        },
+        checked() {
+            return [
+                this.cart.products.length > 0 || false
+            ]
         }
-
     },
 
     created() {
