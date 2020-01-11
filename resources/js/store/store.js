@@ -38,6 +38,7 @@ export const store = new Vuex.Store({
 
         CLEAR_CART: (state) => {
             window.localStorage.removeItem('carts')
+            state.cartlists = []
         },
 
         LOAD_CATEGORY: (state, payload) => {

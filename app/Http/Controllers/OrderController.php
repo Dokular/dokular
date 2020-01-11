@@ -15,25 +15,25 @@ class OrderController extends Controller
     {
         $orders = $request->post('order');
 
-        $user = $this->createOrUpdate($request);
+        $user_id = $this->createOrUpdate($request);
+
+        $user = User::find($user_id);
 
         foreach( $orders as $order){
-            $owner = new Owner;
-            $owner->user_id = $user;
-            $owner->transaction = $request->post('reference');
-            $owner->name = $order['owner'];
-            $owner->identity = $order['mark'];
-            $owner->car = $order['make'];
-            $owner->save();
+            $owner = $user->owners()->create([
+                        'transaction' => $request->post('reference'),
+                        'name' => $order['owner'],
+                        'identity' => $order['mark'],
+                        'car' => $order['make'],
+                    ]);
+
             foreach($order['products'] as $product ){
                 $owner->orders()->create([
-                    'category_id' => $product['category_id'],
                     'product_id' => $product['id'],
                     'price' => $product['price']
                 ]);
             }
         }
-
         return response()->json(['success' => true]);
     }
 }

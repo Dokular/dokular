@@ -47,7 +47,7 @@
                     </div>
                 </ValidationObserver>
             </tab-content>
-            <tab-content title="Renew" :before-change="validateSecondStep">
+            <tab-content title="Papers to renew" :before-change="validateSecondStep">
                 <b-form-checkbox
                     v-for="product in category.products"
                     v-model="cart.products"
@@ -61,9 +61,6 @@
                 <div class="form-group">
                     Total: {{ preCartTotal }}
                 </div>
-            </tab-content>
-            <tab-content title="Charge">
-                Do you want proceed?
             </tab-content>
             </form-wizard>
     </b-modal>
