@@ -30,7 +30,7 @@ class LoginEmail extends Mailable
     public function build()
     {
         $url = Config('app.frontend_url');
-        $loginlink = $url.'/login/email/'.$this->authorize->token;
+        $loginlink = $url.'login/email/'.$this->authorize->token;
 
         return $this->from('noreply@regidital.com')
                     ->view('mail.login')

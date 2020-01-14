@@ -7,21 +7,41 @@ import router from './router/routes'
 import Default from './layout/default'
 import Home from './layout/home'
 import { store }from './store/store'
-import BootstrapVue from 'bootstrap-vue'
+import {BootstrapVue, BootstrapVueIcons} from 'bootstrap-vue'
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
-import Axios from 'axios'
-import "./vee-validate";
+import axios from 'axios'
+import "./vee-validate"
+
 
 Vue.use(VueFormWizard)
 Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
+Vue.use(axios)
 
-Vue.prototype.$http = Axios;
+axios.interceptors.request.use(
+    (config) => {
+      let token = store.getters.getToken;
 
-const token = store.getters.getToken
-if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
-}
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${ token }`;
+      }
+      return config;
+    },
+
+    (error) => {
+      //return Promise.reject(error);
+    }
+);
+
+axios.interceptors.response.use(response => {
+      return response
+   }, error => {
+     if (error.response && error.response.status === 401) {
+       store.dispatch('logout');
+     }
+    return Promise.reject(error)
+});
 
 Vue.component('default-layout', Default);
 Vue.component('home-layout', Home);

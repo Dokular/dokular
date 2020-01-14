@@ -1,8 +1,11 @@
 <template>
  <div class="site-wrap" id="home-section">
-  <TopBar />
-  <MobileHeader></MobileHeader>
-  <DesktopHeader></DesktopHeader>
+   <TopBar />
+   <MainHeader />
+   <!-- <MobileHeader></MobileHeader> -->
+  <!-- <DesktopHeader></DesktopHeader> -->
+  <!-- <br/> -->
+
   <!-- <Header /> -->
   <slot/>
   <Footer />
@@ -11,14 +14,16 @@
 <script>
 import MobileHeader from '../components/DashboardMobileHeader'
 import DesktopHeader from '../components/DashboardDesktopHeader'
+import MainHeader from '../components/MainHeader'
 import TopBar from '../components/TopHeader'
 import Header from '../components/WelcomeHeader'
-import Footer from '../components/WelcomeFooter'
+import Footer from '../components/Footer'
 
 export default {
   components: {
       MobileHeader,
       DesktopHeader,
+      MainHeader,
       TopBar,
       Header,
       Footer
@@ -29,6 +34,9 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-@import '../assets/css/style.css';
+<style scoped>
+
+/* @import '../assets/css/style.css'; */
+
+
 </style>

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OwnerResource;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Owner;
 use App\Traits\UserTrait;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -35,5 +37,12 @@ class OrderController extends Controller
             }
         }
         return response()->json(['success' => true]);
+    }
+
+    public function getOwnersAndOrders()
+    {
+        $orders = Owner::with('orders.product')->where('user_id', Auth::id())->get();
+        //return $orders;
+        return OwnerResource::collection($orders);
     }
 }

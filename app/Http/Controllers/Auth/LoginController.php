@@ -9,7 +9,7 @@ use App\Http\Requests\LoginEmailRequest;
 use App\Http\Requests\LoginTokenRequest;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
-use App\User;
+use App\Models\User;
 
 class LoginController extends Controller
 {

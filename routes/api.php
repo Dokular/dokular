@@ -23,9 +23,9 @@ Route::post('login/verify', 'Auth\LoginController@verify');
 
 Route::post('login/user', 'Auth\LoginController@login');
 
-Route::group(['middleware' => 'auth.jwt'], function () {
+Route::middleware('auth:user')->group(function () {
 
-    Route::get('/user', 'UserController@user');
+    Route::get('/order', 'OrderController@getOwnersAndOrders');
 
     Route::post('logout', 'Auth\LoginController@logout');
 
