@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\ProductResource;
+use JD\Cloudder\Facades\Cloudder;
 
 class CategoryResource extends JsonResource
 {
@@ -19,7 +20,7 @@ class CategoryResource extends JsonResource
         return [
             'name' => $this->name,
             'description' => $this->description,
-            'img' => substr($this->getFirstMediaUrl('images','square'), 1),
+            'img' => Cloudder::show($this->img),
             'products' => ProductResource::collection($this->whenLoaded('products')),
         ];
     }

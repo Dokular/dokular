@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use JD\Cloudder\Facades\Cloudder;
 
 class CategoryController extends Controller
 {
@@ -20,19 +21,21 @@ class CategoryController extends Controller
 
     public function create(Request $request)
     {
-        //return response()->json($request);
         $category = new Category();
 
-        $category->name = $request->post('name');
-        $category->description = $request->post('description');
-        $category->img = 'img';
-        $category->save();
-
         if($request->hasFile('image') && $request->file('image')->isValid()){
-            $category->addMediaFromRequest('image')->toMediaCollection('images');
+            //$category->addMediaFromRequest('image')->toMediaCollection('images');
+
+            Cloudder::upload($request->file('image'), null, [],[]);
+
+            $category->name = $request->post('name');
+            $category->description = $request->post('description');
+            $category->img = Cloudder::getPublicId();
+            $category->save();
+
+            return response()->json(['success' => true], 200);
         }
 
-        return response()->json(['success' => true], 200);
     }
 
 }
