@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::get('products', 'ProductController@get');
 
 Route::get('categories', 'CategoryController@get');
@@ -34,6 +35,7 @@ Route::middleware('auth:user')->group(function () {
 Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::get('categories', 'CategoryController@get');
     Route::post('category', 'CategoryController@create');
+    Route::post('activate/category', 'CategoryController@active');
     Route::post('product/{id}', 'ProductController@create');
     Route::get('category/{id}', 'CategoryController@getCategory');
 });

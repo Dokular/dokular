@@ -24,7 +24,6 @@ class CategoryController extends Controller
         $category = new Category();
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
-            //$category->addMediaFromRequest('image')->toMediaCollection('images');
 
             Cloudder::upload($request->file('image'), null, [],[]);
 
@@ -36,6 +35,11 @@ class CategoryController extends Controller
             return response()->json(['success' => true], 200);
         }
 
+    }
+
+    public function active(Request $request)
+    {
+        # code...
     }
 
 }

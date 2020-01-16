@@ -2472,6 +2472,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37344,7 +37346,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .bg-dark, .navbar-collapse{\n background: #393939 !important;\n}\n.navbar-expand-md{\n    height: 76px;\n    z-index: 999;\n    box-shadow:0px 2px 5px 0px rgba(0, 0, 0, 0.1);\n    -webkit-box-align: center;\n    align-items: center;\n    position: sticky;\n    top: 0;\n}\n\nli .dropdown-menu{\n    background: #393939;\n} */\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .bg-dark, .navbar-collapse{\n background: #393939 !important;\n}\n.navbar-expand-md{\n    height: 76px;\n    z-index: 999;\n    box-shadow:0px 2px 5px 0px rgba(0, 0, 0, 0.1);\n    -webkit-box-align: center;\n    align-items: center;\n    position: sticky;\n    top: 0;\n}\n\nli .dropdown-menu{\n    background: #393939;\n} */\n\n", ""]);
 
 // exports
 
@@ -48241,9 +48243,14 @@ var render = function() {
     "nav",
     { staticClass: "navbar navbar-expand-md navbar-dark bg-dark" },
     [
-      _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-        _vm._v("Dokular")
-      ]),
+      _c(
+        "router-link",
+        {
+          staticClass: "navbar-brand",
+          attrs: { tag: "a", to: { name: "landing" } }
+        },
+        [_vm._v("\n        Dokular\n    ")]
+      ),
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
@@ -48331,7 +48338,8 @@ var render = function() {
           ])
         ]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = [

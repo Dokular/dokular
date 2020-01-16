@@ -8,6 +8,6 @@ class CategoryController extends Controller
 {
     public function get()
     {
-        return CategoryResource::collection(Category::all()->load('products'));
+        return CategoryResource::collection(Category::with('products')->active()->get());
     }
 }
