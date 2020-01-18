@@ -37,9 +37,31 @@ class CategoryController extends Controller
 
     }
 
-    public function active(Request $request)
+    public function active(Request $request, Category $id)
     {
-        # code...
+        $validated =   $request->validate([
+                        'active' => 'required|boolean'
+                       ]);
+
+        if($validated['active'] == true){
+
+            $id->update(['active' => 0]);
+
+            return response()->json(['success' => true], 200);
+        }
+
+        $id->update(['active' => 1]);
+
+        return response()->json(['success' => true], 200);
+    }
+
+    public function update(Request $request, Category $id)
+    {
+        $id->update([
+            'name' => $request->input('category.name'),
+            'description' => $request->input('category.description')
+        ]);
+        return response()->json(['success' => true], 200);
     }
 
 }
