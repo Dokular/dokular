@@ -14,9 +14,9 @@ class CategoryController extends Controller
        return response()->json(['data' => Category::with("products")->get()]);
     }
 
-    public function getCategory(Category $id)
+    public function getCategory(Category $category)
     {
-        return response()->json(['data' => $id->load('products')], 200);
+        return response()->json(['data' => $category->load('products')], 200);
     }
 
     public function create(Request $request)
@@ -37,7 +37,7 @@ class CategoryController extends Controller
 
     }
 
-    public function active(Request $request, Category $id)
+    public function active(Request $request, Category $category)
     {
         $validated =   $request->validate([
                         'active' => 'required|boolean'
@@ -45,19 +45,19 @@ class CategoryController extends Controller
 
         if($validated['active'] == true){
 
-            $id->update(['active' => 0]);
+            $category->update(['active' => 0]);
 
             return response()->json(['success' => true], 200);
         }
 
-        $id->update(['active' => 1]);
+        $category->update(['active' => 1]);
 
         return response()->json(['success' => true], 200);
     }
 
-    public function update(Request $request, Category $id)
+    public function update(Request $request, Category $category)
     {
-        $id->update([
+        $category->update([
             'name' => $request->input('category.name'),
             'description' => $request->input('category.description')
         ]);

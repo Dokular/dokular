@@ -35,8 +35,9 @@ Route::middleware('auth:user')->group(function () {
 Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::get('categories', 'CategoryController@get');
     Route::post('category', 'CategoryController@create');
-    Route::post('activate/cat/{id}', 'CategoryController@active');
-    Route::post('product/{id}', 'ProductController@create');
-    Route::get('category/{id}', 'CategoryController@getCategory');
-    Route::patch('category/{id}', 'CategoryController@update');
+    Route::get('category/{category}', 'CategoryController@getCategory');
+    Route::patch('category/{category}', 'CategoryController@update');
+    Route::post('activate/{category}', 'CategoryController@active');
+    Route::post('product/{category}', 'ProductController@create');
+    Route::patch('product/{product}', 'ProductController@update');
 });

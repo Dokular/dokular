@@ -14,16 +14,22 @@ class ProductController extends Controller
         return response()->json(['data' => Product::all()]);
     }
 
-    public function create($id, Request $request)
+    public function create(Category $category, Request $request)
     {
-        $products = new Product([
+        $category->products()->create([
             'name' => $request->post('name'),
             'price' => $request->post('price'),
             'img' => 'url'
         ]);
+        return response()->json(['success' => true], 200);
+    }
 
-        $category = Category::find($id);
-
-        $category->products()->save($products);
+    public function update(Request $request, Product $product)
+    {
+        $product->update([
+            'name' => $request->input('product.name'),
+            'price' => $request->input('product.price')
+        ]);
+        return response()->json(['success' => true], 200);
     }
 }
