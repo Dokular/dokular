@@ -4,7 +4,7 @@
     <div class="site-section ftco-service-image-1 pb-5">
     <div class="container">
         <div class="row">
-        <div class="col-md service text-center"  v-for="(category, index) in categories" :key="index">
+        <div class="col-md service text-center "  v-for="(category, index) in categories" :key="index">
             <a href="#">
               <img :src="category.img" alt="Image" class="img-fluid">
             </a>
