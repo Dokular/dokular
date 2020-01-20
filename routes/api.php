@@ -40,4 +40,6 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::post('activate/{category}', 'CategoryController@active');
     Route::post('product/{category}', 'ProductController@create');
     Route::patch('product/{product}', 'ProductController@update');
+
+    Route::get('orders', 'OrderController@all');
 });

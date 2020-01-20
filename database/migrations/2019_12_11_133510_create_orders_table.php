@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('owner_id');
             $table->bigInteger('product_id');
             $table->string('price');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

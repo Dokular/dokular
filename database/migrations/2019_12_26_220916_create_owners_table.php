@@ -20,7 +20,7 @@ class CreateOwnersTable extends Migration
             $table->string('name');
             $table->string('car');
             $table->string('identity');
-            //$table->json('products');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }
