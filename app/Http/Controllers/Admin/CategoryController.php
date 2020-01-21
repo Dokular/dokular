@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
 
-            Cloudder::upload($request->file('image'), null, [],[]);
+            Cloudder::upload($request->file('image'));
 
             $category->name = $request->post('name');
             $category->description = $request->post('description');

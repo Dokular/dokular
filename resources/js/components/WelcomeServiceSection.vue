@@ -1,16 +1,16 @@
 <template>
     <div>
-      <div class="site-section bg-light" id="services-section">
+      <div class="bg-light" id="services-section">
         <div class="container">
-          <div class="row mb-5 justify-content-center">
+          <div class="row justify-content-center">
             <div class="col-md-7 text-center">
               <div class="block-heading-1">
-                <h2>Services</h2>
+                <h2 style="color: #fff;padding-top:100px;">Services</h2>
                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row" style="margin: 100px 0px;">
             <div class="col-md text-center">
               <div class="icon mb-0">
                 <span class="flaticon-ferry"></span>
@@ -35,7 +35,7 @@
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
             </div>
           </div>
-          <div class="row">
+          <div class="row" style="padding-bottom: 100px;">
             <div class="col-md text-center">
               <div class="icon mb-0">
                 <span class="flaticon-lorry"></span>
@@ -64,3 +64,15 @@
       </div>
     </div>
 </template>
+<script>
+export default {
+
+}
+</script>
+<style scoped>
+.bg-light{
+    color: #ffffff !important;
+    background-color: #011627 !important;
+    margin-top: 100px;
+}
+</style>

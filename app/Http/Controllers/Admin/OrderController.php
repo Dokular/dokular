@@ -8,9 +8,9 @@ use App\Models\Owner;
 
 class OrderController extends Controller
 {
-    public function all()
+    public function all(Request $request)
     {
-        $order = Owner::all()->load('orders');
+        $order = Owner::where('status', $request->query('BY'))->with('orders')->get();
         return response()->json(['success' => true, $order]);
     }
 }

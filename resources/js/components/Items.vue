@@ -10,7 +10,10 @@
             </a>
             <div class="px-md-3">
             <h3><a href="#">{{ category.name }}</a></h3>
-            <p>{{ category.description }}</p>
+            <p>
+                
+                {{ category.description }}
+            </p>
             </div>
             <button type="button" class="btn btn-outline-secondary" @click="openPreCart(category)">Renew</button>
         </div>

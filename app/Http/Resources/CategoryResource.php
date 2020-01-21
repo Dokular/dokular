@@ -20,7 +20,7 @@ class CategoryResource extends JsonResource
         return [
             'name' => $this->name,
             'description' => $this->description,
-            'img' => Cloudder::show($this->img),
+            'img' => Cloudder::show($this->img,['width' => 300]),
             'products' => ProductResource::collection($this->whenLoaded('products')),
         ];
     }

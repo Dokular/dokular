@@ -5,19 +5,32 @@
         <span class="badge badge-secondary badge-pill">{{ carts.length }}</span>
         </h4>
         <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed"
-            v-for="(cart, index) in carts" :key="index">
-            <div v-for="(product, index) in cart.products" :key="index">
-                <h6 class="my-0">{{ product.name }}</h6>
-            </div>
-            <br/>
-            <small class="text-muted">Brief description</small>
-            <span class="text-muted">N{{ cart.total }}</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between">
-            <span>Total (NGN)</span>
-            <strong>N{{ total }}</strong>
-        </li>
+          <ul
+            class="list-group mb-3"
+            v-for="(cart, index) in carts" :key="index"
+          >
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <h4>{{ cart.make }}</h4>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+              v-for="(product, index) in cart.products" :key="index"
+            >
+
+                {{ product.name }}
+                <span class="badge badge-pill">N{{ product.price }}</span>
+            </li>
+          </ul>
+          <li class="list-group-item d-flex justify-content-between">
+              <span>Delivery fee</span>
+              <strong>{{ delivery }}</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+              <span>Total (NGN)</span>
+              <strong>N{{ total + delivery }}</strong>
+          </li>
         </ul>
     </div>
 </template>
@@ -25,7 +38,7 @@
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
-
+    props: ["delivery"],
     computed: {
         ...mapGetters(["carts", "total"]),
     },

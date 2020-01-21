@@ -1,15 +1,17 @@
 <template>
-  <button
+  <!-- <button
     v-if="!embed"
     class="payButton"
     @click="payWithPaystack"
-  >
+  > -->
+  <div>
     <slot></slot>
-  </button>
+  </div>
+  <!-- </button>
   <div
     v-else
     id="paystackEmbedContainer"
-  />
+  /> -->
 </template>
 
 <script type="text/javascript">

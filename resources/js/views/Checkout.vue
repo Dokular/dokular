@@ -8,20 +8,18 @@
 
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
-                <CheckOutCart></CheckOutCart>
+                <CheckOutCart :delivery="delivery_fee"></CheckOutCart>
                 <Paystack
-                        :amount="amount"
-                        :email="email"
-                        :paystackkey="paystackkey"
-                        :reference="reference"
-                        :callback="callback"
-                        :triggerPayment="trigger"
-                        :close="close"
-                        :embed="false"
-                        :key="componentKey"
-                        >
-
-                </Paystack>
+                    :amount="amount"
+                    :email="email"
+                    :paystackkey="paystackkey"
+                    :reference="reference"
+                    :callback="callback"
+                    :triggerPayment="trigger"
+                    :close="close"
+                    :embed="false"
+                    :key="componentKey"
+                />
                 <button class="btn btn-primary btn-lg btn-block" @click="Prepayment">
                     Continue to checkout
                 </button>
@@ -148,6 +146,7 @@ export default {
             address:'',
             state:'',
             lga: '',
+            delivery_fee: 100,
             trigger: false,
             user: 0,
             componentKey: 0,
@@ -224,6 +223,9 @@ export default {
         forceRerender() {
             this.componentKey += 1;
             this.reference
+        },
+        getState(){
+            
         }
     }
 }
