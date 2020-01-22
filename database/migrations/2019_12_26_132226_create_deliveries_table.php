@@ -20,7 +20,7 @@ class CreateDeliveriesTable extends Migration
             $table->string('address');
             $table->string('state');
             $table->string('lga')->nullable();
-            $table->integer('charge');
+            $table->integer('fee');
             $table->timestamps();
         });
     }

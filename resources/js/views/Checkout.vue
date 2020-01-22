@@ -171,7 +171,7 @@ export default {
     computed: {
         ...mapGetters(["carts", "total"]),
         amount() {
-            return this.total * 100
+            return (this.total  + this.deliverFee + this.service_charge) * 100;
         },
         deliverFee(){
             return this.stateObject ? this.stateObject.price : 0;
@@ -190,10 +190,11 @@ export default {
                 reference: this.reference,
                 first_name : this.first_name,
                 last_name : this.last_name,
+                delivery_fee: this.deliverFee,
                 phone : this.phone,
                 email : this.email,
                 address : this.address,
-                state : this.state,
+                state : this.stateObject.name,
                 lga : this.lga
             }).then(response => {
                 console.log(response)

@@ -3295,7 +3295,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(["carts", "total"]), {
     amount: function amount() {
-      return this.total * 100;
+      return (this.total + this.deliverFee + this.service_charge) * 100;
     },
     deliverFee: function deliverFee() {
       return this.stateObject ? this.stateObject.price : 0;
@@ -3314,10 +3314,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         reference: this.reference,
         first_name: this.first_name,
         last_name: this.last_name,
+        delivery_fee: this.deliverFee,
         phone: this.phone,
         email: this.email,
         address: this.address,
-        state: this.state,
+        state: this.stateObject.name,
         lga: this.lga
       }).then(function (response) {
         console.log(response);

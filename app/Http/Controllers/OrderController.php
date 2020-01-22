@@ -22,12 +22,20 @@ class OrderController extends Controller
         $user = User::find($user_id);
 
         foreach( $orders as $order){
+
             $owner = $user->owners()->create([
                         'transaction' => $request->post('reference'),
                         'name' => $order['owner'],
                         'identity' => $order['mark'],
                         'car' => $order['make'],
                     ]);
+
+            $owner->delivery()->create([
+                'phone' => $request->post('phone'),
+                'address'=> $request->post('address'),
+                'state' => $request->post('state'),
+                'fee' => $request->post('delivery_fee')
+            ]);
 
             foreach($order['products'] as $product ){
                 $owner->orders()->create([

@@ -14,13 +14,7 @@ class OwnerObserver
      */
     public function created(Owner $owner)
     {
-        // $owner->delivery()->create([
-        //     'phone',
-        //     'address',
-        //     'state',
-        //     'lga',
-        //     'charge'
-        // ]);
+       
     }
 
     /**
