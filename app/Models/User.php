@@ -6,10 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Traits\UserTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable;
+    use Notifiable, UserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -67,5 +69,16 @@ class User extends Authenticatable implements JWTSubject
     public function owners()
     {
        return $this->hasMany(Owner::class);
+    }
+
+    public function vehicleOwner($order, $refrence): ?Model
+    {
+        $owner = $this->owners()->create([
+                        'transaction' => $refrence,
+                        'name' => $order['owner'],
+                        'identity' => $order['mark'],
+                        'car' => $order['make'],
+                    ]);
+        return $owner;
     }
 }

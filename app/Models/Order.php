@@ -24,7 +24,7 @@ class Order extends Model implements HasMedia
               ->sharpen(10);
     }
 
-    
+
     protected $fillable = [
         'product_id',
         'price'
@@ -39,4 +39,5 @@ class Order extends Model implements HasMedia
     {
         return $this->belongsTo(Product::class);
     }
+
 }

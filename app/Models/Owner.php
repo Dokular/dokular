@@ -22,4 +22,22 @@ class Owner extends Model
     {
         return $this->hasOne(Delivery::class);
     }
+
+    public function createOrders($product)
+    {
+        $this->orders()->create([
+            'product_id' => $product['id'],
+            'price' => $product['price']
+        ]);
+    }
+
+    public function deliveryAddress($request)
+    {
+        $this->delivery()->create([
+            'phone' => $request->post('phone'),
+            'address'=> $request->post('address'),
+            'state' => $request->post('state'),
+            'fee' => $request->post('delivery_fee')
+        ]);
+    }
 }

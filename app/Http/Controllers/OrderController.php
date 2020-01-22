@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Resources\OwnerResource;
@@ -23,25 +22,12 @@ class OrderController extends Controller
 
         foreach( $orders as $order){
 
-            $owner = $user->owners()->create([
-                        'transaction' => $request->post('reference'),
-                        'name' => $order['owner'],
-                        'identity' => $order['mark'],
-                        'car' => $order['make'],
-                    ]);
+            $owner = $user->vehicleOwner($order, $request->post('reference'));
 
-            $owner->delivery()->create([
-                'phone' => $request->post('phone'),
-                'address'=> $request->post('address'),
-                'state' => $request->post('state'),
-                'fee' => $request->post('delivery_fee')
-            ]);
+            $owner->deliveryAddress($request);
 
             foreach($order['products'] as $product ){
-                $owner->orders()->create([
-                    'product_id' => $product['id'],
-                    'price' => $product['price']
-                ]);
+                $owner->createOrders($product);
             }
         }
         return response()->json(['success' => true]);
