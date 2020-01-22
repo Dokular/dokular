@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
-                <CheckOutCart :delivery="delivery_fee"></CheckOutCart>
+                <CheckOutCart :delivery="deliverFee"></CheckOutCart>
                 <Paystack
                     :amount="amount"
                     :email="email"
@@ -85,22 +85,31 @@
                                     v-model="address"
                                     placeholder="1234 Main St"
                                     required>
-                            <span>{{ errors[0] }}</span>
+                            <span class="invalid">{{ errors[0] }}</span>
                         </ValidationProvider>
                     </div>
                     <div class="row">
                     <div class="col-md-5 mb-3">
-                        <ValidationProvider name="state" rules="oneOf:lagos," v-slot="{ errors }">
+                        <ValidationProvider name="state" rules="required" v-slot="{ errors }">
                             <label for="state">State</label>
-                            <select class="custom-select d-block w-100" v-model="state" required>
-                                <option>
+                            <select
+                              class="custom-select d-block w-100"
+                              v-model="stateObject"
+                            >
+                                <option
+                                  :value="null"
+                                >
                                     Choose...
                                 </option>
-                                <option value="lagos">
-                                    Lagos
+                                <option
+                                  v-for="(state, index) in states"
+                                  :value="state"
+                                  :key="index"
+                                >
+                                  {{ state.name }}
                                 </option>
                             </select>
-                            <span>{{ errors[0] }}</span>
+                            <span class="invalid">{{ errors[0] }}</span>
                         </ValidationProvider>
                     </div>
                     <div class="col-md-4 mb-3">
@@ -108,14 +117,10 @@
                         <select class="custom-select d-block w-100"
                                 v-model="lga"
                                 required>
-                        <option value="">
-                            Choose...
-                        </option>
-                        <option>California</option>
+                            <option value="">
+                                Choose...
+                            </option>
                         </select>
-                        <div class="invalid-feedback">
-                        Please provide a valid local government area.
-                        </div>
                     </div>
                     </div>
                 </ValidationObserver>
@@ -144,11 +149,11 @@ export default {
             phone: '',
             email: '',
             address:'',
-            state:'',
+            stateObject: null,
             lga: '',
-            delivery_fee: 100,
             trigger: false,
             user: 0,
+            states:[],
             componentKey: 0,
             reference:'',
         }
@@ -163,7 +168,13 @@ export default {
         ...mapGetters(["carts", "total"]),
         amount() {
             return this.total * 100
+        },
+        deliverFee(){
+            return this.stateObject ? this.stateObject.price : 0;
         }
+    },
+    created() {
+        this.getState();
     },
     methods: {
         ...mapMutations(['CLEAR_CART']),
@@ -212,7 +223,7 @@ export default {
             this.phone = '',
             this.email = '',
             this.address = '',
-            this.state = '',
+            this.stateObject = null,
             this.lga = ''
         },
         makeReference(){
@@ -225,8 +236,19 @@ export default {
             this.reference
         },
         getState(){
-            
+            axios.get(process.env.MIX_API+'states')
+            .then(response => {
+                this.states = response.data[0]
+                // console.log(response.data[0])
+            }).catch(error => {
+                console.log(error)
+            })
         }
     }
 }
 </script>
+<style scoped>
+.invalid{
+  color: #d44950;
+}
+</style>

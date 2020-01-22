@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('states', 'StateController@get');
+
 Route::get('products', 'ProductController@get');
 
 Route::get('categories', 'CategoryController@get');
