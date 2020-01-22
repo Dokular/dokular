@@ -8,7 +8,10 @@
 
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
-                <CheckOutCart :delivery="deliverFee"></CheckOutCart>
+                <CheckOutCart
+                  :delivery="deliverFee"
+                  :charge="service_charge"
+                />
                 <Paystack
                     :amount="amount"
                     :email="email"
@@ -149,6 +152,7 @@ export default {
             phone: '',
             email: '',
             address:'',
+            service_charge: 0,
             stateObject: null,
             lga: '',
             trigger: false,

@@ -17,4 +17,9 @@ class Owner extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function delivery()
+    {
+        return $this->hasOne(Delivery::class);
+    }
 }

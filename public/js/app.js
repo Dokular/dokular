@@ -1974,9 +1974,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["delivery"],
+  props: ["delivery", "charge"],
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["carts", "total"]))
 });
 
@@ -3255,6 +3259,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3270,6 +3277,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       phone: '',
       email: '',
       address: '',
+      service_charge: 0,
       stateObject: null,
       lga: '',
       trigger: false,
@@ -47459,9 +47467,21 @@ var render = function() {
           "li",
           { staticClass: "list-group-item d-flex justify-content-between" },
           [
+            _c("span", [_vm._v("Service charge")]),
+            _vm._v(" "),
+            _c("strong", [_vm._v(_vm._s(_vm.charge))])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          { staticClass: "list-group-item d-flex justify-content-between" },
+          [
             _c("span", [_vm._v("Total (NGN)")]),
             _vm._v(" "),
-            _c("strong", [_vm._v("N" + _vm._s(_vm.total + _vm.delivery))])
+            _c("strong", [
+              _vm._v("N" + _vm._s(_vm.total + _vm.delivery + _vm.charge))
+            ])
           ]
         )
       ],
@@ -49546,7 +49566,12 @@ var render = function() {
               "div",
               { staticClass: "col-md-4 order-md-2 mb-4" },
               [
-                _c("CheckOutCart", { attrs: { delivery: _vm.deliverFee } }),
+                _c("CheckOutCart", {
+                  attrs: {
+                    delivery: _vm.deliverFee,
+                    charge: _vm.service_charge
+                  }
+                }),
                 _vm._v(" "),
                 _c("Paystack", {
                   key: _vm.componentKey,
@@ -68461,14 +68486,15 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_0__["localize"])({
 /*!*****************************************!*\
   !*** ./resources/js/views/Checkout.vue ***!
   \*****************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Checkout_vue_vue_type_template_id_bb718336_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Checkout.vue?vue&type=template&id=bb718336&scoped=true& */ "./resources/js/views/Checkout.vue?vue&type=template&id=bb718336&scoped=true&");
 /* harmony import */ var _Checkout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Checkout.vue?vue&type=script&lang=js& */ "./resources/js/views/Checkout.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Checkout_vue_vue_type_style_index_0_id_bb718336_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Checkout.vue?vue&type=style&index=0&id=bb718336&scoped=true&lang=css& */ "./resources/js/views/Checkout.vue?vue&type=style&index=0&id=bb718336&scoped=true&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Checkout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Checkout_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _Checkout_vue_vue_type_style_index_0_id_bb718336_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Checkout.vue?vue&type=style&index=0&id=bb718336&scoped=true&lang=css& */ "./resources/js/views/Checkout.vue?vue&type=style&index=0&id=bb718336&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -68500,7 +68526,7 @@ component.options.__file = "resources/js/views/Checkout.vue"
 /*!******************************************************************!*\
   !*** ./resources/js/views/Checkout.vue?vue&type=script&lang=js& ***!
   \******************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

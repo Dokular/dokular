@@ -28,8 +28,12 @@
               <strong>{{ delivery }}</strong>
           </li>
           <li class="list-group-item d-flex justify-content-between">
+              <span>Service charge</span>
+              <strong>{{ charge }}</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
               <span>Total (NGN)</span>
-              <strong>N{{ total + delivery }}</strong>
+              <strong>N{{ total + delivery  + charge}}</strong>
           </li>
         </ul>
     </div>
@@ -38,7 +42,7 @@
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
-    props: ["delivery"],
+    props: ["delivery", "charge"],
     computed: {
         ...mapGetters(["carts", "total"]),
     },
