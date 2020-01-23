@@ -4,11 +4,6 @@
         <div class="container">
             <div class="login-wrap">
                 <div class="login-content">
-                    <div class="login-logo">
-                        <a href="#">
-                            <img :src="icon" alt="CoolAdmin">
-                        </a>
-                    </div>
                     <div class="login-form">
                         <form @submit.prevent="sendLoginMail">
                             <div class="form-group">
@@ -16,7 +11,10 @@
                                 <input class="au-input au-input--full" type="email" v-model="email" placeholder="Email">
                             </div>
                             <br/>
-                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">
+                                <b-spinner small type="grow" :hidden="false"></b-spinner>
+                                sign in
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -26,24 +24,27 @@
 </div>
 </template>
 <script>
-import Icon from '../assets/images/icon/logo.png'
 import axios from 'axios'
 
 export default {
     data() {
         return {
-            icon: Icon,
             email: '',
+            spinner: false,
         }
     },
     methods: {
 
         sendLoginMail(){
+            this.spinner = true
             axios.post(process.env.MIX_API+'login/attempt',{
                email: this.email
             }).then(response => {
+                this.spinner = false
                 console.log(response.data.token)
             }).catch(error => {
+                this.spinner = false
+                alert('Something went wrong, try again later.')
                 console.log(error)
             })
         }
