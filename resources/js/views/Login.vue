@@ -4,15 +4,18 @@
         <div class="container">
             <div class="login-wrap">
                 <div class="login-content">
+                    <b-alert variant="success" :show="show">
+                        Please check your mail for login detail.
+                    </b-alert>
                     <div class="login-form">
                         <form @submit.prevent="sendLoginMail">
                             <div class="form-group">
-                                <label>Email Address</label>
-                                <input class="au-input au-input--full" type="email" v-model="email" placeholder="Email">
+                                <label>Enter email</label>
+                                <input class="au-input au-input--full" type="email" v-model="email">
                             </div>
                             <br/>
                             <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">
-                                <b-spinner small type="grow" :hidden="false"></b-spinner>
+                                <b-spinner :hidden="spinner" label="Floated Left" small></b-spinner>
                                 sign in
                             </button>
                         </form>
@@ -30,20 +33,22 @@ export default {
     data() {
         return {
             email: '',
-            spinner: false,
+            spinner: true,
+            show: false
         }
     },
     methods: {
 
         sendLoginMail(){
-            this.spinner = true
+            this.spinner = false
             axios.post(process.env.MIX_API+'login/attempt',{
                email: this.email
             }).then(response => {
-                this.spinner = false
-                console.log(response.data.token)
+                this.spinner = true
+                this.email = ''
+                this.show = true
             }).catch(error => {
-                this.spinner = false
+                this.spinner = true
                 alert('Something went wrong, try again later.')
                 console.log(error)
             })
