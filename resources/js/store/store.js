@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import { stat } from 'fs'
 import { getToken, setToken, removeToken } from './auth'
-import  router  from '../router/routes'
 
 Vue.use(Vuex, axios)
 
@@ -93,7 +92,6 @@ export const store = new Vuex.Store({
                 }).catch(error => {
                     commit('SET_TOKEN', '')
                     removeToken()
-                    router.push({ name: 'login' })
                     reject(error)
                 })
             })

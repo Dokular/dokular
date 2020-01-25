@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('product_id');
             $table->string('price');
             $table->string('status')->default('pending');
-            $table->date('expiring_date');
+            $table->date('expiring_date')->nullable();
             $table->timestamps();
         });
     }

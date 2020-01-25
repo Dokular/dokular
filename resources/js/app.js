@@ -39,6 +39,7 @@ axios.interceptors.response.use(response => {
    }, error => {
      if (error.response && error.response.status === 401) {
        store.dispatch('logout');
+       router.push({ name: 'login' })
      }
     return Promise.reject(error)
 });
