@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Traits\PasswordLessAuth;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginEmailRequest;
 use App\Http\Requests\LoginTokenRequest;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use JWTAuth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\User;
 
 class LoginController extends Controller

@@ -3,11 +3,14 @@
 namespace App\Models\Admin;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Support\Facades\Hash;
 
 class Admin extends Authenticatable implements JWTSubject
 {
+    use Notifiable;
+
     protected $fillable = [
         'name',
         'password',
@@ -30,7 +33,13 @@ class Admin extends Authenticatable implements JWTSubject
     {
         return $this->getKey();
     }
-
+    /**
+     * Add a mutator to ensure hashed passwords
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *
@@ -39,5 +48,10 @@ class Admin extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
     }
 }
