@@ -27,8 +27,6 @@
 </div>
 </template>
 <script>
-import axios from 'axios'
-
 export default {
     data() {
         return {
@@ -41,7 +39,7 @@ export default {
 
         sendLoginMail(){
             this.spinner = false
-            axios.post(process.env.MIX_API+'login/attempt',{
+            this.$http.post(process.env.MIX_API+'login/attempt',{
                email: this.email
             }).then(response => {
                 this.spinner = true
