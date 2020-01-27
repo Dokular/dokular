@@ -18,6 +18,7 @@
                   :key="index"
                 >
                     {{ product.name }} => N{{ product.price }}
+                    <br>
                 </span>
             </p>
             </div>

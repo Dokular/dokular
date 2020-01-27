@@ -2404,6 +2404,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -48103,8 +48104,9 @@ var render = function() {
                                   _vm._s(product.name) +
                                   " => N" +
                                   _vm._s(product.price) +
-                                  "\n                "
-                              )
+                                  "\n                    "
+                              ),
+                              _c("br")
                             ])
                           })
                         ],
