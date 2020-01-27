@@ -35,7 +35,14 @@
                     <div class="form-group">
                         <ValidationProvider name="car make" rules="required" v-slot="{ errors }">
                             <label for="cc-payment" class="control-label mb-1">Vehicle make</label>
-                            <input type="text" class="form-control" v-model="cart.make" aria-required="true" aria-invalid="false">
+                            <input
+                              type="text"
+                              class="form-control"
+                              v-model="cart.make"
+                              aria-required="true"
+                              aria-invalid="false"
+                              placeholder="E.g Toyota, Kia etc"
+                            >
                             <span>{{ errors[0] }}</span>
                         </ValidationProvider>
                     </div>

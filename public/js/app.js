@@ -2405,6 +2405,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48216,7 +48223,9 @@ var render = function() {
                                                     attrs: {
                                                       type: "text",
                                                       "aria-required": "true",
-                                                      "aria-invalid": "false"
+                                                      "aria-invalid": "false",
+                                                      placeholder:
+                                                        "E.g Toyota, Kia etc"
                                                     },
                                                     domProps: {
                                                       value: _vm.cart.make
@@ -48434,7 +48443,7 @@ var render = function() {
                           ],
                           null,
                           false,
-                          3579331351
+                          2999254123
                         )
                       })
                     ],
