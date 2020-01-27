@@ -10,7 +10,7 @@ import {mapActions} from 'vuex'
 const default_layout = "home"
 export default {
   created() {
-      this.enableIntercepto();
+      //this.enableIntercepto();
   },
   computed: {
       layout() {

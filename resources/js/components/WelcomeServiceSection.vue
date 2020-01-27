@@ -15,7 +15,7 @@
               <div class="icon mb-0">
                 <span class="flaticon-ferry"></span>
               </div>
-              <h3 class="mb-3">Sea Freight</h3>
+              <h3 class="mb-3">Step one</h3>
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
             </div>
 
@@ -23,7 +23,7 @@
               <div class="icon mb-0">
                 <span class="flaticon-airplane"></span>
               </div>
-              <h3 class="mb-3">Air Freight</h3>
+              <h3 class="mb-3">Step two</h3>
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
             </div>
 
@@ -31,7 +31,7 @@
               <div class="icon mb-0">
                 <span class="flaticon-box"></span>
               </div>
-              <h3 class="mb-3">Package Forwarding</h3>
+              <h3 class="mb-3">Step three</h3>
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
             </div>
           </div>

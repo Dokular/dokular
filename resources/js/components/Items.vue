@@ -11,8 +11,14 @@
             <div class="px-md-3">
             <h3><a href="#">{{ category.name }}</a></h3>
             <p>
-                
                 {{ category.description }}
+                <br>
+                <span
+                  v-for="(product, index) in category.products"
+                  :key="index"
+                >
+                    {{ product.name }} => N{{ product.price }}
+                </span>
             </p>
             </div>
             <button type="button" class="btn btn-outline-secondary" @click="openPreCart(category)">Renew</button>

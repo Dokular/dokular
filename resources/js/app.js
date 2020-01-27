@@ -13,29 +13,11 @@ import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import "./vee-validate"
 
-
 Vue.use(VueFormWizard)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 
 Vue.prototype.$http = axios
-
-axios.interceptors.request.use(
-    (config) => {
-      let token = store.getters.getToken;
-
-      if (token) {
-        config.headers['Authorization'] = `Bearer ${ token }`;
-      }
-      return config;
-    },
-
-    (error) => {
-      //return Promise.reject(error);
-    }
-);
-
-
 
 Vue.component('default-layout', Default);
 Vue.component('home-layout', Home);
@@ -55,6 +37,33 @@ router.beforeEach((to, from, next) => {
         next()
     }
 });
+
+axios.interceptors.request.use(
+    (config) => {
+      let token = store.getters.getToken;
+
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${ token }`;
+      }
+      return config;
+    },
+
+    (error) => {
+      //return Promise.reject(error);
+    }
+);
+
+axios.interceptors.response.use(response => {
+    return response
+}, error => {
+    if (error.response && error.response.status === 401) {
+        this.logout();
+        this.$router.push({'name': 'landing'})
+    }
+    return Promise.reject(error)
+});
+
+
 
 /* eslint-disable no-new */
 new Vue({

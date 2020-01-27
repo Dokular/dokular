@@ -1,12 +1,6 @@
 <template>
  <div class="site-wrap" id="home-section">
-   <TopBar />
    <MainHeader />
-   <!-- <MobileHeader></MobileHeader> -->
-  <!-- <DesktopHeader></DesktopHeader> -->
-  <!-- <br/> -->
-
-  <!-- <Header /> -->
   <slot/>
   <Footer />
   </div>
