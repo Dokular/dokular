@@ -82,15 +82,15 @@ export const store = new Vuex.Store({
         },
 
         logout({commit, state}){
-            axios.post(process.env.MIX_API+'logout',{
-                token: state.token
-            }).then(response => {
+            // axios.post(process.env.MIX_API+'logout',{
+            //     token: state.token
+            // }).then(response => {
                 commit('SET_TOKEN', '')
                 removeToken()
-            }).catch(error => {
-                commit('SET_TOKEN', '')
-                removeToken()
-            })
+            // }).catch(error => {
+            //     commit('SET_TOKEN', '')
+            //     removeToken()
+            // })
         }
     },
 

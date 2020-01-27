@@ -66691,8 +66691,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue-form-wizard/dist/vue-form-wizard.min.css */ "./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css");
 /* harmony import */ var vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _vee_validate__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./vee-validate */ "./resources/js/vee-validate.js");
-var _this = undefined;
-
 
 
 
@@ -66740,18 +66738,19 @@ axios__WEBPACK_IMPORTED_MODULE_3___default.a.interceptors.request.use(function (
   return config;
 }, function (error) {//return Promise.reject(error);
 });
-axios__WEBPACK_IMPORTED_MODULE_3___default.a.interceptors.response.use(function (response) {
-  return response;
-}, function (error) {
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.interceptors.response.use(null, function (error) {
   if (error.response && error.response.status === 401) {
-    _this.logout();
-
-    _this.$router.push({
-      'name': 'landing'
+    _store_store__WEBPACK_IMPORTED_MODULE_8__["store"].dispatch('logout').then(function (response) {
+      _router_routes__WEBPACK_IMPORTED_MODULE_5__["default"].push({
+        'name': 'login'
+      });
+    }, function (error) {
+      _router_routes__WEBPACK_IMPORTED_MODULE_5__["default"].push({
+        'name': 'login'
+      });
     });
-  }
+  } //reject(error)
 
-  return Promise.reject(error);
 });
 /* eslint-disable no-new */
 
@@ -68466,15 +68465,14 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     logout: function logout(_ref5) {
       var commit = _ref5.commit,
           state = _ref5.state;
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("http://127.0.0.1:8000/api/v1/" + 'logout', {
-        token: state.token
-      }).then(function (response) {
-        commit('SET_TOKEN', '');
-        Object(_auth__WEBPACK_IMPORTED_MODULE_4__["removeToken"])();
-      })["catch"](function (error) {
-        commit('SET_TOKEN', '');
-        Object(_auth__WEBPACK_IMPORTED_MODULE_4__["removeToken"])();
-      });
+      // axios.post(process.env.MIX_API+'logout',{
+      //     token: state.token
+      // }).then(response => {
+      commit('SET_TOKEN', '');
+      Object(_auth__WEBPACK_IMPORTED_MODULE_4__["removeToken"])(); // }).catch(error => {
+      //     commit('SET_TOKEN', '')
+      //     removeToken()
+      // })
     }
   },
   getters: {

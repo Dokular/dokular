@@ -7,7 +7,7 @@ import App from './App'
 import router from './router/routes'
 import Default from './layout/default'
 import Home from './layout/home'
-import { store }from './store/store'
+import { store } from './store/store'
 import {BootstrapVue, BootstrapVueIcons} from 'bootstrap-vue'
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
@@ -53,14 +53,16 @@ axios.interceptors.request.use(
     }
 );
 
-axios.interceptors.response.use(response => {
-    return response
-}, error => {
+axios.interceptors.response.use(null, error => {
+
     if (error.response && error.response.status === 401) {
-        this.logout();
-        this.$router.push({'name': 'landing'})
+        store.dispatch('logout').then(response => {
+            router.push({'name': 'login'})
+        }, error => {
+            router.push({'name': 'login'})
+        });
     }
-    return Promise.reject(error)
+    //reject(error)
 });
 
 
