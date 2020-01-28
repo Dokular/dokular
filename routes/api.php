@@ -61,6 +61,9 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::patch('product/{product}', 'ProductController@update');
 
     Route::get('orders', 'OrderController@all');
+    Route::get('states', 'StateController@getAll');
+    Route::post('state/{state}', 'StateController@update');
+    Route::patch('state/{state}/activate', 'StateController@setActive');
 
     Route::middleware('auth:admin')->group(function () {
 

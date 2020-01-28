@@ -27,4 +27,16 @@ class Category extends Model
     {
         return $query->where('active', 1);
     }
+
+    public function updateActiveStatus($data)
+    {
+        if($data['active'] == true){
+            $this->update(['active' => 0]);
+            return true;
+        }
+
+        $this->update(['active' => 1]);
+
+        return true;
+    }
 }
