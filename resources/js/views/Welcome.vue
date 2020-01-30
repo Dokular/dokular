@@ -1,6 +1,6 @@
 <template>
   <div>
-  <Products></Products>
+  <Products />
   <service />
   </div>
 </template>
@@ -11,7 +11,7 @@ import Service from '../components/WelcomeServiceSection'
 export default {
   components: {
       Service,
-      Products,
+      Products
   },
   data() {
     return{

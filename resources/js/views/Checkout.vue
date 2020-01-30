@@ -130,13 +130,20 @@
             </div>
         </div>
         </div>
-        <div v-else>
+        <div class="emptycart" v-else>
+          <center>
             <h2>Your cart is empty</h2>
+          </center>
         </div>
+        <SuccessAlert
+          :show="successful"
+          :hidden="successModalClosed"
+        />
     </div>
 </template>
 <script>
 import { ValidationObserver, ValidationProvider } from "vee-validate";
+import SuccessAlert from '../components/CheckoutSuccessAlert'
 import {mapGetters, mapMutations} from 'vuex'
 import CheckOutCart from '../components/CheckOutCart'
 import Paystack from '../components/Paystack'
@@ -160,13 +167,15 @@ export default {
             states:[],
             componentKey: 0,
             reference:'',
+            successful: false
         }
     },
     components: {
-        CheckOutCart,
-        Paystack,
-        ValidationObserver,
-        ValidationProvider
+      CheckOutCart,
+      Paystack,
+      ValidationObserver,
+      ValidationProvider,
+      SuccessAlert
     },
     computed: {
         ...mapGetters(["carts", "total"]),
@@ -198,9 +207,9 @@ export default {
                 lga : this.lga
             }).then(response => {
                 console.log(response)
+                this.successful = true
                 this.CLEAR_CART()
                 this.clearData()
-                this.$router.push({'name': 'landing'})
             }).catch(error => {
                 this.trigger = false
                 this.forceRerender()
@@ -248,6 +257,9 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
+        },
+        successModalClosed(){
+          this.$router.push({'name': 'landing'})
         }
     }
 }
@@ -255,5 +267,9 @@ export default {
 <style scoped>
 .invalid{
   color: #d44950;
+}
+
+.emptycart{
+    min-height: 100vh;
 }
 </style>

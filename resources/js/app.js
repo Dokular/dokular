@@ -15,7 +15,7 @@ import "./vee-validate"
 
 Vue.use(VueFormWizard)
 Vue.use(BootstrapVue)
-Vue.use(BootstrapVueIcons)
+Vue.use(BootstrapVueIcons);
 
 Vue.prototype.$http = axios
 
