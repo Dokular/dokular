@@ -136,8 +136,8 @@
           </center>
         </div>
         <SuccessAlert
-          :show="successful"
-          :hidden="successModalClosed"
+          :show="successModal"
+          @hidden="successModalClosed"
         />
     </div>
 </template>
@@ -167,7 +167,7 @@ export default {
             states:[],
             componentKey: 0,
             reference:'',
-            successful: false
+            successModal: false
         }
     },
     components: {
@@ -207,8 +207,8 @@ export default {
                 lga : this.lga
             }).then(response => {
                 console.log(response)
-                this.successful = true
                 this.CLEAR_CART()
+                this.successModal = true;
                 this.clearData()
             }).catch(error => {
                 this.trigger = false
@@ -232,12 +232,12 @@ export default {
         },
 
         clearData() {
-            this.first_name = '',
-            this.last_name = '',
-            this.phone = '',
-            this.email = '',
-            this.address = '',
-            this.stateObject = null,
+            this.first_name = '';
+            this.last_name = '';
+            this.phone = '';
+            this.email = '';
+            this.address = '';
+            this.stateObject = null;
             this.lga = ''
         },
         makeReference(){

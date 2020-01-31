@@ -2044,6 +2044,11 @@ __webpack_require__.r(__webpack_exports__);
       modalShow: this.show
     };
   },
+  watch: {
+    show: function show(newValue) {
+      this.modalShow = newValue;
+    }
+  },
   methods: {
     modalClosed: function modalClosed() {
       this.$emit("hidden");
@@ -3368,7 +3373,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       states: [],
       componentKey: 0,
       reference: '',
-      successful: false
+      successModal: false
     };
   },
   components: {
@@ -3407,9 +3412,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         lga: this.lga
       }).then(function (response) {
         console.log(response);
-        _this.successful = true;
 
         _this.CLEAR_CART();
+
+        _this.successModal = true;
 
         _this.clearData();
       })["catch"](function (error) {
@@ -3438,7 +3444,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     clearData: function clearData() {
-      this.first_name = '', this.last_name = '', this.phone = '', this.email = '', this.address = '', this.stateObject = null, this.lga = '';
+      this.first_name = '';
+      this.last_name = '';
+      this.phone = '';
+      this.email = '';
+      this.address = '';
+      this.stateObject = null;
+      this.lga = '';
     },
     makeReference: function makeReference() {
       var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -50305,7 +50317,8 @@ var render = function() {
           ),
       _vm._v(" "),
       _c("SuccessAlert", {
-        attrs: { show: _vm.successful, hidden: _vm.successModalClosed }
+        attrs: { show: _vm.successModal },
+        on: { hidden: _vm.successModalClosed }
       })
     ],
     1

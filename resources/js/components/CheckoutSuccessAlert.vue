@@ -25,6 +25,11 @@ export default {
             modalShow: this.show
         }
     },
+    watch:{
+        show: function (newValue) {
+            this.modalShow = newValue
+        }
+    },
     methods:{
         modalClosed(){
             this.$emit("hidden")
