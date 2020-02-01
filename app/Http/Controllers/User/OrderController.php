@@ -6,20 +6,16 @@ use App\Http\Resources\OwnerResource;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Owner;
-use App\Traits\UserTrait;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    use UserTrait;
 
     public function store(Request $request)
     {
         $orders = $request->post('order');
-
-        $user_id = $this->createOrUpdate($request);
-
-        $user = User::find($user_id);
+        
+        $user = User::find(User::createOrUpdate($request));
 
         foreach( $orders as $order){
 

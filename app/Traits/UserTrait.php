@@ -5,7 +5,7 @@ use App\Models\User;
 
 trait UserTrait{
 
-    public function createOrUpdate($request)
+    public static function createOrUpdate($request)
     {
 
         $user = User::updateOrCreate(
