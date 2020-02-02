@@ -2,16 +2,27 @@
 
 namespace App\Models;
 
+use App\Events\NewOrderEvent;
 use Illuminate\Database\Eloquent\Model;
 
 class Owner extends Model
 {
+
+    protected $dispatchesEvents = [
+        'created' => NewOrderEvent::class
+    ];
+    
     protected $fillable = [
         'transaction',
         'name',
         'identity',
         'car'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function orders()
     {

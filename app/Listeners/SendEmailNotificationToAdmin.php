@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Listeners\Illuminate\Auth\Listeners;
+namespace App\Listeners;
 
-use Illuminate\Auth\Events\NewOrderEvent;
+use App\Events\NewOrderEvent;
+use App\Mail\NewOrder;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Mail\NewOrder;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmailNotificationToAdmin
@@ -28,6 +28,6 @@ class SendEmailNotificationToAdmin
      */
     public function handle(NewOrderEvent $event)
     {
-        //
+        Mail::to('rapulu@yahoo.com')->send(new NewOrder());
     }
 }

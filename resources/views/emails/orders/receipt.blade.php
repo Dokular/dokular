@@ -1,12 +1,2 @@
-@component('mail::message')
-# Introduction
 
-The body of your message.
-
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
-@endcomponent
+Hell {{ $owner->user->first_name }} {{ $owner->user->last_name }} this is your receipt.

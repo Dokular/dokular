@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Listeners\Illuminate\Auth\Listeners;
+namespace App\Listeners;
 
-use Illuminate\Auth\Events\NewOrderEvent;
+use App\Events\NewOrderEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Mail\NewOrderReceipt;
-Use Illuminate\Support\Facades\Mail;
 
-class SendEmailReceiptToUser
+class CreateOrderDeliveryAddress
 {
     /**
      * Create the event listener.

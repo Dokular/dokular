@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Auth\Events\NewOrderEvent;
-use Illuminate\Auth\Listeners\SendEmailReceiptToUser;
-use Illuminate\Auth\Listeners\SendEmailNotificationToAdmin;
+use App\Events\NewOrderEvent;
+use App\Listeners\SendEmailReceiptToUser;
+use App\Listeners\SendEmailNotificationToAdmin;
+use App\Listeners\CreateOrderDeliveryAddress;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
@@ -19,6 +20,7 @@ class EventServiceProvider extends ServiceProvider
         NewOrderEvent::class => [
             SendEmailReceiptToUser::class,
             SendEmailNotificationToAdmin::class,
+            CreateOrderDeliveryAddress::class,
         ],
     ];
 

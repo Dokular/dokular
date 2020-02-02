@@ -14,7 +14,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $orders = $request->post('order');
-        
+
         $user = User::find(User::createOrUpdate($request));
 
         foreach( $orders as $order){

@@ -1,5 +1,5 @@
 @component('mail::message')
-# Introduction
+# This is admin email notification
 
 The body of your message.
 

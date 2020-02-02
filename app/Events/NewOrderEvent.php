@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Events\Illuminate\Auth\Events;
+namespace App\Events;
 
+use App\Models\Owner;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,23 +15,15 @@ class NewOrderEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $owner;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Owner $owner)
     {
-        //
+        $this->owner= $owner;
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
-    }
 }

@@ -11,14 +11,15 @@ class NewOrderReceipt extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $owner;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($owner)
     {
-        //
+        $this->owner = $owner;
     }
 
     /**
@@ -28,6 +29,7 @@ class NewOrderReceipt extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.orders.receipt');
+        return $this->view('emails.orders.receipt')
+                    ->with(['owner' => $this->owner]);
     }
 }

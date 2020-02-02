@@ -3,6 +3,8 @@
 namespace App\Observers;
 
 use App\Owner;
+use App\Events\NewOrderEvent;
+
 
 class OwnerObserver
 {
@@ -14,7 +16,6 @@ class OwnerObserver
      */
     public function created(Owner $owner)
     {
-       
     }
 
     /**
