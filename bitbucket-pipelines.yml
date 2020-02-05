@@ -22,5 +22,5 @@ pipelines:
           - npm install
           - npm run production
           - git init
-          - git remote add production ssh://root@34.70.80.109/home/rapulu/deploy.git
+          - git remote add production ssh://rapulu@34.70.80.109/home/rapulu/deploy.git
           - git push production master
