@@ -49508,7 +49508,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
-                      "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+                      "Dokular services, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
                     )
                   ])
                 ])
@@ -68683,14 +68683,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     logout: function logout(_ref5) {
       var commit = _ref5.commit,
           state = _ref5.state;
-      // axios.post(process.env.MIX_API+'logout',{
-      //     token: state.token
-      // }).then(response => {
       commit('SET_TOKEN', '');
-      Object(_auth__WEBPACK_IMPORTED_MODULE_4__["removeToken"])(); // }).catch(error => {
-      //     commit('SET_TOKEN', '')
-      //     removeToken()
-      // })
+      Object(_auth__WEBPACK_IMPORTED_MODULE_4__["removeToken"])();
     }
   },
   getters: {
