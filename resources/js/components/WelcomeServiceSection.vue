@@ -6,7 +6,7 @@
             <div class="col-md-7 text-center">
               <div class="block-heading-1">
                 <h2 style="color: #fff;padding-top:100px;">Services</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p>Dokular services, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
               </div>
             </div>
           </div>
