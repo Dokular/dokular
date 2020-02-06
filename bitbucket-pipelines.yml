@@ -1,0 +1,14 @@
+image: php:7.2
+
+pipelines:
+  branches:
+    master:
+     - step: # Modify the commands below to build your repository
+        name: production
+        caches:
+          - composer
+        script:
+          - apt-get update && apt-get install -y unzip
+          - apt-get install -y openssh-client
+          - ssh rapulu@34.70.80.109 'bash -s' < execute.sh
+
