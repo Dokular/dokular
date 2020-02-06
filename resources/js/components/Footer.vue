@@ -19,8 +19,9 @@
       </div>
       <div class="col-6 col-md">
         <h2>Location</h2>
-        <h5>Lagos</h5>
-        <p></p>
+        <p>
+            8 Ayinde Giwa Street, Off Ogunlana Dr, Surulere, Lagos.
+        </p>
       </div>
     </div>
     <div class="row">
