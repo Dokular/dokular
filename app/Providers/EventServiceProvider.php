@@ -19,8 +19,8 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         NewOrderEvent::class => [
             SendEmailReceiptToUser::class,
-            SendEmailNotificationToAdmin::class,
-            CreateOrderDeliveryAddress::class,
+            // SendEmailNotificationToAdmin::class,
+            // CreateOrderDeliveryAddress::class,
         ],
     ];
 

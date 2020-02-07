@@ -6,12 +6,14 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Events\NewOrderEvent;
 
 class NewOrderReceipt extends Mailable
 {
+
     use Queueable, SerializesModels;
 
-    private $owner;
+    public $owner;
     /**
      * Create a new message instance.
      *
@@ -29,7 +31,6 @@ class NewOrderReceipt extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.orders.receipt')
-                    ->with(['owner' => $this->owner]);
+        return $this->markdown('emails.orders.receipt');
     }
 }

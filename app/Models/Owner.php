@@ -11,7 +11,7 @@ class Owner extends Model
     protected $dispatchesEvents = [
         'created' => NewOrderEvent::class
     ];
-    
+
     protected $fillable = [
         'transaction',
         'name',

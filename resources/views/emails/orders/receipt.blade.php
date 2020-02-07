@@ -1,2 +1,10 @@
+@component('mail::message')
+# Your Order
 
-Hell {{ $owner->user->first_name }} {{ $owner->user->last_name }} this is your receipt.
+Dear {{ $owner->user->first_name }}
+Thank you for placing an order! Please note it would take 24 hours.
+Below are your orders
+
+{{ $owner }}
+
+@endcomponent
