@@ -14,7 +14,7 @@ trait PasswordLessAuth{
     use AuthenticatesUsers;
 
 
-    public function loginMail($request)
+    public function loginMail($email)
     {
 
         // $this->incrementLoginAttempts($request);
@@ -25,7 +25,7 @@ trait PasswordLessAuth{
         //     return $this->sendLockoutResponse($request);
         // }
 
-        if ($this->createLoginAttempt($request)) {
+        if ($this->createLoginAttempt($email)) {
             //return $this->sendAttemptResponse($request);
             return response()->json(['success' => true]);
         }
@@ -81,16 +81,17 @@ trait PasswordLessAuth{
      * @param  \Illuminate\Http\Request  $request
      * @return \App\LoginAttempt
      */
-    protected function createLoginAttempt($request)
+    protected function createLoginAttempt($email)
     {
         $authorize = Login::create([
-            'email' => $request->input($this->username()),
+            'email' => $email,
             'token' => Str::random(40) . time(),
         ]);
-
-        //$authorize->notify(new NewLoginAttempt($authorize));
-        Mail::to($authorize->email)->send(new LoginEmail($authorize));
-        return $authorize;
+        
+        if(!$authorize){
+            return response()->json(['success' => false], 400);
+        }
+        return response()->json(['success' => true], 200);
     }
 
     public function clearEmailToken($token)

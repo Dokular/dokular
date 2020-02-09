@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Owner;
 use Illuminate\Support\Facades\Auth;
+use App\Events\NewOrderEvent;
+
 
 class OrderController extends Controller
 {
@@ -26,6 +28,8 @@ class OrderController extends Controller
             foreach($order['products'] as $product ){
                 $owner->createOrders($product);
             }
+
+            event(new NewOrderEvent($owner));
         }
         return response()->json(['success' => true]);
     }

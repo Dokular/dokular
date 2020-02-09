@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Events\NewOrderEvent;
+use App\Events\LogInEvent;
 use App\Listeners\SendEmailReceiptToUser;
 use App\Listeners\SendEmailNotificationToAdmin;
+use App\Listeners\SendLogInMagicLink;
 use App\Listeners\CreateOrderDeliveryAddress;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -19,9 +21,12 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         NewOrderEvent::class => [
             SendEmailReceiptToUser::class,
-            // SendEmailNotificationToAdmin::class,
+            SendEmailNotificationToAdmin::class,
             // CreateOrderDeliveryAddress::class,
         ],
+        LogInEvent::class => [
+            SendLogInMagicLink::class
+        ]
     ];
 
     /**

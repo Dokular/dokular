@@ -8,16 +8,11 @@ use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Traits\UserTrait;
 use Illuminate\Database\Eloquent\Model;
-// use App\Events\NewOrderEvent;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable, UserTrait;
 
-    // protected $dispatchesEvents = [
-    //     'created' => NewOrderEvent::class,
-    //     'updated' => NewOrderEvent::class,
-    // ];
     /**
      * The attributes that are mass assignable.
      *

@@ -4,11 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Events\LogInEvent;
 
 class Login extends Model
 {
     public $fillable = ['email', 'token'];
-
+    
+    protected $dispatchesEvents = [
+        'created' => LogInEvent::class,
+    ];
     /**
      * @param $token
      */

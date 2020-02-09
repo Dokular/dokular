@@ -27,8 +27,12 @@ class LoginController extends Controller
 
     public function attempt(LoginEmailRequest $request)
     {
-        //return response()->json(['success' => true]);
-        return $this->loginMail($request);
+        $validatedData = $request->validate([
+            'email' => ['required', 'exists:users'],
+        ]);
+        
+        return $this->loginMail($validatedData['email']);
+
     }
 
     // verify token

@@ -1,5 +1,9 @@
 <template>
     <div>
+        <loading
+          :active.sync="isLoading"
+          :is-full-page="true">
+        </loading>
         <div class="container" v-if="carts.length">
         <div class="py-5 text-center">
             <h2>Checkout form</h2>
@@ -142,6 +146,8 @@
     </div>
 </template>
 <script>
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 import { ValidationObserver, ValidationProvider } from "vee-validate";
 import SuccessAlert from '../components/CheckoutSuccessAlert'
 import {mapGetters, mapMutations} from 'vuex'
@@ -167,7 +173,8 @@ export default {
             states:[],
             componentKey: 0,
             reference:'',
-            successModal: false
+            successModal: false,
+            isLoading: false,
         }
     },
     components: {
@@ -175,7 +182,8 @@ export default {
       Paystack,
       ValidationObserver,
       ValidationProvider,
-      SuccessAlert
+      SuccessAlert,
+      Loading
     },
     computed: {
         ...mapGetters(["carts", "total"]),
@@ -193,7 +201,7 @@ export default {
         ...mapMutations(['CLEAR_CART']),
         callback: function(response){
             var self = this;
-
+            self.isLoading = true;
             axios.post(process.env.MIX_API+'order',{
                 order: self.carts,
                 reference: this.reference,
@@ -208,6 +216,7 @@ export default {
             }).then(response => {
                 console.log(response)
                 this.CLEAR_CART()
+                self.isLoading = false;
                 this.successModal = true;
                 this.clearData()
             }).catch(error => {
