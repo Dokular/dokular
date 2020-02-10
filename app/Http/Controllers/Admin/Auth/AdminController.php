@@ -35,6 +35,15 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
+        $validator = Validator::make($request->json()->all(),[
+            'email' => 'required|email',
+            'password' => 'required'
+         ]);
+
+        if($validator->fails()){
+          return response()->json($validator->errors(), 400);
+        }
+
         $credentials = $request->only('email', 'password');
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
