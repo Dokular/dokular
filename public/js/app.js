@@ -3162,9 +3162,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -3578,8 +3575,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.show = true;
       })["catch"](function (error) {
         _this.spinner = true;
+        _this.show = false;
         alert('Something went wrong, try again later.');
-        console.log(error);
       });
     }
   }
@@ -49714,8 +49711,6 @@ var render = function() {
     "div",
     { staticClass: "page-wrapper" },
     [
-      _c("TopBar"),
-      _vm._v(" "),
       _c("MainHeader"),
       _vm._v(" "),
       _c("div", { staticClass: "page-content--bgf7" }, [_vm._t("default")], 2),
@@ -50437,7 +50432,7 @@ var render = function() {
             [
               _c("b-alert", { attrs: { variant: "success", show: _vm.show } }, [
                 _vm._v(
-                  "\n                        Please check your mail for login detail.\n                    "
+                  "\n                         Please check your mail for login details.\n                    "
                 )
               ]),
               _vm._v(" "),

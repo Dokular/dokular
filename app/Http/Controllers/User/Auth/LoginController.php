@@ -30,8 +30,10 @@ class LoginController extends Controller
         $validatedData = $request->validate([
             'email' => ['required', 'exists:users'],
         ]);
-        
-        return $this->loginMail($validatedData['email']);
+
+        // if($validatedData){
+        //     return $this->loginMail($validatedData['email']);
+        // }
 
     }
 

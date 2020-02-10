@@ -1,9 +1,6 @@
 <template>
     <div class="page-wrapper">
-      <TopBar />
       <MainHeader />
-      <!-- <MobileHeader></MobileHeader>
-      <DesktopHeader></DesktopHeader> -->
       <div class="page-content--bgf7">
         <slot/>
       </div>

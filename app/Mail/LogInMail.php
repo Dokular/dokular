@@ -29,6 +29,11 @@ class LogInMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.auth.login');
+        $url = Config('app.frontend_url');
+        $loginlink = $url.'login/email/'.$this->login->token;
+        return $this->markdown('emails.auth.login')
+                    ->from('no-reply@dokular.com')
+                    ->subject('Sign in link')
+                    ->with('url', $loginlink );;
     }
 }
