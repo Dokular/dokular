@@ -49,6 +49,49 @@ class AdminController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return response()->json(compact('token'), 200);
+        return response()->json(['status' => 'success'], 200)->header('Authorization', $token);;
+    }
+
+
+    /**
+     * Logout User
+     */
+    public function logout()
+    {
+        $this->guard()->logout();
+        return response()->json([
+            'status' => 'success',
+            'msg' => 'Logged out Successfully.'
+        ], 200);
+    }
+    /**
+     * Get authenticated user
+     */
+    public function user(Request $request)
+    {
+        $user = Admin::find(Auth::user()->id);
+        return response()->json([
+            'status' => 'success',
+            'data' => $user
+        ]);
+    }
+    /**
+     * Refresh JWT token
+     */
+    public function refresh()
+    {
+        if ($token = $this->guard()->refresh()) {
+            return response()
+                ->json(['status' => 'successs'], 200)
+                ->header('Authorization', $token);
+        }
+        return response()->json(['error' => 'refresh_token_error'], 401);
+    }
+    /**
+     * Return auth guard
+     */
+    private function guard()
+    {
+        return Auth::guard();
     }
 }

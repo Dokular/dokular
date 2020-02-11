@@ -66,6 +66,9 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::patch('state/{state}/activate', 'StateController@setActive');
 
     Route::middleware('auth:admin')->group(function () {
-
+        // Get user info
+        Route::get('user', 'Auth\AdminControlleruser');
+        // Logout user from application
+        Route::post('logout', 'Auth\AdminController@logout');
     });
 });

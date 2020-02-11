@@ -26,10 +26,13 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@websanova/vue-auth": "^2.21.16-beta",
         "bootstrap-vue": "^2.2.1",
+        "es6-promise": "^4.2.8",
         "fs": "0.0.1-security",
         "js-cookie": "^2.2.1",
         "vee-validate": "^3.2.1",
+        "vue-axios": "^2.1.5",
         "vue-form-wizard": "^0.8.4",
         "vue-loading-overlay": "^3.2.0",
         "vue-owl-carousel": "^2.0.3",
