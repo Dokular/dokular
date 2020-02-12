@@ -26,7 +26,7 @@ Route::namespace('User')->prefix('v1')->group(function () {
 
     Route::post('login/user', 'Auth\LoginController@login');
 
-    Route::middleware('auth:user')->group(function () {
+    Route::middleware('auth')->group(function () {
 
         Route::get('/order', 'OrderController@getOwnersAndOrders');
 
@@ -49,7 +49,7 @@ Route::namespace('User')->prefix('v1')->group(function () {
 
 Route::namespace('Admin')->prefix('admin')->group(function () {
 
-    Route::post('login', 'Auth\AdminController@login');
+    Route::post('login', 'Auth\AdminController@login')->name('login');
     Route::post('register', 'Auth\AdminController@register');
 
     Route::get('categories', 'CategoryController@get');
@@ -67,7 +67,9 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         // Get user info
-        Route::get('user', 'Auth\AdminControlleruser');
+        Route::get('user', 'Auth\AdminController@user');
+
+        Route::get('refresh', 'Auth\AdminController@refresh');
         // Logout user from application
         Route::post('logout', 'Auth\AdminController@logout');
     });

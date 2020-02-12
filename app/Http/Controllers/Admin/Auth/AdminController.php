@@ -35,7 +35,8 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
-        $validator = Validator::make($request->json()->all(),[
+        //return $request->input('email');
+        $validator = Validator::make($request->all(),[
             'email' => 'required|email',
             'password' => 'required'
          ]);
@@ -45,11 +46,14 @@ class AdminController extends Controller
         }
 
         $credentials = $request->only('email', 'password');
+
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'login Unauthorized'], 401);
         }
 
-        return response()->json(['status' => 'success'], 200)->header('Authorization', $token);;
+        return response()->json(['status' => 'success'], 200)
+        ->header('Access-Control-Expose-Headers', 'Authorization')
+        ->header('Authorization', $token);
     }
 
 
@@ -69,10 +73,9 @@ class AdminController extends Controller
      */
     public function user(Request $request)
     {
-        $user = Admin::find(Auth::user()->id);
         return response()->json([
             'status' => 'success',
-            'data' => $user
+            'data' => auth()->user()
         ]);
     }
     /**
