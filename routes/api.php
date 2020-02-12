@@ -52,19 +52,6 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::post('login', 'Auth\AdminController@login')->name('login');
     Route::post('register', 'Auth\AdminController@register');
 
-    Route::get('categories', 'CategoryController@get');
-    Route::post('category', 'CategoryController@create');
-    Route::get('category/{category}', 'CategoryController@getCategory');
-    Route::patch('category/{category}', 'CategoryController@update');
-    Route::post('activate/{category}', 'CategoryController@active');
-    Route::post('product/{category}', 'ProductController@create');
-    Route::patch('product/{product}', 'ProductController@update');
-
-    Route::get('orders', 'OrderController@all');
-    Route::get('states', 'StateController@getAll');
-    Route::post('state/{state}', 'StateController@update');
-    Route::patch('state/{state}/activate', 'StateController@setActive');
-
     Route::middleware('auth:admin')->group(function () {
         // Get user info
         Route::get('user', 'Auth\AdminController@user');
@@ -72,5 +59,18 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::get('refresh', 'Auth\AdminController@refresh');
         // Logout user from application
         Route::post('logout', 'Auth\AdminController@logout');
+
+        Route::get('categories', 'CategoryController@get');
+        Route::post('category', 'CategoryController@create');
+        Route::get('category/{category}', 'CategoryController@getCategory');
+        Route::patch('category/{category}', 'CategoryController@update');
+        Route::post('activate/{category}', 'CategoryController@active');
+        Route::post('product/{category}', 'ProductController@create');
+        Route::patch('product/{product}', 'ProductController@update');
+
+        Route::get('orders', 'OrderController@all');
+        Route::get('states', 'StateController@getAll');
+        Route::post('state/{state}', 'StateController@update');
+        Route::patch('state/{state}/activate', 'StateController@setActive');
     });
 });
