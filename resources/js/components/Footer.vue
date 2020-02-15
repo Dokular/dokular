@@ -12,7 +12,7 @@
       <div class="col-6 col-md">
         <h2>Follow us</h2>
         <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="#">Facebook</a></li>
+          <li><a class="text-muted" href="https://www.facebook.com/dokularDotCom/">Facebook</a></li>
           <li><a class="text-muted" href="#">Instagram</a></li>
           <li><a class="text-muted" href="#">Twitter</a></li>
         </ul>
