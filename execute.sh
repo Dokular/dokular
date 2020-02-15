@@ -1,5 +1,5 @@
 cd /var/www/html
-git pull
+git pull deploy master
 composer install
 php artisan migrate --force
 npm install
