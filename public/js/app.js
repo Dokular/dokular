@@ -3091,6 +3091,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -49620,7 +49624,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
-                      "Dokular services, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+                      "Dokular services, vehicle papers renewal made easy."
                     )
                   ])
                 ])
@@ -49640,7 +49644,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
-                      "A small river named Duden flows by their place and supplies it with the necessary regelialia. "
+                      "\n            hoose any of the services by clicking “Add to cart”, e.g Car Renewal or Combo SUV Renewal or Vehicle License - Car\n          "
                     )
                   ])
                 ]),
@@ -49668,7 +49672,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
-                      "A small river named Duden flows by their place and supplies it with the necessary regelialia. "
+                      "\n            Click check out at the Top right corner of the page.\n          "
                     )
                   ])
                 ])

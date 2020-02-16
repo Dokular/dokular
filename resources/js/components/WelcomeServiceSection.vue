@@ -6,7 +6,7 @@
             <div class="col-md-7 text-center">
               <div class="block-heading-1">
                 <h2 style="color: #fff;padding-top:100px;">Services</h2>
-                <p>Dokular services, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p>Dokular services, vehicle papers renewal made easy.</p>
               </div>
             </div>
           </div>
@@ -16,7 +16,9 @@
                 <span class="flaticon-ferry"></span>
               </div>
               <h3 class="mb-3">Step one</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+              <p>
+                hoose any of the services by clicking “Add to cart”, e.g Car Renewal or Combo SUV Renewal or Vehicle License - Car
+              </p>
             </div>
 
             <div class="col-md text-center">
@@ -32,7 +34,9 @@
                 <span class="flaticon-box"></span>
               </div>
               <h3 class="mb-3">Step three</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+              <p>
+                Click check out at the Top right corner of the page.
+              </p>
             </div>
           </div>
           <div class="row" style="padding-bottom: 100px;">
