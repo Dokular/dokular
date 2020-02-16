@@ -55,9 +55,12 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(null, error => {
     const err = error.response
     if (err.statusText === 'Unauthorized' && err.status === 401) {
-        store.dispatch.logout
-        router.push({'name': 'login'})
-        return;
+        store.dispatch('logout').then(response => {
+            router.push({'name': 'login'})
+        }, error => {
+            router.push({'name': 'login'})
+        });
+        return err.statusText;
     }
     return Promise.reject(error);
 });

@@ -67071,11 +67071,16 @@ axios__WEBPACK_IMPORTED_MODULE_3___default.a.interceptors.response.use(null, fun
   var err = error.response;
 
   if (err.statusText === 'Unauthorized' && err.status === 401) {
-    _store_store__WEBPACK_IMPORTED_MODULE_8__["store"].dispatch.logout;
-    _router_routes__WEBPACK_IMPORTED_MODULE_5__["default"].push({
-      'name': 'login'
+    _store_store__WEBPACK_IMPORTED_MODULE_8__["store"].dispatch('logout').then(function (response) {
+      _router_routes__WEBPACK_IMPORTED_MODULE_5__["default"].push({
+        'name': 'login'
+      });
+    }, function (error) {
+      _router_routes__WEBPACK_IMPORTED_MODULE_5__["default"].push({
+        'name': 'login'
+      });
     });
-    return;
+    return err.statusText;
   }
 
   return Promise.reject(error);

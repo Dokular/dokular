@@ -38,7 +38,6 @@ class LoginController extends Controller
          }
 
         return $this->loginMail($request->input('email'));
-
     }
 
     // verify token
