@@ -44,7 +44,7 @@
 </template>
 <script>
 import MyOrders from '../components/MyOrders'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import axios from 'axios'
 export default {
     data() {
@@ -58,6 +58,7 @@ export default {
         MyOrders
     },
     methods: {
+        ...mapActions(['logout']),
         getOrders() {
             axios.get(process.env.MIX_API+'order').then(response => {
                 this.owners = response.data.data
@@ -72,7 +73,7 @@ export default {
         }
     },
     created(){
-        this.getOrders();
+      this.getOrders();
     }
 }
 </script>

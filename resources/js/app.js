@@ -47,22 +47,19 @@ axios.interceptors.request.use(
       }
       return config;
     },
-
     (error) => {
       //return Promise.reject(error);
     }
 );
 
 axios.interceptors.response.use(null, error => {
-
-    if (error.response && error.response.status === 401) {
-        store.dispatch('logout').then(response => {
-            router.push({'name': 'login'})
-        }, error => {
-            router.push({'name': 'login'})
-        });
+    const err = error.response
+    if (err.statusText === 'Unauthorized' && err.status === 401) {
+        store.dispatch.logout
+        router.push({'name': 'login'})
+        return;
     }
-    //reject(error)
+    return Promise.reject(error);
 });
 
 

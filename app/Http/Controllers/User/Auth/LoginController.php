@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Traits\PasswordLessAuth;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginEmailRequest;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\LoginTokenRequest;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -25,15 +26,18 @@ class LoginController extends Controller
     */
     use PasswordLessAuth;
 
-    public function attempt(LoginEmailRequest $request)
+    public function attempt(Request $request)
     {
-        $validatedData = $request->validate([
-            'email' => ['required', 'exists:users'],
+
+        $validator = Validator::make($request->all(),[
+            'email' => ['required', 'exists:users']
         ]);
 
-        // if($validatedData){
-        //     return $this->loginMail($validatedData['email']);
-        // }
+        if($validator->fails()){
+            return response()->json($validator->errors(), 400);
+         }
+
+        return $this->loginMail($request->input('email'));
 
     }
 

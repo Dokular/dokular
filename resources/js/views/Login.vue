@@ -4,7 +4,7 @@
         <div class="container">
             <div class="login-wrap">
                 <div class="login-content">
-                    <b-alert variant="success" :show="show">
+                    <b-alert :show="show" variant="success" dismissible>
                       &nbsp  Please check your mail for login details.
                     </b-alert>
                     <div class="login-form">
@@ -38,13 +38,18 @@ export default {
     methods: {
 
         sendLoginMail(){
+
             this.spinner = false
+
             this.$http.post(process.env.MIX_API+'login/attempt',{
-               email: this.email
+
+                email: this.email
+
             }).then(response => {
+                this.show = true;
                 this.spinner = true;
                 this.email = '';
-                this.show = true;
+                console.log(response)
             }).catch(error => {
                 this.spinner = true;
                 this.show = false;
