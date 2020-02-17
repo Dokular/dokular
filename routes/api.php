@@ -69,6 +69,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::patch('product/{product}', 'ProductController@update');
 
         Route::get('orders', 'OrderController@all');
+        Route::patch('owner/{owner}/status', 'OrderController@updateStatus');
         Route::get('states', 'StateController@getAll');
         Route::post('state/{state}', 'StateController@update');
         Route::patch('state/{state}/activate', 'StateController@setActive');

@@ -11,7 +11,8 @@ class Owner extends Model
         'transaction',
         'name',
         'identity',
-        'car'
+        'car',
+        'status'
     ];
 
     public function user()
