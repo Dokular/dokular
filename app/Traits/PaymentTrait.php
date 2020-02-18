@@ -2,10 +2,6 @@
 namespace App\Traits;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\BadResponseException;
-use GuzzleHttp\Exception\ServerException;
 use Exception;
 use App\Models\Product;
 use App\Models\State;
@@ -67,6 +63,4 @@ trait PaymentTrait{
 
         return $total;
     }
-
-
 }
