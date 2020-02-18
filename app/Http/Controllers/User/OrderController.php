@@ -8,13 +8,19 @@ use App\Models\User;
 use App\Models\Owner;
 use Illuminate\Support\Facades\Auth;
 use App\Events\NewOrderEvent;
-
+use App\Traits\PaymentTrait;
 
 class OrderController extends Controller
 {
+    use PaymentTrait;
 
     public function store(Request $request)
     {
+
+        if(!$this->verify($request)){
+            return response()->json(['success' => false], 403);
+        }
+
         $orders = $request->post('order');
 
         $user = User::find(User::createOrUpdate($request));

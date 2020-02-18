@@ -218,7 +218,7 @@ export default {
                 this.CLEAR_CART()
                 self.isLoading = false;
                 this.successModal = true;
-                this.clearData()
+                //this.clearData()
             }).catch(error => {
                 this.trigger = false
                 this.forceRerender()

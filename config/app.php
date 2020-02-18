@@ -60,6 +60,8 @@ return [
 
     'frontend_url' => env('FRONTEND_URL', null),
 
+    'paystack_skey' => env('PAYSTACK_SK', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

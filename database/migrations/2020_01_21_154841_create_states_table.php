@@ -17,7 +17,7 @@ class CreateStatesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->integer('price')->nullable();
+            $table->integer('price')->default(0);
             $table->boolean('active')->default(0);
             $table->timestamps();
         });

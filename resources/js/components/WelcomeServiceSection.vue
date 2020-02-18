@@ -17,7 +17,8 @@
               </div>
               <h3 class="mb-3">Step one</h3>
               <p>
-                hoose any of the services by clicking “Add to cart”, e.g Car Renewal or Combo SUV Renewal or Vehicle License - Car
+                Click on renew of your vehicle type, fill in the required information of the
+                vehicle. Next, select the papers you wish to renew, and add to cart.
               </p>
             </div>
 
