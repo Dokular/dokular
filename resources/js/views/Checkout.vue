@@ -13,9 +13,11 @@
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
                 <CheckOutCart
-                  :delivery="deliverFee"
                   :charge="service_charge"
                 />
+                <button class="btn btn-primary btn-lg btn-block" @click="Prepayment">
+                  Continue to checkout
+                </button>
                 <Paystack
                     :amount="amount"
                     :email="email"
@@ -27,12 +29,11 @@
                     :embed="false"
                     :key="componentKey"
                 />
-                <button class="btn btn-primary btn-lg btn-block" @click="Prepayment">
-                    Continue to checkout
-                </button>
             </div>
             <div class="col-md-8 order-md-1">
-                <ValidationObserver ref="observer" v-slot="{ invalid }">
+                <CheckOutForm />
+
+                <!-- <ValidationObserver ref="observer" v-slot="{ invalid }">
                     <h4 class="mb-3">Delivery address</h4>
                     <div class="row">
                     <div class="col-md-6 mb-3">
@@ -46,7 +47,6 @@
                             <span>{{ errors[0] }}</span>
                         </ValidationProvider>
                     </div>
-
                     <div class="col-md-6 mb-3">
                         <ValidationProvider name="Last name" rules="required" v-slot="{ errors }">
                             <label for="lastName">
@@ -130,7 +130,7 @@
                         </select>
                     </div>
                     </div>
-                </ValidationObserver>
+                </ValidationObserver> -->
             </div>
         </div>
         </div>
@@ -143,6 +143,7 @@
           :show="successModal"
           @hidden="successModalClosed"
         />
+
     </div>
 </template>
 <script>
@@ -152,6 +153,7 @@ import { ValidationObserver, ValidationProvider } from "vee-validate";
 import SuccessAlert from '../components/CheckoutSuccessAlert'
 import {mapGetters, mapMutations} from 'vuex'
 import CheckOutCart from '../components/CheckOutCart'
+import CheckOutForm from '../components/CheckOutForm'
 import Paystack from '../components/Paystack'
 import axios from 'axios'
 import { reject } from 'q';
@@ -183,15 +185,15 @@ export default {
       ValidationObserver,
       ValidationProvider,
       SuccessAlert,
-      Loading
+      Loading,
+      CheckOutForm
     },
     computed: {
-        ...mapGetters(["carts", "total"]),
+        ...mapGetters(["carts", "total", "getDeliveryFee"]),
+
+        //Calculate paystack amount
         amount() {
-            return (this.total  + this.deliverFee + this.service_charge) * 100;
-        },
-        deliverFee(){
-            return this.stateObject ? this.stateObject.price : 0;
+            return (this.total  + this.getDeliveryFee + this.service_charge) * 100;
         }
     },
     created() {

@@ -8,7 +8,7 @@
                     <label for="firstName">First name</label>
                     <input type="text"
                         class="form-control"
-                        v-model="first_name"
+                        v-model="delivery.first_name"
                         placeholder=""
                         required>
                     <span>{{ errors[0] }}</span>
@@ -22,7 +22,7 @@
                     </label>
                     <input type="text"
                             class="form-control"
-                            v-model="last_name"
+                            v-model="delivery.last_name"
                             placeholder=""
                             required
                     >
@@ -30,34 +30,36 @@
                 </ValidationProvider>
             </div>
             </div>
-            <div class="mb-3">
+            <div class="row">
+            <div class="mb-3 col-md-6">
                 <ValidationProvider name="Phone number" rules="required" v-slot="{ errors }">
                     <label for="phone">Phone </label>
                     <input type="phone"
                             class="form-control"
-                            v-model="phone"
+                            v-model="delivery.phone"
                             placeholder="08030000000"
                     >
                     <span>{{ errors[0] }}</span>
                 </ValidationProvider>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 col-md-6">
                 <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
                     <label for="email">Email </label>
                     <input type="email"
                             class="form-control"
-                            v-model="email"
+                            v-model="delivery.email"
                             placeholder="you@example.com"
                     >
                     <span>{{ errors[0] }}</span>
                 </ValidationProvider>
+            </div>
             </div>
             <div class="mb-3">
                 <ValidationProvider name="adddress" rules="required" v-slot="{ errors }">
                     <label for="address">Delivery address</label>
                     <input type="text"
                             class="form-control"
-                            v-model="address"
+                            v-model="delivery.address"
                             placeholder="1234 Main St"
                             required>
                     <span class="invalid">{{ errors[0] }}</span>
@@ -69,7 +71,7 @@
                     <label for="state">State</label>
                     <select
                         class="custom-select d-block w-100"
-                        v-model="stateObject"
+                        v-model="stateData"
                     >
                         <option
                             :value="null"
@@ -90,7 +92,7 @@
             <div class="col-md-4 mb-3">
                 <label for="lga">L.G.A</label>
                 <select class="custom-select d-block w-100"
-                        v-model="lga"
+                        v-model="delivery.lga"
                         required>
                     <option value="">
                         Choose...
@@ -102,23 +104,43 @@
     </div>
 </template>
 <script>
+import { ValidationObserver, ValidationProvider } from "vee-validate";
+import axios from 'axios'
+import {mapMutations, mapState} from 'vuex'
+
 export default {
     data(){
         return {
-            first_name:'',
-            last_name:'',
-            phone: '',
-            email: '',
-            address:'',
-            service_charge: 0,
-            stateObject: null,
-            lga: '',
+
             trigger: false,
-            user: 0,
-            states:[],
-            componentKey: 0,
-            reference:'',
+            stateData: null,
+            states: [],
         }
+    },
+    created() {
+        this.getState();
+    },
+    watch: {
+        stateData: function(newValue){
+            this.delivery.state_id = newValue.id;
+            this.delivery.fee = newValue.price;
+        }
+    },
+    components: {
+      ValidationObserver,
+      ValidationProvider
+    },
+    computed: mapState(['delivery']),
+    methods: {
+        getState(){
+            axios.get(process.env.MIX_API+'states')
+            .then(response => {
+                this.states = response.data[0]
+                // console.log(response.data[0])
+            }).catch(error => {
+                console.log(error)
+            })
+        },
     }
 }
 </script>

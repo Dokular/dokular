@@ -12,6 +12,17 @@ export const store = new Vuex.Store({
     state: {
         cartlists:Carts ? JSON.parse(Carts) : [],
         products: [],
+        delivery: {
+            first_name:'',
+            last_name:'',
+            phone: '',
+            email: '',
+            address:'',
+            lga: '',
+            state_id:'',
+            fee: 0
+        },
+        delivery_fee: 0,
         categories: [],
         precarts: [],
         token: getToken(),
@@ -51,7 +62,7 @@ export const store = new Vuex.Store({
         SET_TOKEN: (state, token) => {
             state.token = token;
             setToken(token);
-        }
+        },
     },
 
     actions: {
@@ -120,6 +131,14 @@ export const store = new Vuex.Store({
                 return false
             }
             return true;
+        },
+
+        getDelivery: state => {
+            return state.delivery
+        },
+
+        getDeliveryFee: state => {
+            return state.delivery.fee
         }
     },
 })
