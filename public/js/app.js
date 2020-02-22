@@ -75043,6 +75043,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_form_wizard__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(vue_form_wizard__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue-form-wizard/dist/vue-form-wizard.min.css */ "./node_modules/vue-form-wizard/dist/vue-form-wizard.min.css");
 /* harmony import */ var vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue_form_wizard_dist_vue_form_wizard_min_css__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 
 
 
@@ -75055,6 +75056,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vee_validate__WEBPACK_IMPORTED_MODULE_12__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_form_wizard__WEBPACK_IMPORTED_MODULE_10___default.a);
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_9__["BootstrapVue"]);
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_9__["BootstrapVueIcons"]);
