@@ -31,38 +31,27 @@
     <b-modal v-if="category" v-model="show" hide-footer >
         <form-wizard :title="title" :subtitle="subtitle" @on-complete="addToCart">
             <tab-content title="Vehicle info" :before-change="validateFirstStep">
-                 <ValidationObserver ref="observer" v-slot="{ invalid }">
-                    <div class="form-group">
-                        <ValidationProvider name="car make" rules="required" v-slot="{ errors }">
-                            <label for="cc-payment" class="control-label mb-1">Vehicle make</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              v-model="cart.make"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="E.g Toyota, Kia etc"
-                            >
-                            <span>{{ errors[0] }}</span>
-                        </ValidationProvider>
-                    </div>
-                    <div class="form-group has-success">
-                        <ValidationProvider name="Identification mark" rules="required" v-slot="{ errors }">
-                            <label for="cc-name" class="control-label mb-1">Identification mark</label>
-                            <input id="cc-name" type="text" class="form-control" v-model="cart.mark" data-val="true" data-val-required="Please enter the name on card"
-                                autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
-                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-                            <span>{{ errors[0] }}</span>
-                        </ValidationProvider>
-                    </div>
-                    <div class="form-group">
-                        <ValidationProvider name="Owner name" rules="required" v-slot="{ errors }">
-                            <label for="cc-payment" class="control-label mb-1">Name of owner</label>
-                            <input type="text" class="form-control" v-model="cart.owner" aria-required="true" aria-invalid="false">
-                            <span>{{ errors[0] }}</span>
-                        </ValidationProvider>
-                    </div>
-                </ValidationObserver>
+                <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1">Vehicle make</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="cart.make"
+                        aria-required="true"
+                        aria-invalid="false"
+                        placeholder="E.g Toyota, Kia etc"
+                    >
+                </div>
+                <div class="form-group has-success">
+                    <label for="cc-name" class="control-label mb-1">Identification mark</label>
+                    <input id="cc-name" type="text" class="form-control" v-model="cart.mark" data-val="true" data-val-required="Please enter the name on card"
+                        autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+                    <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+                </div>
+                <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1">Name of owner</label>
+                    <input type="text" class="form-control" v-model="cart.owner" aria-required="true" aria-invalid="false">
+                </div>
             </tab-content>
             <tab-content title="Papers to renew" :before-change="validateSecondStep">
                 <b-form-checkbox

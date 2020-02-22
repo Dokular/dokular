@@ -1,17 +1,15 @@
 <template>
-  <!-- <button
+  <button
     v-if="!embed"
-    class="payButton"
+    class="btn btn-primary btn-lg btn-block"
     @click="payWithPaystack"
-  > -->
-  <div>
-    <slot></slot>
-  </div>
-  <!-- </button>
+  >
+    Continue to checkout
+  </button>
   <div
     v-else
     id="paystackEmbedContainer"
-  /> -->
+  />
 </template>
 
 <script type="text/javascript">
@@ -35,10 +33,6 @@ export default {
         },
         amount: {
             type: Number,
-            required: true
-        },
-        reference: {
-            type: String,
             required: true
         },
         callback: {
@@ -82,7 +76,8 @@ export default {
     },
     data(){
         return {
-            scriptLoaded: null
+          scriptLoaded: null,
+          reference:''
         }
     },
     created() {
@@ -121,7 +116,8 @@ export default {
             }
         },
         payWithPaystack() {
-            this.scriptLoaded && this.scriptLoaded.then(() => {
+            this.scriptLoaded && this.scriptLoaded.then(
+                () => {
                 const paystackOptions = {
                     key: this.paystackkey,
                     email: this.email,
@@ -149,7 +145,33 @@ export default {
                     handler.openIframe()
                 }
             })
-        }
+        },
+        makeReference(){
+            let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for( let i=0; i < 10; i++ )
+            this.reference += possible.charAt(Math.floor(Math.random() * possible.length));
+        },
     }
 }
 </script>
+<style scoped>
+.btn-block {
+    display: block;
+    width: 100%;
+    height: 48px;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+</style>
