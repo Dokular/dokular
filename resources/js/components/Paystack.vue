@@ -1,20 +1,21 @@
 <template>
-  <!-- <button
+  <b-button
+    variant="success"
     v-if="!embed"
-    class="payButton"
+    class="btn btn-primary btn-lg btn-block"
     @click="payWithPaystack"
-  > -->
-  <div>
-    <slot></slot>
-  </div>
-  <!-- </button>
+    :disabled="payable"
+  >
+    Continue to checkout
+  </b-button>
   <div
     v-else
     id="paystackEmbedContainer"
-  /> -->
+  />
 </template>
 
 <script type="text/javascript">
+import {mapGetters, mapMutations} from 'vuex'
 export default {
     props: {
         triggerPayment: {
@@ -29,16 +30,8 @@ export default {
             type: String,
             required: true
         },
-        email: {
-            type: String,
-            required: true
-        },
         amount: {
             type: Number,
-            required: true
-        },
-        reference: {
-            type: String,
             required: true
         },
         callback: {
@@ -82,7 +75,7 @@ export default {
     },
     data(){
         return {
-            scriptLoaded: null
+          scriptLoaded: null
         }
     },
     created() {
@@ -97,12 +90,22 @@ export default {
             this.payWithPaystack()
         }
     },
-    watch: {
-        triggerPayment: function(newVal, oldVal) {
-            this.payWithPaystack()
+    computed:{
+        ...mapGetters(['payable','email']),
+        reference(){
+          let text = "";
+          let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+          for( let i=0; i < 10; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+          this.PAYSTACK_REFERENCE(text)
+
+          return text;
         }
     },
     methods: {
+        ...mapMutations(['PAYSTACK_REFERENCE']),
         loadScript(callback) {
             const script = document.createElement('script')
             script.src = 'https://js.paystack.co/v1/inline.js'
@@ -121,7 +124,8 @@ export default {
             }
         },
         payWithPaystack() {
-            this.scriptLoaded && this.scriptLoaded.then(() => {
+            this.scriptLoaded && this.scriptLoaded.then(
+                () => {
                 const paystackOptions = {
                     key: this.paystackkey,
                     email: this.email,
@@ -149,7 +153,10 @@ export default {
                     handler.openIframe()
                 }
             })
-        }
+        },
     }
 }
 </script>
+<style scoped>
+
+</style>

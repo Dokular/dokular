@@ -2,22 +2,22 @@
 namespace App\Traits;
 
 use App\Models\User;
+use App\Models\State;
 
 trait UserTrait{
 
     public static function createOrUpdate($request)
     {
-
         $user = User::updateOrCreate(
-                    ['email' => $request->post('email')],
+                    ['email' => $request['email']],
                     [
-                        'first_name' => $request->post('first_name'),
-                        'last_name' => $request->post('last_name'),
-                        'phone' => $request->post('phone'),
-                        'state' => $request->post('state'),
-                        'lga' => $request->post('lga'),
-                        'email' => $request->post('email'),
-                        'address' => $request->post('address')
+                        'first_name' => $request['first_name'],
+                        'last_name' => $request['last_name'],
+                        'phone' => $request['phone'],
+                        'state' => State::find($request['state_id'],['name'])->name,
+                        'lga' => $request['lga'],
+                        'email' => $request['email'],
+                        'address' => $request['address']
                     ]
                 );
         return $user->id;

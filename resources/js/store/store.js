@@ -26,6 +26,8 @@ export const store = new Vuex.Store({
         categories: [],
         precarts: [],
         token: getToken(),
+        Payable: true,
+        Reference: ''
     },
 
     mutations: {
@@ -63,6 +65,14 @@ export const store = new Vuex.Store({
             state.token = token;
             setToken(token);
         },
+
+        SET_PAYABLE: (state, status) => {
+            state.Payable = status
+        },
+
+        PAYSTACK_REFERENCE: (state, reference) => {
+            state.Reference = reference
+        }
     },
 
     actions: {
@@ -139,6 +149,18 @@ export const store = new Vuex.Store({
 
         getDeliveryFee: state => {
             return state.delivery.fee
+        },
+
+        payable: state => {
+            return state.Payable
+        },
+
+        email: state => {
+           return state.delivery.email
+        },
+
+        reference: state => {
+            return state.Reference
         }
     },
 })

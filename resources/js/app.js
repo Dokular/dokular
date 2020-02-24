@@ -11,11 +11,18 @@ import { store } from './store/store'
 import {BootstrapVue, BootstrapVueIcons} from 'bootstrap-vue'
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
-import "./vee-validate"
+import VeeValidate from 'vee-validate';
 
 Vue.use(VueFormWizard)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons);
+Vue.use(VeeValidate, {
+    classes: true,
+    classNames: {
+      valid: 'is-valid',
+      invalid: 'is-invalid'
+    }
+});
 
 Vue.prototype.$http = axios
 

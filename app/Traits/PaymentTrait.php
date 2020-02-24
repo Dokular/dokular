@@ -57,7 +57,7 @@ trait PaymentTrait{
 
         }
 
-        $tfare = State::where('name', $request->post('state'))->get(['price']);
+        $tfare = State::where('name', $request->post('delivery.state'))->get(['price']);
 
         $total = $sum + $tfare[0]->price;
 
