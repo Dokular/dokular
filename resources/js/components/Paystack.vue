@@ -1,11 +1,13 @@
 <template>
-  <button
+  <b-button
+    variant="success"
     v-if="!embed"
     class="btn btn-primary btn-lg btn-block"
     @click="payWithPaystack"
+    :disabled="payable"
   >
     Continue to checkout
-  </button>
+  </b-button>
   <div
     v-else
     id="paystackEmbedContainer"
@@ -13,6 +15,7 @@
 </template>
 
 <script type="text/javascript">
+import {mapGetters, mapMutations} from 'vuex'
 export default {
     props: {
         triggerPayment: {
@@ -24,10 +27,6 @@ export default {
             default: false
         },
         paystackkey: {
-            type: String,
-            required: true
-        },
-        email: {
             type: String,
             required: true
         },
@@ -76,8 +75,7 @@ export default {
     },
     data(){
         return {
-          scriptLoaded: null,
-          reference:''
+          scriptLoaded: null
         }
     },
     created() {
@@ -92,12 +90,22 @@ export default {
             this.payWithPaystack()
         }
     },
-    watch: {
-        triggerPayment: function(newVal, oldVal) {
-            this.payWithPaystack()
+    computed:{
+        ...mapGetters(['payable','email']),
+        reference(){
+          let text = "";
+          let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+          for( let i=0; i < 10; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+          this.PAYSTACK_REFERENCE(text)
+
+          return text;
         }
     },
     methods: {
+        ...mapMutations(['PAYSTACK_REFERENCE']),
         loadScript(callback) {
             const script = document.createElement('script')
             script.src = 'https://js.paystack.co/v1/inline.js'
@@ -146,32 +154,9 @@ export default {
                 }
             })
         },
-        makeReference(){
-            let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            for( let i=0; i < 10; i++ )
-            this.reference += possible.charAt(Math.floor(Math.random() * possible.length));
-        },
     }
 }
 </script>
 <style scoped>
-.btn-block {
-    display: block;
-    width: 100%;
-    height: 48px;
-}
-
-.btn-lg, .btn-group-lg > .btn {
-    padding: 0.5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: 0.3rem;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
 
 </style>

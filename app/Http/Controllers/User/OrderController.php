@@ -23,13 +23,13 @@ class OrderController extends Controller
 
         $orders = $request->post('order');
 
-        $user = User::find(User::createOrUpdate($request));
+        $user = User::find(User::createOrUpdate($request->post('delivery')));
 
         foreach( $orders as $order){
 
             $owner = $user->vehicleOwner($order, $request->post('reference'));
 
-            $owner->deliveryAddress($request);
+            $owner->deliveryAddress($request->post('delivery'));
 
             foreach($order['products'] as $product ){
                 $owner->createOrders($product);

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\State;
 
 class Owner extends Model
 {
@@ -41,10 +42,10 @@ class Owner extends Model
     public function deliveryAddress($request)
     {
         $this->delivery()->create([
-            'phone' => $request->post('phone'),
-            'address'=> $request->post('address'),
-            'state' => $request->post('state'),
-            'fee' => $request->post('delivery_fee')
+            'phone' => $request['phone'],
+            'address'=> $request['address'],
+            'state' => State::find($request['state_id'],['name'])->name,
+            'fee' => $request['fee']
         ]);
     }
 }

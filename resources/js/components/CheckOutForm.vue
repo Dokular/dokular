@@ -6,39 +6,58 @@
             <label for="firstName">First name</label>
             <input type="text"
                 class="form-control"
+                v-validate="'required'"
+                data-vv-as="first name"
                 v-model="delivery.first_name"
+                name="first_name"
                 placeholder=""
                 required
+                @input="validate"
             >
+            <span>{{ errors.first('first_name') }}</span>
         </div>
-
         <div class="col-md-6 mb-3">
             <label for="lastName">
                 Last name
             </label>
-            <input type="text"
-                    class="form-control"
-                    v-model="delivery.last_name"
-                    placeholder=""
-                    required
+            <input
+                type="text"
+                class="form-control"
+                v-validate="'required'"
+                data-vv-as="last name"
+                v-model="delivery.last_name"
+                name="last_name"
+                placeholder=""
+                required
+                @input="validate"
             >
         </div>
         </div>
         <div class="row">
         <div class="mb-3 col-md-6">
             <label for="phone">Phone </label>
-            <input type="phone"
-                    class="form-control"
-                    v-model="delivery.phone"
-                    placeholder="08030000000"
+            <input
+                type="phone"
+                class="form-control"
+                v-validate="'required'"
+                v-model="delivery.phone"
+                placeholder="08030000000"
+                name="phone"
+                required
+                @input="validate"
             >
         </div>
         <div class="mb-3 col-md-6">
             <label for="email">Email </label>
-            <input type="email"
-                    class="form-control"
-                    v-model="delivery.email"
-                    placeholder="you@example.com"
+            <input
+                type="email"
+                class="form-control"
+                v-validate="'required|email'"
+                v-model="delivery.email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                @input="validate"
             >
         </div>
         </div>
@@ -49,6 +68,7 @@
                 v-model="delivery.address"
                 placeholder="1234 Main St"
                 required
+                @input="validate"
             >
         </div>
         <div class="row">
@@ -57,6 +77,7 @@
             <select
                 class="custom-select d-block w-100"
                 v-model="stateData"
+                @input="validate"
             >
                 <option
                     :value="null"
@@ -110,6 +131,7 @@ export default {
         ...mapState(['delivery']),
     },
     methods: {
+        ...mapMutations(['SET_PAYABLE']),
         getState(){
             axios.get(process.env.MIX_API+'states')
             .then(response => {
@@ -119,6 +141,21 @@ export default {
                 console.log(error)
             })
         },
+
+        validate(){
+            this.$validator.validate().then(valid => {
+                if (!valid) {
+                  this.SET_PAYABLE(true)
+                }else{
+                   this.SET_PAYABLE(false)
+                }
+            });
+        }
     }
 }
 </script>
+<style scoped>
+input:invalid {
+  border-color: red;
+}
+</style>

@@ -13,10 +13,16 @@ import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import VeeValidate from 'vee-validate';
 
-Vue.use(VeeValidate);
 Vue.use(VueFormWizard)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons);
+Vue.use(VeeValidate, {
+    classes: true,
+    classNames: {
+      valid: 'is-valid',
+      invalid: 'is-invalid'
+    }
+});
 
 Vue.prototype.$http = axios
 

@@ -17,20 +17,14 @@
                 />
                 <Paystack
                     :amount="amount"
-                    :email="email"
                     :paystackkey="paystackkey"
-                    :reference="reference"
                     :callback="callback"
-                    :triggerPayment="trigger"
                     :close="close"
                     :embed="false"
-                    :key="componentKey"
                 />
             </div>
             <div class="col-md-8 order-md-1">
-                <CheckOutForm
-                  validity="Prepayment"
-                />
+                <CheckOutForm />
             </div>
         </div>
         </div>
@@ -43,7 +37,6 @@
           :show="successModal"
           @hidden="successModalClosed"
         />
-
     </div>
 </template>
 <script>
@@ -63,11 +56,8 @@ export default {
             paystackkey: process.env.MIX_PAYSTACK_PK,
             service_charge: 0,
             stateObject: null,
-            trigger: false,
             user: 0,
             states:[],
-            componentKey: 0,
-            reference:'',
             successModal: false,
             isLoading: false,
         }
@@ -80,8 +70,7 @@ export default {
       CheckOutForm
     },
     computed: {
-        ...mapGetters(["carts", "total", "getDeliveryFee"]),
-
+        ...mapGetters(["carts", "total", "getDeliveryFee", "getDelivery", "reference"]),
         //Calculate paystack amount
         amount() {
             return (this.total  + this.getDeliveryFee + this.service_charge) * 100;
@@ -98,27 +87,18 @@ export default {
             axios.post(process.env.MIX_API+'order',{
                 order: self.carts,
                 reference: this.reference,
-
+                delivery: this.getDelivery,
             }).then(response => {
                 self.isLoading = false;
                 this.successModal = true;
-                //this.clearData()
+                console.log(response)
+                this.CLEAR_CART()
             }).catch(error => {
-                this.trigger = false
-                this.forceRerender()
                 alert(error)
             })
         },
         close(){
             console.log("Payment closed")
-        },
-        Prepayment() {
-            this.makeReference();
-            this.trigger = true;
-        },
-        forceRerender() {
-            this.componentKey += 1;
-            this.reference
         },
         getState(){
             axios.get(process.env.MIX_API+'states')
@@ -136,11 +116,5 @@ export default {
 }
 </script>
 <style scoped>
-.invalid{
-  color: #d44950;
-}
 
-.emptycart{
-    min-height: 100vh;
-}
 </style>
