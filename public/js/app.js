@@ -2131,6 +2131,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56461,14 +56469,19 @@ var render = function() {
               }
             }
           },
-          _vm._l(_vm.states, function(state, index) {
-            return _c("option", { key: index, domProps: { value: state } }, [
-              _vm._v(
-                "\n                " + _vm._s(state.name) + "\n            "
-              )
+          [
+            _c("option", { attrs: { value: "lagos" } }, [
+              _vm._v("\n                Lagos\n            ")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "anambra" } }, [
+              _vm._v("\n                Anambra\n            ")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "abuja" } }, [
+              _vm._v("\n                Abuja\n            ")
             ])
-          }),
-          0
+          ]
         )
       ]),
       _vm._v(" "),

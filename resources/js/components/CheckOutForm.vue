@@ -79,12 +79,20 @@
                 v-model="stateData"
                 @input="validate"
             >
-                <option
+                <!-- <option
                     v-for="(state, index) in states"
                     :value="state"
                     :key="index"
-                >
-                    {{ state.name }}
+                > -->
+                    <!-- {{ state.name }} -->
+                <option value="lagos">
+                    Lagos
+                </option>
+                <option value="anambra">
+                    Anambra
+                </option>
+                <option value="abuja">
+                    Abuja
                 </option>
             </select>
         </div>
