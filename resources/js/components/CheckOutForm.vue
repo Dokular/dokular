@@ -75,7 +75,7 @@
         <div class="col-md-5 mb-3">
             <label for="state">State</label>
             <select
-                class="custom-select d-block w-100"
+                class="form-control"
                 v-model="stateData"
                 @input="validate"
             >

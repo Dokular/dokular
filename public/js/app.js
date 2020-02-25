@@ -56447,7 +56447,7 @@ var render = function() {
                 expression: "stateData"
               }
             ],
-            staticClass: "custom-select d-block w-100",
+            staticClass: "form-control",
             on: {
               input: _vm.validate,
               change: function($event) {
