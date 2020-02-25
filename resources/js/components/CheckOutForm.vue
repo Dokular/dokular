@@ -80,11 +80,6 @@
                 @input="validate"
             >
                 <option
-                    :value="null"
-                >
-                    Choose...
-                </option>
-                <option
                     v-for="(state, index) in states"
                     :value="state"
                     :key="index"
@@ -95,7 +90,8 @@
         </div>
         <div class="col-md-4 mb-3">
             <label for="lga">L.G.A</label>
-            <select class="custom-select d-block w-100"
+            <select
+                    class="form-control"
                     v-model="delivery.lga"
                     required>
                 <option value="">

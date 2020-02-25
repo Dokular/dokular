@@ -2131,10 +2131,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56465,20 +56461,14 @@ var render = function() {
               }
             }
           },
-          [
-            _c("option", { domProps: { value: null } }, [
-              _vm._v("\n                Choose...\n            ")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.states, function(state, index) {
-              return _c("option", { key: index, domProps: { value: state } }, [
-                _vm._v(
-                  "\n                " + _vm._s(state.name) + "\n            "
-                )
-              ])
-            })
-          ],
-          2
+          _vm._l(_vm.states, function(state, index) {
+            return _c("option", { key: index, domProps: { value: state } }, [
+              _vm._v(
+                "\n                " + _vm._s(state.name) + "\n            "
+              )
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
@@ -56496,7 +56486,7 @@ var render = function() {
                 expression: "delivery.lga"
               }
             ],
-            staticClass: "custom-select d-block w-100",
+            staticClass: "form-control",
             attrs: { required: "" },
             on: {
               change: function($event) {
