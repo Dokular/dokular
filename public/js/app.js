@@ -2138,6 +2138,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56441,7 +56444,34 @@ var render = function() {
         _vm._v(" "),
         _c(
           "select",
-          { staticClass: "form-control" },
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.delivery.state,
+                expression: "delivery.state"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.delivery,
+                  "state",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
           [
             _c("option", { attrs: { value: "" } }, [
               _vm._v("\n                ...Select state\n            ")
@@ -77154,7 +77184,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       email: '',
       address: '',
       lga: '',
-      state_id: '',
+      state: '',
       fee: 0
     },
     delivery_fee: 0,

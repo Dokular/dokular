@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
             email: '',
             address:'',
             lga: '',
-            state_id:'',
+            state:'',
             fee: 0
         },
         delivery_fee: 0,

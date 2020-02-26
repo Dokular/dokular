@@ -86,7 +86,10 @@
                 >
                     {{ state.name }}
             </select> -->
-            <select class="form-control">
+            <select
+              class="form-control"
+              v-model="delivery.state"
+            >
                 <option value="">
                     ...Select state
                 </option>
