@@ -2142,6 +2142,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56458,13 +56462,12 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.stateData,
-                expression: "stateData"
+                value: _vm.delivery.state,
+                expression: "delivery.state"
               }
             ],
             staticClass: "form-control",
             on: {
-              input: _vm.validate,
               change: function($event) {
                 var $$selectedVal = Array.prototype.filter
                   .call($event.target.options, function(o) {
@@ -56474,20 +56477,28 @@ var render = function() {
                     var val = "_value" in o ? o._value : o.value
                     return val
                   })
-                _vm.stateData = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
+                _vm.$set(
+                  _vm.delivery,
+                  "state",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
               }
             }
           },
-          _vm._l(_vm.states, function(state, index) {
-            return _c("option", { key: index, domProps: { value: state } }, [
-              _vm._v(
-                "\n                " + _vm._s(state.name) + "\n            "
-              )
-            ])
-          }),
-          0
+          [
+            _c("option", { attrs: { value: "" } }, [
+              _vm._v("\n                ...Select state\n            ")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.states, function(state, index) {
+              return _c("option", { key: index, domProps: { value: state } }, [
+                _vm._v(
+                  "\n                " + _vm._s(state.name) + "\n            "
+                )
+              ])
+            })
+          ],
+          2
         )
       ]),
       _vm._v(" "),

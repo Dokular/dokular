@@ -74,7 +74,7 @@
         <div class="row">
         <div class="col-md-5 mb-3">
             <label for="state">State</label>
-            <select
+            <!-- <select
                 class="form-control"
                 v-model="stateData"
                 @input="validate"
@@ -86,18 +86,22 @@
                 >
                     {{ state.name }}
                 </option>
-            </select>
-            <!-- <select
+            </select> -->
+            <select
               class="form-control"
               v-model="delivery.state"
             >
                 <option value="">
                     ...Select state
                 </option>
-                <option v-for="(state, index) in states" :key="index">
+                <option
+                  :value="state"
+                  v-for="(state, index) in states"
+                  :key="index"
+                >
                     {{ state.name }}
                 </option>
-            </select> -->
+            </select>
         </div>
         <div class="col-md-4 mb-3">
             <label for="lga">L.G.A</label>
