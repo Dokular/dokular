@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
             email: '',
             address:'',
             lga: '',
-            state:'',
+            state: null,
             fee: 0
         },
         delivery_fee: 0,
@@ -148,7 +148,9 @@ export const store = new Vuex.Store({
         },
 
         getDeliveryFee: state => {
-            return state.delivery.fee
+          const getState = state.delivery.state;
+
+          return getState != null ? getState.price : 0;
         },
 
         payable: state => {

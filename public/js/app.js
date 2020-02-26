@@ -77199,7 +77199,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       email: '',
       address: '',
       lga: '',
-      state: '',
+      state: null,
       fee: 0
     },
     delivery_fee: 0,
@@ -77314,7 +77314,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       return state.delivery;
     },
     getDeliveryFee: function getDeliveryFee(state) {
-      return state.delivery.fee;
+      var getState = state.delivery.state;
+      return getState != null ? getState.price : 0;
     },
     payable: function payable(state) {
       return state.Payable;
