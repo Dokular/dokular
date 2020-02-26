@@ -58628,9 +58628,11 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-8" }, [_c("CheckOutForm")], 1),
+              _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4 order-md-2 mb-4" },
+                { staticClass: "col-md-4" },
                 [
                   _c("CheckOutCart", { attrs: { charge: _vm.service_charge } }),
                   _vm._v(" "),
@@ -58644,13 +58646,6 @@ var render = function() {
                     }
                   })
                 ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-md-8 order-md-1" },
-                [_c("CheckOutForm")],
                 1
               )
             ])
