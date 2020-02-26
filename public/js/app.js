@@ -2147,7 +2147,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       trigger: this.validation,
-      stateData: null,
       states: []
     };
   },
@@ -2609,6 +2608,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2688,6 +2688,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         });
       });
+    },
+    closedModal: function closedModal() {
+      this.$emit('close');
     }
   })
 });
@@ -2756,6 +2759,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2781,6 +2785,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     openPreCart: function openPreCart(category) {
       this.category = category;
       this.showCartForm = true;
+    },
+    closeModal: function closeModal() {
+      this.showCartForm = false;
     }
   }),
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["categories"])),
@@ -57141,6 +57148,7 @@ var render = function() {
             "b-modal",
             {
               attrs: { "hide-footer": "" },
+              on: { hidden: _vm.closedModal },
               model: {
                 value: _vm.showModal,
                 callback: function($$v) {
@@ -57477,7 +57485,8 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("CartForm", {
-        attrs: { show: _vm.showCartForm, getCategory: _vm.category }
+        attrs: { show: _vm.showCartForm, getCategory: _vm.category },
+        on: { close: _vm.closeModal }
       })
     ],
     1

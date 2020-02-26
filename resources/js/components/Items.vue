@@ -31,6 +31,7 @@
   <CartForm
     :show="showCartForm"
     :getCategory="category"
+    @close="closeModal"
   />
 </div>
 </template>
@@ -66,6 +67,10 @@ export default {
         openPreCart(category){
             this.category = category
             this.showCartForm = true
+        },
+
+        closeModal(){
+            this.showCartForm = false
         }
     },
 

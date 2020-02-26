@@ -120,7 +120,6 @@ export default {
     data(){
         return {
             trigger: this.validation,
-            stateData: null,
             states: [],
         }
     },

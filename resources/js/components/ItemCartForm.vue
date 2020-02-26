@@ -3,6 +3,7 @@
         <b-modal
           v-if="category"
           v-model="showModal"
+          @hidden="closedModal"
           hide-footer
         >
             <form-wizard :title="title" :subtitle="subtitle" @on-complete="addToCart">
@@ -155,6 +156,9 @@ export default {
                     }
                 });
             })
+        },
+        closedModal () {
+          this.$emit('close');
         },
     }
 }
