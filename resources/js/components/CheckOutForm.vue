@@ -90,14 +90,8 @@
                 <option value="">
                     ...Select state
                 </option>
-                <option value="lagos">
-                    Lagos
-                </option>
-                <option value="anambra">
-                    Anambra
-                </option>
-                <option value="abuja">
-                    Abuja
+                <option v-for="(state, index) in states" :key="index">
+                    {{ state.name }}
                 </option>
             </select>
         </div>
