@@ -2139,6 +2139,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56437,53 +56439,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-5 mb-3" }, [
-        _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.stateData,
-                expression: "stateData"
-              }
-            ],
-            staticClass: "form-control",
-            on: {
-              input: _vm.validate,
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.stateData = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              }
-            }
-          },
-          [
-            _c("option", { attrs: { value: "lagos" } }, [
-              _vm._v("\n                Lagos\n            ")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "anambra" } }, [
-              _vm._v("\n                Anambra\n            ")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "abuja" } }, [
-              _vm._v("\n                Abuja\n            ")
-            ])
-          ]
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4 mb-3" }, [
         _c("label", { attrs: { for: "lga" } }, [_vm._v("L.G.A")]),
@@ -56529,7 +56485,30 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-5 mb-3" }, [
+      _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
+      _vm._v(" "),
+      _c("select", { staticClass: "form-control" }, [
+        _c("option", { attrs: { value: "lagos" } }, [
+          _vm._v("\n                Lagos\n            ")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "anambra" } }, [
+          _vm._v("\n                Anambra\n            ")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "abuja" } }, [
+          _vm._v("\n                Abuja\n            ")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
