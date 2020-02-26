@@ -2141,6 +2141,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56494,6 +56497,10 @@ var staticRenderFns = [
       _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
       _vm._v(" "),
       _c("select", { staticClass: "form-control" }, [
+        _c("option", { attrs: { value: "" } }, [
+          _vm._v("\n                ...Select state\n            ")
+        ]),
+        _vm._v(" "),
         _c("option", { attrs: { value: "lagos" } }, [
           _vm._v("\n                Lagos\n            ")
         ]),
