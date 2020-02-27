@@ -2138,6 +2138,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56417,47 +56421,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.delivery.state,
-                expression: "delivery.state"
-              }
-            ],
-            staticClass: "form-control",
-            on: {
-              input: _vm.validate,
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.delivery,
-                  "state",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                )
-              }
-            }
-          },
-          [
-            _c("option", [_vm._v("Lagos")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("Abia")])
-          ]
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6" }, [
         _c("label", { attrs: { for: "lga" } }, [_vm._v("L.G.A")]),
@@ -56547,7 +56511,24 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6" }, [
+      _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
+      _vm._v(" "),
+      _c("select", [
+        _c("option", [_vm._v("Anambra")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Lagos")]),
+        _vm._v(" "),
+        _c("option", [_vm._v("Abia")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
