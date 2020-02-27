@@ -67,9 +67,7 @@
             <label for="state">State</label>
             <select
               class="form-control"
-              v-validate="'required'"
               v-model="delivery.state"
-              name="state"
               @input="validate"
               required
             >

@@ -2137,8 +2137,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56423,12 +56421,6 @@ var render = function() {
           {
             directives: [
               {
-                name: "validate",
-                rawName: "v-validate",
-                value: "required",
-                expression: "'required'"
-              },
-              {
                 name: "model",
                 rawName: "v-model",
                 value: _vm.delivery.state,
@@ -56436,7 +56428,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { name: "state", required: "" },
+            attrs: { required: "" },
             on: {
               input: _vm.validate,
               change: function($event) {
