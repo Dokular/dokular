@@ -150,7 +150,7 @@ export const store = new Vuex.Store({
         getDeliveryFee: state => {
           const getState = state.delivery.state;
 
-          return getState != null ? getState.price : 0;
+          return !getState ? 0 : getState.price ;
         },
 
         payable: state => {

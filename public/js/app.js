@@ -2139,13 +2139,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -56340,7 +56333,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "mb-3 col-md-6" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("label", { attrs: { for: "phone" } }, [_vm._v("Phone ")]),
         _vm._v(" "),
         _c("input", {
@@ -56380,7 +56373,7 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "mb-3 col-md-6" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("label", { attrs: { for: "email" } }, [_vm._v("Email ")]),
         _vm._v(" "),
         _c("input", {
@@ -56421,43 +56414,20 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "mb-3" }, [
-      _c("label", { attrs: { for: "address" } }, [_vm._v("Delivery address")]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.delivery.address,
-            expression: "delivery.address"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "1234 Main St", required: "" },
-        domProps: { value: _vm.delivery.address },
-        on: {
-          input: [
-            function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.delivery, "address", $event.target.value)
-            },
-            _vm.validate
-          ]
-        }
-      })
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-5 mb-3" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
         _vm._v(" "),
         _c(
           "select",
           {
             directives: [
+              {
+                name: "validate",
+                rawName: "v-validate",
+                value: "required",
+                expression: "'required'"
+              },
               {
                 name: "model",
                 rawName: "v-model",
@@ -56466,7 +56436,9 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            attrs: { name: "state", required: "" },
             on: {
+              input: _vm.validate,
               change: function($event) {
                 var $$selectedVal = Array.prototype.filter
                   .call($event.target.options, function(o) {
@@ -56484,24 +56456,18 @@ var render = function() {
               }
             }
           },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("\n                ...Select state\n            ")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.states, function(state, index) {
-              return _c("option", { key: index, domProps: { value: state } }, [
-                _vm._v(
-                  "\n                " + _vm._s(state.name) + "\n            "
-                )
-              ])
-            })
-          ],
-          2
+          _vm._l(_vm.states, function(state, index) {
+            return _c("option", { key: index, domProps: { value: state } }, [
+              _vm._v(
+                "\n                " + _vm._s(state.name) + "\n            "
+              )
+            ])
+          }),
+          0
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-4 mb-3" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("label", { attrs: { for: "lga" } }, [_vm._v("L.G.A")]),
         _vm._v(" "),
         _c(
@@ -56541,6 +56507,50 @@ var render = function() {
             ])
           ]
         )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("label", { attrs: { for: "address" } }, [
+          _vm._v("Delivery address")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "validate",
+              rawName: "v-validate",
+              value: "required",
+              expression: "'required'"
+            },
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.delivery.address,
+              expression: "delivery.address"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            placeholder: "1234 Main St",
+            name: "address",
+            required: ""
+          },
+          domProps: { value: _vm.delivery.address },
+          on: {
+            input: [
+              function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.delivery, "address", $event.target.value)
+              },
+              _vm.validate
+            ]
+          }
+        })
       ])
     ])
   ])
@@ -58631,7 +58641,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-4" },
+                {
+                  staticClass: "col-md-4",
+                  staticStyle: { "padding-bottom": "50px" }
+                },
                 [
                   _c("CheckOutCart", { attrs: { charge: _vm.service_charge } }),
                   _vm._v(" "),
@@ -77309,7 +77322,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     },
     getDeliveryFee: function getDeliveryFee(state) {
       var getState = state.delivery.state;
-      return getState != null ? getState.price : 0;
+      return !getState ? 0 : getState.price;
     },
     payable: function payable(state) {
       return state.Payable;

@@ -34,7 +34,7 @@
         </div>
         </div>
         <div class="row">
-        <div class="mb-3 col-md-6">
+        <div class="col-md-6">
             <label for="phone">Phone </label>
             <input
                 type="phone"
@@ -47,7 +47,7 @@
                 @input="validate"
             >
         </div>
-        <div class="mb-3 col-md-6">
+        <div class="col-md-6">
             <label for="email">Email </label>
             <input
                 type="email"
@@ -61,39 +61,18 @@
             >
         </div>
         </div>
-        <div class="mb-3">
-            <label for="address">Delivery address</label>
-            <input type="text"
-                class="form-control"
-                v-model="delivery.address"
-                placeholder="1234 Main St"
-                required
-                @input="validate"
-            >
-        </div>
+
         <div class="row">
-        <div class="col-md-5 mb-3">
+        <div class="col-md-6">
             <label for="state">State</label>
-            <!-- <select
-                class="form-control"
-                v-model="stateData"
-                @input="validate"
-            >
-                <option
-                    :value="state"
-                    v-for="(state, index) in states"
-                    :key="index"
-                >
-                    {{ state.name }}
-                </option>
-            </select> -->
             <select
               class="form-control"
+              v-validate="'required'"
               v-model="delivery.state"
+              name="state"
+              @input="validate"
+              required
             >
-                <option value="">
-                    ...Select state
-                </option>
                 <option
                   :value="state"
                   v-for="(state, index) in states"
@@ -103,7 +82,7 @@
                 </option>
             </select>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-6">
             <label for="lga">L.G.A</label>
             <select
                     class="form-control"
@@ -113,6 +92,20 @@
                     Choose...
                 </option>
             </select>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col">
+            <label for="address">Delivery address</label>
+            <input type="text"
+                class="form-control"
+                v-validate="'required'"
+                v-model="delivery.address"
+                placeholder="1234 Main St"
+                name="address"
+                @input="validate"
+                required
+            >
         </div>
         </div>
     </div>

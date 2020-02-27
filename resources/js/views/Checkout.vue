@@ -14,7 +14,7 @@
             <div class="col-md-8">
                 <CheckOutForm />
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding-bottom:50px;">
                 <CheckOutCart
                   :charge="service_charge"
                 />
