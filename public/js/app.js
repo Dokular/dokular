@@ -2136,7 +2136,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2166,6 +2165,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    selectedState: function selectedState(state) {
+      console.log(state);
     },
     validate: function validate() {
       var _this2 = this;
@@ -37758,7 +37760,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nfooter[data-v-61a7c374]{\n    background-color: #343a40 !important;\n    color: #fff;\n    padding: 20px;\n}\n", ""]);
+exports.push([module.i, "\nfooter#footer[data-v-61a7c374]{\n    background-color: #343a40  !important;\n    color: #fff;\n    padding: 15px;\n}\nfooter#footer .footer-header[data-v-61a7c374]{\n    font-size: 13px;\n    font-weight: 700;\n    margin-bottom: 40px;\n    text-transform: uppercase;\n    margin-top: 77px;\n}\nfooter#footer .footer-links[data-v-61a7c374]{\n    display: block;\n    padding: 7px 0;\n    line-height: 30px;\n    cursor: pointer;\n    color: #7c7c7d;\n    font-weight: 500;\n    display: block!important;\n}\nfooter#footer .address[data-v-61a7c374]{\n    font-size: 14px;\n    color: #aaa;\n    font-weight: 500;\n}\n", ""]);
 
 // exports
 
@@ -56428,7 +56430,6 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { required: "" },
             on: {
               input: _vm.validate,
               change: function($event) {
@@ -57046,7 +57047,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("footer", {}, [
+  return _c("footer", { attrs: { id: "footer" } }, [
     _c("div", { staticClass: "container" }, [
       _vm._m(0),
       _vm._v(" "),
@@ -57068,9 +57069,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-6 col-md" }, [
-        _c("h2", [_vm._v("Legal")]),
+        _c("h2", { staticClass: "footer-header" }, [_vm._v("Legal")]),
         _vm._v(" "),
-        _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("ul", { staticClass: "footer-links list-unstyled text-small" }, [
           _c("li", [
             _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
               _vm._v("Privacy")
@@ -57086,9 +57087,9 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-6 col-md" }, [
-        _c("h2", [_vm._v("Follow us")]),
+        _c("h2", { staticClass: "footer-header" }, [_vm._v("Follow us")]),
         _vm._v(" "),
-        _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("ul", { staticClass: "footer-links list-unstyled text-small" }, [
           _c("li", [
             _c(
               "a",
@@ -57115,9 +57116,9 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-6 col-md" }, [
-        _c("h2", [_vm._v("Location")]),
+        _c("h2", { staticClass: "footer-header" }, [_vm._v("Location")]),
         _vm._v(" "),
-        _c("p", [
+        _c("p", { staticClass: "address" }, [
           _vm._v(
             "\n            8 Ayinde Giwa Street, Off Ogunlana Dr, Surulere, Lagos.\n        "
           )

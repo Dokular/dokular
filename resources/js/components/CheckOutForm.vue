@@ -69,7 +69,6 @@
               class="form-control"
               v-model="delivery.state"
               @input="validate"
-              required
             >
                 <option
                   v-for="(state, index) in states"
@@ -142,6 +141,10 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
+        },
+
+        selectedState(state){
+            console.log(state)
         },
 
         validate(){
