@@ -70,12 +70,14 @@
               v-model="delivery.state"
               @input="validate"
             >
-                <option
+                <!-- <option
                   v-for="(state, index) in states"
                   :key="index"
                 >
                     {{ state.name }}
-                </option>
+                </option> -->
+                <option>Lagos</option>
+                <option>Abia</option>
             </select>
         </div>
         <div class="col-md-6">
