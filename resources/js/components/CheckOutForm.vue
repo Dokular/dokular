@@ -74,7 +74,6 @@
               required
             >
                 <option
-                  :value="state"
                   v-for="(state, index) in states"
                   :key="index"
                 >
@@ -85,9 +84,10 @@
         <div class="col-md-6">
             <label for="lga">L.G.A</label>
             <select
-                    class="form-control"
-                    v-model="delivery.lga"
-                    required>
+                class="form-control"
+                v-model="delivery.lga"
+                required
+            >
                 <option value="">
                     Choose...
                 </option>

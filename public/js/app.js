@@ -56457,7 +56457,7 @@ var render = function() {
             }
           },
           _vm._l(_vm.states, function(state, index) {
-            return _c("option", { key: index, domProps: { value: state } }, [
+            return _c("option", { key: index }, [
               _vm._v(
                 "\n                " + _vm._s(state.name) + "\n            "
               )
