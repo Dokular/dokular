@@ -44,7 +44,7 @@ class Owner extends Model
         $this->delivery()->create([
             'phone' => $request['phone'],
             'address'=> $request['address'],
-            'state' => State::find($request['state_id'],['name'])->name,
+            'state' => $request['state']['name'],
             'fee' => $request['fee']
         ]);
     }

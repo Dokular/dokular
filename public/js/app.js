@@ -3582,8 +3582,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         delivery: this.getDelivery
       }).then(function (response) {
         self.isLoading = false;
-        _this.successModal = true;
-        console.log(response);
+        _this.successModal = true; //console.log(response)
 
         _this.CLEAR_CART();
       })["catch"](function (error) {

@@ -23,9 +23,8 @@ trait PaymentTrait{
             $amount = $this->amount($request);
 
             $res = $response->getBody();
-            $result = json_decode($res, true);
 
-            return $result;
+            $result = json_decode($res, true);
 
             if ( array_key_exists('data', $result) &&
                 array_key_exists('status', $result['data']) &&
@@ -56,8 +55,9 @@ trait PaymentTrait{
             }
 
         }
+        $getState = $request->post('delivery');
 
-        $tfare = State::where('name', $request->post('delivery.state'))->get(['price']);
+        $tfare = State::where('name', $getState['state']['name'])->get(['price']);
 
         $total = $sum + $tfare[0]->price;
 
