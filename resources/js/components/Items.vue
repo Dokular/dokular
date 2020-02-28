@@ -9,7 +9,7 @@
               <img :src="category.img" alt="Image" class="img-fluid">
             </a>
             <div class="px-md-3">
-            <h3><a href="#">{{ category.name }}</a></h3>
+            <h3>{{ category.name }}</h3>
             <p>
                 {{ category.description }}
                 <br>

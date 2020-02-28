@@ -2,7 +2,7 @@
 <div>
   <b-navbar toggleable="lg">
     <b-navbar-brand :to="{ name: 'landing'}">
-        <img :src="logo" height="100px"/>
+        <img :src="logo" height="20px"/>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
