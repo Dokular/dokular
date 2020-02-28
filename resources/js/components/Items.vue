@@ -12,14 +12,16 @@
             <h3>{{ category.name }}</h3>
             <p>
                 {{ category.description }}
-                <br>
+                <hr />
                 <span
                   v-for="(product, index) in category.products"
                   :key="index"
 
                 >
-                    {{ product.name }} => <span class="{category.name == 'saloon' ? saloon} : suv">N{{ product.price }}</span>
-                    <br>
+                    {{ product.name }} => <span class="{category.name == 'saloon' ? saloon} : suv">
+                        N{{ product.price }}
+                        </span>
+                    <hr />
                 </span>
             </p>
             </div>
