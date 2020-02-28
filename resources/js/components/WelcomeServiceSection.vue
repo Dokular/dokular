@@ -14,9 +14,7 @@
           </div>
           <div class="row" style="margin: 100px 0px;">
             <div class="col-md text-center">
-              <b-card
-                style="min-height: 100px;"
-              >
+              <b-card>
                 <div class="icon mb-0">
                     <font-awesome-icon icon="mouse" />
                 </div>
@@ -28,7 +26,7 @@
             </div>
 
             <div class="col-md text-center">
-              <b-card class="service-card">
+              <b-card>
                 <div class="icon mb-0">
                     <font-awesome-icon icon="pen" />
                 </div>
@@ -41,7 +39,7 @@
             </div>
 
             <div class="col-md text-center">
-              <b-card class="service-card">
+              <b-card>
                 <div class="icon mb-0">
                     <font-awesome-icon icon="credit-card" />
                 </div>
@@ -58,7 +56,10 @@
 </template>
 <script>
 export default {
-
+    data() {
+        return {
+        }
+    }
 }
 </script>
 <style scoped>
