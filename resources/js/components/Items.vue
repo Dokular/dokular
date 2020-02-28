@@ -18,7 +18,7 @@
                   :key="index"
 
                 >
-                    {{ product.name }} => <span class="{category.name == 'saloon' ? saloon} : suv">
+                    {{ product.name }} => <span class="{category.name == 'saloon' ? saloon  : suv}">
                         N{{ product.price }}
                         </span>
                     <hr />
