@@ -79,7 +79,7 @@
                     {{ state.name }}
                 </option>
             </select> -->
-            <select class="form-control">
+            <select name="selected" class="form-control">
                 <option>Anambra</option>
                 <option>Lagos</option>
                 <option>Abia</option>
