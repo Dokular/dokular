@@ -1,7 +1,9 @@
 <template>
 <div>
   <b-navbar toggleable="lg">
-    <b-navbar-brand :to="{ name: 'landing'}">Dokular</b-navbar-brand>
+    <b-navbar-brand :to="{ name: 'landing'}">
+        <img :src="logo" height="100px"/>
+    </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -25,11 +27,13 @@
 </template>
 <script>
 import Icon from '../assets/images/icon/avatar-big-01.jpg'
+import Logo from '../assets/images/dokular.png'
 import {mapActions, mapGetters} from 'vuex'
 export default {
     data() {
         return {
-            icon: Icon
+            icon: Icon,
+            logo: Logo
         }
     },
     computed: {
