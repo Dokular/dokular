@@ -9,7 +9,7 @@
               <img :src="category.img" alt="Image" class="img-fluid">
             </a>
             <div class="px-md-3">
-            <h3>{{ category.name }}</h3>
+            <h3 class="cat-name">{{ category.name }}</h3>
             <p>
                 {{ category.description }}
                 <hr />
@@ -18,7 +18,11 @@
                   :key="index"
 
                 >
-                    {{ product.name }} => <span class="{category.name == 'saloon' ? saloon  : 'suv'}">N{{ product.price }}</span>
+                    {{ product.name }}
+                    <font-awesome-icon icon="arrow-circle-right" />
+                    <span class="pro-price">
+                        N{{ product.price }}
+                    </span>
                     <hr />
                 </span>
             </p>
@@ -92,4 +96,20 @@ export default {
  .saloon{
 color: blue;
  }
+
+ .cat-name{
+    color: #0f75bc;
+    font-weight: bold;
+ }
+.pro-price{
+    color: #0f75bc;
+    font-weight: bold;
+}
+
+.btn-outline-secondary{
+    color: #fff;
+    border-color: #0f75bc;
+    background-color: #0f75bc;
+    width: 300px;
+}
 </style>
