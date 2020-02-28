@@ -1,21 +1,22 @@
 <template>
     <div>
-      <div class="bg-light" id="services-section">
+      <div id="services-section">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-md-7 text-center">
               <div class="block-heading-1">
-                <h2 style="color: #fff;padding-top:100px;">Services</h2>
-                <p>Dokular services, vehicle papers renewal made easy.</p>
+                <h2 style="color: #000;font-size: 40px;font-weight: 900;">Services</h2>
+                <p style="font-size: 1.25rem;font-weight: 300;">
+                    Dokular services, vehicle papers renewal made easy.
+                </p>
               </div>
             </div>
           </div>
           <div class="row" style="margin: 100px 0px;">
             <div class="col-md text-center">
               <div class="icon mb-0">
-                <span class="flaticon-ferry"></span>
+                <font-awesome-icon icon="mouse" />
               </div>
-              <h3 class="mb-3">Step one</h3>
               <p>
                 Click on renew of your vehicle type, fill in the required information of the
                 vehicle. Next, select the papers you wish to renew, and add to cart.
@@ -24,45 +25,24 @@
 
             <div class="col-md text-center">
               <div class="icon mb-0">
-                <span class="flaticon-airplane"></span>
+                <font-awesome-icon icon="pen" />
               </div>
-              <h3 class="mb-3">Step two</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-            </div>
-
-            <div class="col-md text-center">
-              <div class="icon mb-0">
-                <span class="flaticon-box"></span>
-              </div>
-              <h3 class="mb-3">Step three</h3>
               <p>
-                Click check out at the Top right corner of the page.
+                  When you are done adding the cars and papers to renew in the cart,
+                  click checkout to goto checkout page where you need to fill delivery
+                  information.
               </p>
             </div>
-          </div>
-          <div class="row" style="padding-bottom: 100px;">
-            <div class="col-md text-center">
-              <div class="icon mb-0">
-                <span class="flaticon-lorry"></span>
-              </div>
-              <h3 class="mb-3">Trucking</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-            </div>
 
             <div class="col-md text-center">
               <div class="icon mb-0">
-                <span class="flaticon-warehouse"></span>
+                <font-awesome-icon icon="credit-card" />
               </div>
-              <h3 class="mb-3">Warehouse</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-            </div>
-
-            <div class="col-md text-center">
-              <div class="icon mb-0">
-                <span class="flaticon-add"></span>
-              </div>
-              <h3 class="mb-3">Delivery</h3>
-              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+              <p>
+                Our payment is powered by Paystack so it's easy seamless and secure.
+                After filling delivery info proceed to payment,as so as payment is made
+                you will receive a confirmation email, with transaction detail.
+              </p>
             </div>
           </div>
         </div>
@@ -75,9 +55,5 @@ export default {
 }
 </script>
 <style scoped>
-.bg-light{
-    color: #ffffff !important;
-    background-color: #011627 !important;
-    margin-top: 100px;
-}
+
 </style>

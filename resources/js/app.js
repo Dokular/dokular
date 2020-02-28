@@ -12,6 +12,9 @@ import {BootstrapVue, BootstrapVueIcons} from 'bootstrap-vue'
 import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import VeeValidate from 'vee-validate';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(VueFormWizard)
 Vue.use(BootstrapVue)
@@ -23,6 +26,9 @@ Vue.use(VeeValidate, {
       invalid: 'is-invalid'
     }
 });
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+library.add(fas)
 
 Vue.prototype.$http = axios
 
