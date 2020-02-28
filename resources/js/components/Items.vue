@@ -16,8 +16,9 @@
                 <span
                   v-for="(product, index) in category.products"
                   :key="index"
+
                 >
-                    {{ product.name }} => N{{ product.price }}
+                    {{ product.name }} => <span class="{category.name == 'saloon' ? saloon} : suv">N{{ product.price }}</span>
                     <br>
                 </span>
             </p>
@@ -84,3 +85,11 @@ export default {
     },
 }
 </script>
+<style scoped>
+ .suv{
+     color: red;
+ }
+ .saloon{
+color: blue;
+ }
+</style>
