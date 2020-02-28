@@ -62,7 +62,5 @@ export default {
 }
 </script>
 <style scoped>
-.card{
-    min-height: 100px;
-}
+
 </style>
