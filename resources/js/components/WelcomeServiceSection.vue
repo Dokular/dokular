@@ -32,7 +32,7 @@
                 </div>
                 <b-card-text>
                     When you are done adding the cars and papers to renew in the cart,
-                    click checkout to goto checkout page where you need to fill delivery
+                    click checkout to go to checkout page where you need to fill delivery
                     information.
                 </b-card-text>
               </b-card>
@@ -44,8 +44,8 @@
                     <font-awesome-icon icon="credit-card" />
                 </div>
                 <b-card-text>
-                    After filling delivery info proceed to payment,as so as payment is made
-                    you will receive a confirmation email, with transaction detail.
+                    After filling delivery info proceed to payment,as soon as payment is made
+                    you will receive a confirmation email, with transaction details.
                 </b-card-text>
               </b-card>
             </div>
