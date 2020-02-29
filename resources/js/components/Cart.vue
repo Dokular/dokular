@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="carts.length">
-      <div class="card">
+      <!-- <div class="card">
         <div class="card-header">My Cart</div>
         <table class="table table-bordered">
           <tbody>
@@ -26,7 +26,36 @@
             </router-link>
           </button>
         </div>
-      </div>
+      </div> -->
+    <b-card title="My card">
+        <b-card-text v-for="(cart, index) in carts" :key="index">
+            <b-container class="bv-example-row">
+                <b-row>
+                    <b-col cols="1">
+                        <font-awesome-icon
+                          icon="trash-alt"
+                          @click="removeCart(cart)"
+                          class="delspan"
+                        />
+                    </b-col>
+                    <b-col>
+                        {{ cart.make }}
+                        <br/>
+                        {{ cart.owner }}
+                    </b-col>
+                    <b-col>
+                        <span v-for="(product, index) in cart.products" :key="index">
+                            {{ product.name }} - {{ product.price }}
+                            <br/>
+                        </span>
+                    </b-col>
+                </b-row>
+            </b-container>
+            <hr/>
+        </b-card-text>
+        <p>Total: N{{ total }}</p>
+        <b-button to="/checkout" variant="primary">Checkout</b-button>
+    </b-card>
   </div>
 </template>
 <script>
