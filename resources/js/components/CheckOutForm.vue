@@ -2,7 +2,7 @@
     <div>
         <h4 class="mb-3">Delivery address</h4>
         <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6">
             <label for="firstName">First name</label>
             <input type="text"
                 class="form-control"
@@ -16,7 +16,7 @@
             >
             <span>{{ errors.first('first_name') }}</span>
         </div>
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6">
             <label for="lastName">
                 Last name
             </label>
@@ -80,9 +80,9 @@
                 </option>
             </select> -->
             <select name="selected" class="form-control">
-                <option>Anambra</option>
-                <option>Lagos</option>
-                <option>Abia</option>
+                <option value="anambra">Anambra</option>
+                <option value="lagos">Lagos</option>
+                <option value="abia">Abia</option>
             </select>
         </div>
         <div class="col-md-6">
@@ -169,5 +169,8 @@ export default {
 <style scoped>
 input:invalid {
   border-color: red;
+}
+.row{
+    margin-bottom: 15px;
 }
 </style>

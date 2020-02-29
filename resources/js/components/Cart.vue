@@ -16,7 +16,7 @@
                         <br/>
                         {{ cart.owner }}
                     </b-col>
-                    <b-col>
+                    <b-col cols="7">
                         <span v-for="(product, index) in cart.products" :key="index">
                             {{ product.name }} - {{ product.price }}
                             <br/>
