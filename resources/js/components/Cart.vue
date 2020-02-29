@@ -11,7 +11,7 @@
                           class="delspan"
                         />
                     </b-col>
-                    <b-col>
+                    <b-col cols="4">
                         {{ cart.make }}
                         <br/>
                         {{ cart.owner }}
