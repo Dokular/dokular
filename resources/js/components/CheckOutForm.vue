@@ -72,8 +72,8 @@
               @input="validate"
             >
                 <option
-                  v-for="(state, index) in states"
                   :value="state"
+                  v-for="(state, index) in states"
                   :key="index"
                 >
                     {{ state.name }}
