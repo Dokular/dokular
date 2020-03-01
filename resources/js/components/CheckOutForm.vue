@@ -66,7 +66,7 @@
         <div class="col-md-6">
             <label for="state">State</label>
             <select
-            v-model="delivery.state"
+            v-model="stateData"
             v-validate="'required'"
             name="state"
             class="form-control"
@@ -82,12 +82,6 @@
                     {{ state.name }}
                 </option>
             </select>
-
-            <!-- <select name="selected" class="form-control">
-                <option value="anambra">Anambra</option>
-                <option value="lagos">Lagos</option>
-                <option value="abia">Abia</option>
-            </select> -->
         </div>
         <div class="col-md-6">
             <label for="lga">L.G.A</label>
