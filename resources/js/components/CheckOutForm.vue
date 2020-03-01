@@ -74,7 +74,7 @@
             >
                 <option>Choose state</option>
                 <option
-                  value="state"
+                  :value="state"
                   v-for="(state, index) in states"
                   :key="index"
                 >
