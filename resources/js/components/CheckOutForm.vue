@@ -65,25 +65,25 @@
         <div class="row">
         <div class="col-md-6">
             <label for="state">State</label>
-            <!-- <select
+            <select
               v-model="delivery.state"
               @input="validate"
               class="form-control"
               required
             >
                 <option
-                  :value="state"
                   v-for="(state, index) in states"
+                  :value="state"
                   :key="index"
                 >
                     {{ state.name }}
                 </option>
-            </select> -->
-            <select name="selected" class="form-control">
+            </select>
+            <!-- <select name="selected" class="form-control">
                 <option value="anambra">Anambra</option>
                 <option value="lagos">Lagos</option>
                 <option value="abia">Abia</option>
-            </select>
+            </select> -->
         </div>
         <div class="col-md-6">
             <label for="lga">L.G.A</label>
