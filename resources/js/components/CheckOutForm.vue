@@ -66,21 +66,23 @@
         <div class="col-md-6">
             <label for="state">State</label>
             <select
-              v-validate="'required'"
-              name="state"
-              class="form-control"
-              required
-              @input="validate"
+            v-model="delivery.state"
+            v-validate="'required'"
+            name="state"
+            class="form-control"
+            required
+            @input="validate"
             >
-                <option>Choose state</option>
+                <option  disabled :value="null">Choose state</option>
                 <option
-                  :value="state"
-                  v-for="(state, index) in states"
-                  :key="index"
+                v-for="(state, index) in states"
+                :value="state"
+                :key="index"
                 >
                     {{ state.name }}
                 </option>
             </select>
+
             <!-- <select name="selected" class="form-control">
                 <option value="anambra">Anambra</option>
                 <option value="lagos">Lagos</option>
@@ -153,7 +155,7 @@ export default {
         },
 
         selectedState(state){
-            console.log(state)
+            console.log(state.state)
         },
 
         validate(){
