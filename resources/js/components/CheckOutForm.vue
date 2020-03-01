@@ -67,9 +67,9 @@
             <label for="state">State</label>
             <select
               v-model="delivery.state"
-              @input="validate"
               class="form-control"
               required
+              @input="validate"
             >
                 <option
                   v-for="(state, index) in states"
