@@ -69,6 +69,10 @@
               v-model="delivery.state"
               :options="states.map(state => ({ value: state, text: state.name}))"
               class="form-control"
+              v-validate="'required'"
+              name="state"
+              required
+              @input="validate"
             ></b-form-select>
             <!-- <select
             @change="selectedState($event.target.value)"
