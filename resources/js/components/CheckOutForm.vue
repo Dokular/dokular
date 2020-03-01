@@ -65,14 +65,8 @@
         <div class="row">
         <div class="col-md-6">
             <label for="state">State</label>
-            <select
-              v-model="stateData"
-              v-validate="'required'"
-              name="state"
-              class="form-control"
-              required
-              @input="validate"
-            >
+            <select>
+                <option>Choose state</option>
                 <option
                   value="state"
                   v-for="(state, index) in states"
