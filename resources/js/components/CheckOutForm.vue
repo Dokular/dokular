@@ -65,7 +65,13 @@
         <div class="row">
         <div class="col-md-6">
             <label for="state">State</label>
-            <select>
+            <select
+              v-validate="'required'"
+              name="state"
+              class="form-control"
+              required
+              @input="validate"
+            >
                 <option>Choose state</option>
                 <option
                   value="state"
