@@ -65,15 +65,21 @@
         <div class="row">
         <div class="col-md-6">
             <label for="state">State</label>
-            <select
-            v-model="stateData"
+            <b-form-select
+              v-model="delivery.state"
+              :options="states.map(state => ({ value: state, text: state.name}))"
+              class="form-control"
+            ></b-form-select>
+            <!-- <select
+            @change="selectedState($event.target.value)"
             v-validate="'required'"
             name="state"
+            value="state"
             class="form-control"
             required
             @input="validate"
             >
-                <option  disabled :value="null">Choose state</option>
+                <option >Choose state</option>
                 <option
                 :value="state"
                 v-for="(state, index) in states"
@@ -81,7 +87,7 @@
                 >
                     {{ state.name }}
                 </option>
-            </select>
+            </select> -->
         </div>
         <div class="col-md-6">
             <label for="lga">L.G.A</label>
@@ -149,7 +155,7 @@ export default {
         },
 
         selectedState(state){
-            console.log(state.state)
+            console.log(state)
         },
 
         validate(){
