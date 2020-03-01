@@ -66,7 +66,7 @@
         <div class="col-md-6">
             <label for="state">State</label>
             <select
-              v-model="delivery.state"
+              v-model="stateData"
               v-validate="'required'"
               name="state"
               class="form-control"
