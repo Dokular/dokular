@@ -74,24 +74,6 @@
               required
               @input="validate"
             ></b-form-select>
-            <!-- <select
-            @change="selectedState($event.target.value)"
-            v-validate="'required'"
-            name="state"
-            value="state"
-            class="form-control"
-            required
-            @input="validate"
-            >
-                <option >Choose state</option>
-                <option
-                :value="state"
-                v-for="(state, index) in states"
-                :key="index"
-                >
-                    {{ state.name }}
-                </option>
-            </select> -->
         </div>
         <div class="col-md-6">
             <label for="lga">L.G.A</label>

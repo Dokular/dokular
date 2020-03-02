@@ -5,6 +5,7 @@ use GuzzleHttp\Client;
 use Exception;
 use App\Models\Product;
 use App\Models\State;
+use App\Models\Charge;
 
 trait PaymentTrait{
 
@@ -62,5 +63,10 @@ trait PaymentTrait{
         $total = $sum + $tfare[0]->price;
 
         return $total;
+    }
+
+    private function serviceCharge()
+    {
+        return 0;
     }
 }

@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-4" style="padding-bottom:50px;">
                 <CheckOutCart
-                  :charge="service_charge"
+                  :charge="totalServiceCharge"
                 />
                 <Paystack
                     :amount="amount"
@@ -43,7 +43,7 @@
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import SuccessAlert from '../components/CheckoutSuccessAlert'
-import {mapGetters, mapMutations} from 'vuex'
+import {mapGetters, mapMutations, mapActions} from 'vuex'
 import CheckOutCart from '../components/CheckOutCart'
 import CheckOutForm from '../components/CheckOutForm'
 import Paystack from '../components/Paystack'
@@ -54,7 +54,6 @@ export default {
     data(){
         return{
             paystackkey: process.env.MIX_PAYSTACK_PK,
-            service_charge: 0,
             stateObject: null,
             user: 0,
             states:[],
@@ -70,17 +69,31 @@ export default {
       CheckOutForm
     },
     computed: {
-        ...mapGetters(["carts", "total", "getDeliveryFee", "getDelivery", "reference"]),
+        ...mapGetters([
+            "carts",
+            "total",
+            "getDeliveryFee",
+            "getDelivery",
+            "reference",
+            "serviceCharge"
+        ]),
+
+        totalServiceCharge() {
+            return this.carts.length * this.serviceCharge
+        },
         //Calculate paystack amount
         amount() {
-            return (this.total  + this.getDeliveryFee + this.service_charge) * 100;
-        }
+            return (this.total  + this.getDeliveryFee + this.totalServiceCharge) * 100;
+        },
+
     },
     created() {
         this.getState();
+        this.getServiceCharge();
     },
     methods: {
         ...mapMutations(['CLEAR_CART']),
+        ...mapActions(['getServiceCharge']),
         callback: function(response){
             var self = this;
             self.isLoading = true;

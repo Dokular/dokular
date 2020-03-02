@@ -18,6 +18,8 @@ Route::namespace('User')->prefix('v1')->group(function () {
 
     Route::get('categories', 'CategoryController@get');
 
+    Route::get('charge', 'ChargeController@serviceCharge');
+
     Route::post('order', 'OrderController@store');
 
     Route::post('login/attempt', 'Auth\LoginController@attempt');

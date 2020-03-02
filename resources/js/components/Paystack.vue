@@ -1,6 +1,6 @@
 <template>
   <b-button
-    variant="success"
+    variant="primary"
     v-if="!embed"
     class="btn btn-primary btn-lg btn-block"
     @click="payWithPaystack"

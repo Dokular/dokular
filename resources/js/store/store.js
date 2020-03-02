@@ -27,7 +27,8 @@ export const store = new Vuex.Store({
         precarts: [],
         token: getToken(),
         Payable: true,
-        Reference: ''
+        Reference: '',
+        service_charge: 0
     },
 
     mutations: {
@@ -70,6 +71,10 @@ export const store = new Vuex.Store({
             state.Payable = status
         },
 
+        SET_SERVICE_CHARGE: (state, charge) => {
+            state.service_charge = charge
+        },
+
         PAYSTACK_REFERENCE: (state, reference) => {
             state.Reference = reference
         }
@@ -88,6 +93,14 @@ export const store = new Vuex.Store({
             axios.get(process.env.MIX_API+'categories').then(response => {
                 // console.log(response.data.data)
                 commit('LOAD_CATEGORY',response.data.data)
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        getServiceCharge({commit}) {
+            axios.get(process.env.MIX_API+'charge').then(response => {
+                console.log(response.data.charge)
+                commit('SET_SERVICE_CHARGE',response.data.charge)
             }).catch(error => {
                 console.log(error)
             })
@@ -163,6 +176,10 @@ export const store = new Vuex.Store({
 
         reference: state => {
             return state.Reference
+        },
+
+        serviceCharge: state => {
+            return state.service_charge
         }
     },
 })
