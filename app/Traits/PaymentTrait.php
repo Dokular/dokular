@@ -46,6 +46,8 @@ trait PaymentTrait{
     {
         $orders = $request->post('order');
 
+        $service_charge_total = count($orders) * $this->serviceCharge();
+
         $sum = 0;
 
         foreach( $orders as $order){
@@ -60,13 +62,14 @@ trait PaymentTrait{
 
         $tfare = State::where('name', $getState['state']['name'])->get(['price']);
 
-        $total = $sum + $tfare[0]->price;
+        $total = $sum + $service_charge_total + $tfare[0]->price;
 
         return $total;
     }
 
     private function serviceCharge()
     {
-        return 0;
+        $result = Charge::first();
+        return $result->charge;
     }
 }
