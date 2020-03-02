@@ -9,6 +9,11 @@ class ChargeController extends Controller
 {
     public function serviceCharge()
     {
-        return Charge::first();
+        try{
+            return Charge::first();
+        }catch (\Exception $e) {
+            return response()->json(['charge' => 0]);
+        }
+
     }
 }

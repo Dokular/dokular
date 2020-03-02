@@ -69,7 +69,12 @@ trait PaymentTrait{
 
     private function serviceCharge()
     {
-        $result = Charge::first();
-        return $result->charge;
+        try{
+            $result = Charge::first();
+            return $result->charge;
+        } catch (\Exception $e) {
+            return 0;
+        }
+
     }
 }
