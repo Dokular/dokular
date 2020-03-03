@@ -75,5 +75,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::get('states', 'StateController@getAll');
         Route::post('state/{state}', 'StateController@update');
         Route::patch('state/{state}/activate', 'StateController@setActive');
+        Route::get('charge', 'ChargeController@get');
+        Route::post('charge', 'ChargeController@update');
     });
 });
