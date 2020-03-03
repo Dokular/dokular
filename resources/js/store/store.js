@@ -28,7 +28,8 @@ export const store = new Vuex.Store({
         token: getToken(),
         Payable: true,
         Reference: '',
-        service_charge: 0
+        service_charge: 0,
+        open_cart: false
     },
 
     mutations: {
@@ -77,6 +78,10 @@ export const store = new Vuex.Store({
 
         PAYSTACK_REFERENCE: (state, reference) => {
             state.Reference = reference
+        },
+
+        OPEN_CART: (state, status) => {
+            state.open_cart = status
         }
     },
 
@@ -180,6 +185,10 @@ export const store = new Vuex.Store({
 
         serviceCharge: state => {
             return state.service_charge
+        },
+
+        showCart: state => {
+            return state.open_cart
         }
     },
 })

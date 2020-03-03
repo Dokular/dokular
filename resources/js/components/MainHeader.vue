@@ -20,6 +20,9 @@
         <b-nav-item @click="logMeOut()" v-if="loggedInStatus">
             Log out
         </b-nav-item>
+        <b-nav-item @click="cartModal()">
+            <font-awesome-icon icon="cart-plus" />
+        </b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -28,12 +31,13 @@
 <script>
 import Icon from '../assets/images/icon/avatar-big-01.jpg'
 import Logo from '../assets/images/dokular.png'
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions,mapMutations, mapGetters} from 'vuex'
 export default {
     data() {
         return {
             icon: Icon,
-            logo: Logo
+            logo: Logo,
+            cart_modal: true
         }
     },
     computed: {
@@ -41,6 +45,7 @@ export default {
     },
     methods:{
         ...mapActions(['logout']),
+        ...mapMutations(['OPEN_CART']),
         logMeOut() {
             this.logout().then(ok => {
                 console.log(ok)
@@ -48,6 +53,9 @@ export default {
             }).catch(err => {
                 console.log(err)
             })
+        },
+        cartModal() {
+            this.OPEN_CART(true)
         }
     }
 }

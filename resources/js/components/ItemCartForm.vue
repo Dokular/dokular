@@ -131,7 +131,7 @@ export default {
         },
     },
     methods: {
-        ...mapMutations(['CALCULATE_PRECART_TOTAL']),
+        ...mapMutations(['CALCULATE_PRECART_TOTAL',"OPEN_CART"]),
         ...mapActions(["addProductToCart"]),
         addToCart() {
             this.cart.total = this.preCartTotal
@@ -142,6 +142,7 @@ export default {
             this.cart.total = '',
             this.cart.products = []
             this.showModal = false;
+            this.OPEN_CART(true)
         },
         validateSecondStep() {
             return this.checked[0];
