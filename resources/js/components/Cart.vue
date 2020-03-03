@@ -1,10 +1,13 @@
 <template>
 <b-modal
+  title="My cart"
   size="xl"
   ref="cart"
   v-model="show"
   @hidden="closed"
-  hide-footer
+  @ok="checkout"
+  ok-title="Checkout"
+  ok-only
 >
   <div class="container table-responsive" v-if="carts.length">
    <table class="table">
@@ -31,6 +34,7 @@
         <td>
             <font-awesome-icon
                 icon="trash-alt"
+                @click="removeCart(cart)"
                 class="delspan"
             />
         </td>
@@ -64,8 +68,7 @@
             <hr/>
         </b-card-text> -->
         <p>Total: N{{ total }}</p>
-        <b-button to="/checkout" variant="primary">Checkout</b-button>
-    </b-card>
+    <!-- </b-card> -->
   </div>
   <div class="container" v-else>
     <div class="row">
@@ -100,6 +103,11 @@ export default {
 
         removeCart(cart){
             this.removeFromCarts(cart)
+        },
+
+        checkout(){
+            this.OPEN_CART(false)
+            this.$router.push({'name': 'checkout'})
         },
 
         closed(){
