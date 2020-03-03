@@ -9,66 +9,43 @@
   ok-title="Checkout"
   ok-only
 >
-  <div class="container table-responsive" v-if="carts.length">
+  <div class="container table-responsive-xl" v-if="carts.length">
    <table class="table">
     <thead>
         <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Vehicle</th>
-        <th scope="col-2">Renew</th>
+        <th scope="col">Renew</th>
         <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
         <tr  v-for="(cart, index) in carts" :key="index">
-        <th scope="row">{{ index + 1}}</th>
-        <td>{{ cart.owner }}</td>
-        <td>{{ cart.make }}</td>
-        <td>
-            <tr v-for="(product, index) in cart.products" :key="index">
-                <td>{{ product.name }} </td>
-                <td>N{{ product.price }}</td>
-            </tr>
-        </td>
-        <td>
-            <font-awesome-icon
-                icon="trash-alt"
-                @click="removeCart(cart)"
-                class="delspan"
-            />
-        </td>
+            <th scope="row">{{ index + 1}}</th>
+            <td>{{ cart.owner }}</td>
+            <td>{{ cart.make }}</td>
+            <td >
+                <tr v-for="(product, index) in cart.products" :key="index">
+                    <td>{{ product.name }} </td>
+                    <td>N{{ product.price }}</td>
+                </tr>
+            </td>
+             <td>
+                <font-awesome-icon
+                    icon="trash-alt"
+                    @click="removeCart(cart)"
+                    class="delspan"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <p>Total: N{{ total }}</p>
+            </td>
         </tr>
     </tbody>
-    </table>
-    <!-- <b-card title="My card">
-        <b-card-text v-for="(cart, index) in carts" :key="index">
-            <b-container class="bv-example-row">
-                <b-row>
-                    <b-col cols="1">
-                        <font-awesome-icon
-                          icon="trash-alt"
-                          @click="removeCart(cart)"
-                          class="delspan"
-                        />
-                    </b-col>
-                    <b-col cols="4">
-                        {{ cart.make }}
-                        <br/>
-                        {{ cart.owner }}
-                    </b-col>
-                    <b-col cols="7">
-                        <span v-for="(product, index) in cart.products" :key="index">
-                            {{ product.name }} - {{ product.price }}
-                            <br/>
-                        </span>
-                    </b-col>
-                </b-row>
-            </b-container>
-            <hr/>
-        </b-card-text> -->
-        <p>Total: N{{ total }}</p>
-    <!-- </b-card> -->
+   </table>
   </div>
   <div class="container" v-else>
     <div class="row">

@@ -73,7 +73,16 @@
               name="state"
               required
               @input="validate"
-            ></b-form-select>
+            >
+              <template v-slot:first>
+                <b-form-select-option
+                  :value="null"
+                  disabled
+                >
+                  -- Please select state --
+                </b-form-select-option>
+              </template>
+            </b-form-select>
         </div>
         <div class="col-md-6">
             <label for="lga">L.G.A</label>
