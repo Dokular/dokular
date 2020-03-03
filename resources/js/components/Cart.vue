@@ -6,7 +6,7 @@
   @hidden="closed"
   hide-footer
 >
-  <div class="container" v-if="carts.length">
+  <div class="container table-responsive" v-if="carts.length">
    <table class="table">
     <thead>
         <tr>
