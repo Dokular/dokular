@@ -105,7 +105,7 @@ export default {
                 self.isLoading = false;
                 this.successModal = true;
                 //console.log(response)
-                //this.CLEAR_CART()
+                this.CLEAR_CART()
             }).catch(error => {
                 alert(error)
             })
