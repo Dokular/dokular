@@ -104,7 +104,7 @@
         <div class="col-md-6">
             <label for="lga">L.G.A</label>
             <select
-                v-model="delivery.lga"
+                @change="lgaSelected($event)"
                 v-validate="'required'"
                 class="form-control"
                 name="lga"
@@ -113,8 +113,8 @@
             >
                 <option value="" disabled selected>Select state</option>
                 <option
-                  v-for="(lga, index) in lgas"
                   :value="lga.id"
+                  v-for="(lga, index) in lgas"
                   :key="index"
                 >
                     {{ lga.name }}
