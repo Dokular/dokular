@@ -65,7 +65,7 @@
         <div class="row">
         <div class="col-md-6">
             <label for="state">State</label>
-            <b-form-select
+            <!-- <b-form-select
               v-model="delivery.state"
               :options="states.map(state => ({ value: state, text: state.name}))"
               class="form-control"
@@ -82,7 +82,17 @@
                   -- Please select state --
                 </b-form-select-option>
               </template>
-            </b-form-select>
+            </b-form-select> -->
+            <select class="form-control" @change="selectedState($event)">
+                <option value="" selected>Select state</option>
+                <option
+                  v-for="(state, index) in states"
+                  :value="JSON.stringify(state)"
+                  :key="index"
+                >
+                  {{ state.name }}
+                </option>
+            </select>
         </div>
         <div class="col-md-6">
             <label for="lga">L.G.A</label>
@@ -149,8 +159,9 @@ export default {
             })
         },
 
-        selectedState(state){
-            console.log(state)
+        selectedState(event){
+            this.delivery.state = JSON.parse(event.target.value)
+            console.log(event.target.value)
         },
 
         validate(){
