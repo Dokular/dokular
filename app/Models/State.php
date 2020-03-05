@@ -22,6 +22,11 @@ class State extends Model
         return $query->where('active', 1);
     }
 
+    public function lgas()
+    {
+        return $this->hasMany(Lga::class);
+    }
+
     public function updateActiveStatus($data)
     {
         if($data['active'] == true){

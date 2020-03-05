@@ -11,6 +11,11 @@ class Order extends Model implements HasMedia
 {
     use HasMediaTrait;
 
+    protected $fillable = [
+        'product_id',
+        'price'
+    ];
+
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
@@ -23,12 +28,6 @@ class Order extends Model implements HasMedia
               ->height(200)
               ->sharpen(10);
     }
-
-
-    protected $fillable = [
-        'product_id',
-        'price'
-    ];
 
     public function owner()
     {
