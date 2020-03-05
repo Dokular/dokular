@@ -12,6 +12,9 @@ export const store = new Vuex.Store({
     state: {
         cartlists:Carts ? JSON.parse(Carts) : [],
         products: [],
+        location: {
+            state:null
+        },
         delivery: {
             first_name:'',
             last_name:'',
@@ -19,7 +22,6 @@ export const store = new Vuex.Store({
             email: '',
             address:'',
             lga: '',
-            state: null,
             fee: 0
         },
         delivery_fee: 0,
@@ -166,7 +168,7 @@ export const store = new Vuex.Store({
         },
 
         getDeliveryFee: state => {
-          const getState = state.delivery.state;
+          const getState = state.location.state;
 
           return !getState ? 0 : getState.price ;
         },

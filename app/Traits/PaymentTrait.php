@@ -42,6 +42,16 @@ trait PaymentTrait{
         }
     }
 
+    public function deliveryFee()
+    {
+        # code...
+    }
+
+    public function sumProduct()
+    {
+        # code...
+    }
+
     public function amount($request)
     {
         $orders = $request->post('order');

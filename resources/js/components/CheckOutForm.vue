@@ -83,8 +83,15 @@
                 </b-form-select-option>
               </template>
             </b-form-select> -->
-            <select class="form-control" @change="selectedState($event)">
-                <option value="" selected>Select state</option>
+            <select
+              class="form-control"
+              v-validate="'required'"
+              @change="selectedState($event)"
+              name="state"
+              required
+              @input="validate"
+            >
+                <option value="" disabled selected>Select state</option>
                 <option
                   v-for="(state, index) in states"
                   :value="JSON.stringify(state)"
@@ -97,12 +104,20 @@
         <div class="col-md-6">
             <label for="lga">L.G.A</label>
             <select
-                class="form-control"
                 v-model="delivery.lga"
+                v-validate="'required'"
+                class="form-control"
+                name="lga"
+                @input="validate"
                 required
             >
-                <option value="">
-                    Choose...
+                <option value="" disabled selected>Select state</option>
+                <option
+                  v-for="(lga, index) in lgas"
+                  :value="lga.id"
+                  :key="index"
+                >
+                    {{ lga.name }}
                 </option>
             </select>
         </div>
@@ -131,8 +146,8 @@ export default {
     data(){
         return {
             trigger: this.validation,
-            stateData:null,
             states: [],
+            lgas: []
         }
     },
     created() {
@@ -145,7 +160,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['delivery']),
+        ...mapState(['delivery','location'])
     },
     methods: {
         ...mapMutations(['SET_PAYABLE']),
@@ -158,12 +173,27 @@ export default {
                 console.log(error)
             })
         },
-
-        selectedState(event){
-            this.delivery.state = JSON.parse(event.target.value)
-            console.log(event.target.value)
+        getStateLgas(id){
+            axios.get(process.env.MIX_API+'lgas/'+id)
+            .then(response => {
+                //this.states = response.data[0]
+                //console.log(response.data.data)
+                this.lgas = response.data.data
+            }).catch(error => {
+                console.log(error)
+            })
         },
-
+        selectedState(event){
+            let state = JSON.parse(event.target.value)
+            this.location.state = state
+            //console.log(state)
+            this.getStateLgas(state.id)
+            this.delivery.lga = ''
+        },
+        lgaSelected: function(event){
+          //console.log(event.target.value)
+          this.delivery.lga = parseInt(event.target.value)
+        },
         validate(){
             this.$validator.validate().then(valid => {
                 if (!valid) {

@@ -14,6 +14,8 @@ Route::namespace('User')->prefix('v1')->group(function () {
 
     Route::get('states', 'StateController@get');
 
+    Route::get('lgas/{state}', 'LgaController@get');
+
     Route::get('products', 'ProductController@get');
 
     Route::get('categories', 'CategoryController@get');
