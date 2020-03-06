@@ -8,6 +8,6 @@ class Lga extends Model
 {
     public function state()
     {
-        return $this->hasOne(State::class);
+        return $this->belongsTo(State::class);
     }
 }

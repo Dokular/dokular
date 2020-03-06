@@ -108,7 +108,6 @@
                 v-validate="'required'"
                 class="form-control"
                 name="lga"
-                @input="validate"
                 required
             >
                 <option value="" disabled selected>Select state</option>
@@ -193,6 +192,7 @@ export default {
         lgaSelected: function(event){
           //console.log(event.target.value)
           this.delivery.lga = parseInt(event.target.value)
+          this.validate()
         },
         validate(){
             this.$validator.validate().then(valid => {

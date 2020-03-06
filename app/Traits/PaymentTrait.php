@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Product;
 use App\Models\State;
 use App\Models\Charge;
+use App\Models\Lga;
 
 trait PaymentTrait{
 
@@ -42,21 +43,30 @@ trait PaymentTrait{
         }
     }
 
-    public function deliveryFee()
+    private function amount($request) : int
     {
-        # code...
+
+        $tfare = $this->deliveryFee($request);
+
+        $service_charge_total = $this->serviceCharge($request);
+
+        $products_sum = $this->productsTotal($request);
+
+        $total = $products_sum + $service_charge_total + $tfare;
+
+        return $total;
     }
 
-    public function sumProduct()
+    private function deliveryFee($request): int
     {
-        # code...
+        $lga = Lga::find($request['lga']);
+
+        return $lga->state->price;
     }
 
-    public function amount($request)
+    private function productsTotal($request): int
     {
         $orders = $request->post('order');
-
-        $service_charge_total = count($orders) * $this->serviceCharge();
 
         $sum = 0;
 
@@ -68,20 +78,18 @@ trait PaymentTrait{
             }
 
         }
-        $getState = $request->post('delivery');
-
-        $tfare = State::where('name', $getState['state']['name'])->get(['price']);
-
-        $total = $sum + $service_charge_total + $tfare[0]->price;
-
-        return $total;
+        return $sum;
     }
 
-    private function serviceCharge()
+
+    private function serviceCharge($request): int
     {
+        $orders = $request->post('order');
+
         try{
             $result = Charge::first();
-            return $result->charge;
+            $total = count($orders) * $result->charge;
+            return $total;
         } catch (\Exception $e) {
             return 0;
         }

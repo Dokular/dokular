@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\State;
+use App\Models\Lga;
 
 class Owner extends Model
 {
@@ -41,11 +41,14 @@ class Owner extends Model
 
     public function deliveryAddress($request)
     {
+        $lga = Lga::find($request['lga']);
+
         $this->delivery()->create([
             'phone' => $request['phone'],
             'address'=> $request['address'],
-            'state' => $request['state']['name'],
-            'fee' => $request['fee']
+            'state' => $lga->state->name,
+            'lga' => $lga->name,
+            'fee' => $lga->state->price
         ]);
     }
 }
