@@ -152,6 +152,9 @@ export default {
     created() {
         this.getState();
     },
+    mounted(){
+        this.validate();
+    },
     watch: {
         stateData: function(newValue){
             this.delivery.state_id = newValue.id;

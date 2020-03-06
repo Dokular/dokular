@@ -21,9 +21,9 @@ class OrderController extends Controller
             return response()->json(['success' => false], 403);
         }
 
+        $user = User::find(User::createOrUpdate($request));
+        
         $orders = $request->post('order');
-
-        $user = User::find(User::createOrUpdate($request->post('delivery')));
 
         foreach( $orders as $order){
 

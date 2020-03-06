@@ -43,7 +43,7 @@ trait PaymentTrait{
         }
     }
 
-    private function amount($request) : int
+    private function amount($request): int
     {
 
         $tfare = $this->deliveryFee($request);
@@ -59,7 +59,9 @@ trait PaymentTrait{
 
     private function deliveryFee($request): int
     {
-        $lga = Lga::find($request['lga']);
+        $delivery = $request->post('delivery');
+
+        $lga = Lga::find($delivery['lga']);
 
         return $lga->state->price;
     }

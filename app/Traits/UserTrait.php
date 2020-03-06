@@ -8,18 +8,20 @@ trait UserTrait{
 
     public static function createOrUpdate($request)
     {
-        $lga = Lga::find($request['lga']);
+        $delivery = $request->post('delivery');
+
+        $lga = Lga::find($delivery['lga']);
 
         $user = User::updateOrCreate(
-                    ['email' => $request['email']],
+                    ['email' => $delivery['email']],
                     [
-                        'first_name' => $request['first_name'],
-                        'last_name' => $request['last_name'],
-                        'phone' => $request['phone'],
+                        'first_name' => $delivery['first_name'],
+                        'last_name' => $delivery['last_name'],
+                        'phone' => $delivery['phone'],
                         'state' => $lga->state->name,
                         'lga' => $lga->name,
-                        'email' => $request['email'],
-                        'address' => $request['address']
+                        'email' => $delivery['email'],
+                        'address' => $delivery['address']
                     ]
                 );
         return $user->id;
