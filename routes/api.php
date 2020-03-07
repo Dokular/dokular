@@ -52,8 +52,9 @@ Route::namespace('User')->prefix('v1')->group(function () {
 */
 
 Route::namespace('Admin')->prefix('admin')->group(function () {
-    Route::get('order', 'OrderController@get');
+
     Route::post('login', 'Auth\AdminController@login')->name('login');
+    
     Route::post('register', 'Auth\AdminController@register');
 
     Route::middleware('auth:admin')->group(function () {
