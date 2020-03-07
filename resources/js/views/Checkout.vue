@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="checkout">
         <loading
           :active.sync="isLoading"
           :is-full-page="true">
@@ -130,5 +130,7 @@ export default {
 }
 </script>
 <style scoped>
-
+.checkout{
+    min-height: 100vh;
+}
 </style>
