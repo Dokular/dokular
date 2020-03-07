@@ -52,7 +52,7 @@ Route::namespace('User')->prefix('v1')->group(function () {
 */
 
 Route::namespace('Admin')->prefix('admin')->group(function () {
-
+    Route::get('order', 'OrderController@get');
     Route::post('login', 'Auth\AdminController@login')->name('login');
     Route::post('register', 'Auth\AdminController@register');
 
@@ -73,6 +73,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::patch('product/{product}', 'ProductController@update');
 
         Route::get('orders', 'OrderController@all');
+        Route::get('order', 'OrderController@get');
         Route::patch('owner/{owner}/status', 'OrderController@updateStatus');
         Route::get('states', 'StateController@getAll');
         Route::post('state/{state}', 'StateController@update');

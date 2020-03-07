@@ -21,8 +21,7 @@ export const store = new Vuex.Store({
             phone: '',
             email: '',
             address:'',
-            lga: '',
-            fee: 0
+            lga: ''
         },
         delivery_fee: 0,
         categories: [],
@@ -56,7 +55,14 @@ export const store = new Vuex.Store({
             window.localStorage.removeItem('carts')
             state.cartlists = []
         },
-
+        CLEAR_DELIVERY: (state) => {
+            state.delivery.first_name = ''
+            state.delivery.last_name = '',
+            state.delivery.phone = '',
+            state.delivery.email = '',
+            state.delivery.address = '',
+            state.delivery.lga = ''
+        },
         LOAD_CATEGORY: (state, payload) => {
             state.categories = payload
         },

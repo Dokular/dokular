@@ -13,6 +13,12 @@ class OrderController extends Controller
         return response()->json(['success' => true, $order]);
     }
 
+    public function get()
+    {
+        return "hello";
+        $orders = Owner::with('orders','delivery', 'deliveryAddress','user')->all();
+        return response()->json(['success' => true, $orders]);
+    }
     public function updateStatus(Request $request,Owner $owner)
     {
 

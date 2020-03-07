@@ -92,7 +92,7 @@ export default {
         this.getServiceCharge();
     },
     methods: {
-        ...mapMutations(['CLEAR_CART']),
+        ...mapMutations(['CLEAR_CART','CLEAR_DELIVERY']),
         ...mapActions(['getServiceCharge']),
         callback: function(response){
             var self = this;
@@ -105,7 +105,8 @@ export default {
                 self.isLoading = false;
                 this.successModal = true;
                 //console.log(response)
-                //this.CLEAR_CART()
+                this.CLEAR_DELIVERY()
+                this.CLEAR_CART()
             }).catch(error => {
                 alert(error)
             })

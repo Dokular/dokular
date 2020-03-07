@@ -31,6 +31,7 @@ class NewOrderReceipt extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.orders.receipt');
+        return $this->markdown('emails.orders.receipt')
+                    ->subject(ucfirst(strtolower($this->owner->car)) ." paper renewal.");
     }
 }
