@@ -14,7 +14,7 @@
         <ul class="footer-links list-unstyled text-small">
           <li><a class="text-muted" href="https://www.facebook.com/dokularDotCom/">Facebook</a></li>
           <li><a class="text-muted" href="#">Instagram</a></li>
-          <li><a class="text-muted" href="#">Twitter</a></li>
+          <li><a class="text-muted" href="https://twitter.com/dokularNG">Twitter</a></li>
         </ul>
       </div>
       <div class="col-6 col-md">
