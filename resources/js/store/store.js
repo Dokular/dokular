@@ -103,7 +103,8 @@ export const store = new Vuex.Store({
             })
         },
         loadCategory({commit}) {
-            axios.get(process.env.MIX_API+'categories').then(response => {
+            axios.get(process.env.MIX_API+'categories')
+            .then(response => {
                 // console.log(response.data.data)
                 commit('LOAD_CATEGORY',response.data.data)
             }).catch(error => {
@@ -111,7 +112,8 @@ export const store = new Vuex.Store({
             })
         },
         getServiceCharge({commit}) {
-            axios.get(process.env.MIX_API+'charge').then(response => {
+            axios.get(process.env.MIX_API+'charge')
+            .then(response => {
                 console.log(response.data.charge)
                 commit('SET_SERVICE_CHARGE',response.data.charge)
             }).catch(error => {
