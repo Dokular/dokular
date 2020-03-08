@@ -20,7 +20,7 @@
       <div class="col-6 col-md">
         <h2 class="footer-header">Location</h2>
         <p class="address">
-            8 Ayinde Giwa Street, Off Ogunlana Dr, Surulere, Lagos.
+            8 Ayinde Giwa Street, Off Ogunlana Drive, Surulere, Lagos.
         </p>
       </div>
     </div>
