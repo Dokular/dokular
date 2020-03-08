@@ -84,7 +84,7 @@ export default {
     },
 
     created() {
-        // this.loadCategory()
+        this.loadCategory()
         this.validate
     },
 }
