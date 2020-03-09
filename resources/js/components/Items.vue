@@ -4,7 +4,11 @@
     <div class="site-section ftco-service-image-1 pb-5">
     <div class="container">
         <div class="row">
-        <div class="col-md-4 service text-center mx-auto"  v-for="(category, index) in categories" :key="index">
+        <div
+          class="col-md-4 service text-center mx-auto"
+          v-for="(category, index) in categories"
+          :key="index"
+        >
             <img :src="category.img" alt="Image" class="img-fluid">
 
             <div class="px-md-3">
@@ -16,7 +20,6 @@
                 <span
                   v-for="(product, index) in category.products"
                   :key="index"
-
                 >
                     {{ product.name }}
                     <font-awesome-icon icon="arrow-circle-right" />
@@ -26,7 +29,11 @@
                     <hr />
                 </span>
             </div>
-            <button type="button" class="btn btn-outline-secondary" @click="openPreCart(category)">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              @click="openPreCart(category)"
+            >
                 Renew
             </button>
         </div>
@@ -112,5 +119,9 @@ color: blue;
     border-color: #0f75bc;
     background-color: #0f75bc;
     width: 300px;
+}
+
+div.service{
+   margin-bottom: 30px;
 }
 </style>
