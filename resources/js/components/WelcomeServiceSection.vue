@@ -63,5 +63,7 @@ export default {
 }
 </script>
 <style scoped>
-
+div.col-md{
+  margin-bottom: 30px;
+}
 </style>
