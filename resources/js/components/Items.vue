@@ -52,19 +52,11 @@
 <script>
 import {mapMutations, mapActions, mapGetters} from 'vuex'
 import CartForm from '../components/ItemCartForm'
-import Img1 from '../assets/images/depot_img_1.jpg'
-import Img2 from '../assets/images/depot_img_2.jpg'
-import Img3 from '../assets/images/depot_img_3.jpg'
-import BgImg from '../assets/images/depot_hero_1.jpg'
 
 export default {
     data() {
         return{
             showCartForm: false,
-            img1: Img1,
-            img2: Img2,
-            img3: Img3,
-            bgimg: BgImg,
             category: null,
             base_url: process.env.MIX_APP_URL,
         }
