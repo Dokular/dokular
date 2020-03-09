@@ -10,14 +10,6 @@
         </ul>
       </div>
       <div class="col-6 col-md">
-        <h2 class="footer-header">Follow us</h2>
-        <ul class="footer-links list-unstyled text-small">
-          <li><a class="text-muted" href="https://www.facebook.com/dokularDotCom/">Facebook</a></li>
-          <li><a class="text-muted" href="#">Instagram</a></li>
-          <li><a class="text-muted" href="https://twitter.com/dokularNG">Twitter</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
         <h2 class="footer-header">Contact us</h2>
         <p class="email">
             support@dokular.com
@@ -30,6 +22,14 @@
                 />
             </a>
         </p>
+      </div>
+      <div class="col-6 col-md">
+        <h2 class="footer-header">Follow us</h2>
+        <ul class="footer-links list-unstyled text-small">
+          <li><a class="text-muted" href="https://www.facebook.com/dokularDotCom/">Facebook</a></li>
+          <li><a class="text-muted" href="#">Instagram</a></li>
+          <li><a class="text-muted" href="https://twitter.com/dokularNG">Twitter</a></li>
+        </ul>
       </div>
       <div class="col-6 col-md">
         <h2 class="footer-header">Location</h2>
