@@ -10,8 +10,9 @@
             </a>
             <div class="px-md-3">
             <h3 class="cat-name">{{ category.name }}</h3>
-            <p>
-                {{ category.description }}
+                <p>
+                  {{ category.description }}
+                </p>
                 <hr />
                 <span
                   v-for="(product, index) in category.products"
@@ -25,7 +26,7 @@
                     </span>
                     <hr />
                 </span>
-            </p>
+
             </div>
             <button type="button" class="btn btn-outline-secondary" @click="openPreCart(category)">Renew</button>
         </div>
