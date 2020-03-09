@@ -31,13 +31,11 @@
 </template>
 <script>
 import Cart from './Cart'
-import Icon from '../assets/images/icon/avatar-big-01.jpg'
 import Logo from '../assets/images/dokular.png'
 import {mapActions,mapMutations, mapGetters} from 'vuex'
 export default {
     data() {
         return {
-            icon: Icon,
             logo: Logo,
             cart_modal: true
         }
