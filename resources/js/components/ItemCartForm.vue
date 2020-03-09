@@ -6,7 +6,12 @@
           @hidden="closedModal"
           hide-footer
         >
-            <form-wizard :title="title" :subtitle="subtitle" @on-complete="addToCart">
+            <form-wizard
+              :title="title"
+              :subtitle="subtitle"
+              @on-complete="addToCart"
+              color="#0f75bc"
+            >
                 <tab-content title="Vehicle info" :before-change="validateFirstStep">
                     <div class="form-group">
                         <label for="cc-payment" class="control-label mb-1">Vehicle make</label>
