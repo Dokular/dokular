@@ -21,7 +21,7 @@
                   v-for="(product, index) in category.products"
                   :key="index"
                 >
-                    {{ product.name }}
+                    {{ product.name.toUpperCase() }}
                     <font-awesome-icon icon="arrow-circle-right" />
                     <span class="pro-price">
                         N{{ product.price }}
