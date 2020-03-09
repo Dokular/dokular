@@ -18,6 +18,20 @@
         </ul>
       </div>
       <div class="col-6 col-md">
+        <h2 class="footer-header">Contact us</h2>
+        <p class="email">
+            support@dokular.com
+        </p>
+        <p class="whatsapp">
+            <a href="https://api.whatsapp.com/send?phone=+2349067002225" target="_blank">
+                <font-awesome-icon
+                  :icon="['fab', 'whatsapp']"
+                  size="lg"
+                />
+            </a>
+        </p>
+      </div>
+      <div class="col-6 col-md">
         <h2 class="footer-header">Location</h2>
         <p class="address">
             8 Ayinde Giwa Street, Off Ogunlana Drive, Surulere, Lagos.
