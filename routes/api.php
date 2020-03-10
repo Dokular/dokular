@@ -73,6 +73,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::post('activate/{category}', 'CategoryController@active');
         Route::post('product/{category}', 'ProductController@create');
         Route::patch('product/{product}', 'ProductController@update');
+        Route::delete('product/{product}', 'ProductController@delete');
 
         Route::get('orders', 'OrderController@all');
         Route::get('order', 'OrderController@get');

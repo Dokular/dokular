@@ -31,4 +31,9 @@ class ProductController extends Controller
         ]);
         return response()->json(['success' => true], 200);
     }
+    public function delete(Product $product)
+    {
+        $product->delete();
+        return response()->json(['success' => true], 200);
+    }
 }
