@@ -18,6 +18,7 @@ class OrderController extends Controller
     {
 
         return $this->verify($request);
+        
         // if(!$this->verify($request)){
         //     return response()->json(['success' => false], 403);
         // }
