@@ -5,8 +5,14 @@
       <div class="col-6 col-md">
         <h2 class="footer-header">Legal</h2>
         <ul class="footer-links list-unstyled text-small">
-          <li><a class="text-muted" href="#">Privacy</a></li>
-          <li><a class="text-muted" href="#">Terms</a></li>
+          <li>
+              <a class="text-muted" href="#">Privacy</a>
+              <em style="font-size: x-small">coming soon</em>
+          </li>
+          <li>
+            <a class="text-muted" href="#">Terms</a>
+            <em style="font-size: x-small">coming soon</em>
+          </li>
         </ul>
       </div>
       <div class="col-6 col-md">
