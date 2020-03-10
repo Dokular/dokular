@@ -78,7 +78,6 @@ trait PaymentTrait{
                 $product = Product::find($product['id'], ['price']);
                 $sum += $product->price;
             }
-
         }
         return $sum;
     }
