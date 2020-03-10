@@ -16,9 +16,8 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-
         return $this->verify($request);
-        
+
         // if(!$this->verify($request)){
         //     return response()->json(['success' => false], 403);
         // }
