@@ -17,12 +17,13 @@ class OrderController extends Controller
     public function store(Request $request)
     {
 
-        if(!$this->verify($request)){
-            return response()->json(['success' => false], 403);
-        }
+        return $this->verify($request);
+        // if(!$this->verify($request)){
+        //     return response()->json(['success' => false], 403);
+        // }
 
         $user = User::find(User::createOrUpdate($request));
-        
+
         $orders = $request->post('order');
 
         foreach( $orders as $order){
