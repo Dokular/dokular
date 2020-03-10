@@ -54,7 +54,7 @@ Route::namespace('User')->prefix('v1')->group(function () {
 Route::namespace('Admin')->prefix('admin')->group(function () {
 
     Route::post('login', 'Auth\AdminController@login')->name('login');
-    
+
     Route::post('register', 'Auth\AdminController@register');
 
     Route::middleware('auth:admin')->group(function () {
@@ -69,6 +69,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::post('category', 'CategoryController@create');
         Route::get('category/{category}', 'CategoryController@getCategory');
         Route::patch('category/{category}', 'CategoryController@update');
+        Route::delete('category/{category}', 'CategoryController@delete');
         Route::post('activate/{category}', 'CategoryController@active');
         Route::post('product/{category}', 'ProductController@create');
         Route::patch('product/{product}', 'ProductController@update');
