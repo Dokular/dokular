@@ -11,7 +11,7 @@ use App\Models\Lga;
 trait PaymentTrait{
 
 
-    public function verify($request)
+    public function verify($request): bool
     {
 
         try{
@@ -39,7 +39,8 @@ trait PaymentTrait{
             return false;
 
         } catch (\Exception $e) {
-           return  $e->getMessage();
+           //return  $e->getMessage();
+           return false;
         }
     }
 
