@@ -4,7 +4,6 @@ namespace App\Traits;
 use GuzzleHttp\Client;
 use Exception;
 use App\Models\Product;
-use App\Models\State;
 use App\Models\Charge;
 use App\Models\Lga;
 
