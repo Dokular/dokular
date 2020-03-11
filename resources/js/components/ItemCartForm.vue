@@ -29,7 +29,7 @@
                         <span>{{ errors.first('car_make') }}</span>
                     </div>
                     <div class="form-group has-success">
-                        <label for="cc-name" class="control-label mb-1">Identification mark</label>
+                        <label for="cc-name" class="control-label mb-1">Vehicle plate number</label>
                         <input
                           id="cc-name"
                           type="text"
@@ -43,7 +43,7 @@
                         <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
                     </div>
                     <div class="form-group">
-                        <label for="cc-payment" class="control-label mb-1">Name of owner</label>
+                        <label for="cc-payment" class="control-label mb-1">Owner's full name</label>
                         <input
                           type="text"
                           class="form-control"
