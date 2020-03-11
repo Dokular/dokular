@@ -11,7 +11,7 @@ use App\Models\Lga;
 trait PaymentTrait{
 
 
-    public function verify($request): bool
+    public function verify($request)
     {
 
         try{
@@ -22,7 +22,7 @@ trait PaymentTrait{
 
             $response = $client->request('GET', 'https://api.paystack.co/transaction/verify/'.$request->post('reference'));
 
-            $amount = $this->amount($request);
+            $amount = (int)$this->amount($request);
 
             $res = $response->getBody();
 
@@ -30,14 +30,13 @@ trait PaymentTrait{
 
             if ( array_key_exists('data', $result) &&
                 array_key_exists('status', $result['data']) &&
-                ($result['data']['status'] == 'success') &&
-                ($result['data']['amount'] == $amount * 100)) {
+                ($result['data']['status'] === 'success') &&
+                ($result['data']['amount'] === $amount * 100)) {
 
                 return true;
+            }else{
+                return false;
             }
-
-            return false;
-
         } catch (\Exception $e) {
            //return  $e->getMessage();
            return false;
@@ -55,7 +54,7 @@ trait PaymentTrait{
 
         $total = $products_sum + $service_charge_total + $tfare;
 
-        return $total;
+        return (int)$total;
     }
 
     private function deliveryFee($request): int
@@ -64,7 +63,7 @@ trait PaymentTrait{
 
         $lga = Lga::find($delivery['lga']);
 
-        return $lga->state->price;
+        return (int)$lga->state->price;
     }
 
     private function productsTotal($request): int
@@ -80,7 +79,7 @@ trait PaymentTrait{
                 $sum += $product->price;
             }
         }
-        return $sum;
+        return (int)$sum;
     }
 
 
@@ -91,7 +90,7 @@ trait PaymentTrait{
         try{
             $result = Charge::first();
             $total = count($orders) * $result->charge;
-            return $total;
+            return (int)$total;
         } catch (\Exception $e) {
             return 0;
         }
