@@ -9,16 +9,17 @@ class OrderController extends Controller
 {
     public function all(Request $request)
     {
-        $order = Owner::where('status', $request->query('BY'))->with('orders')->get();
+        $order = Owner::where('status', $request->query('BY'))
+                      ->with('orders.product','delivery','user')->get();
         return response()->json(['success' => true, $order]);
     }
 
-    // public function get()
-    // {
-    //     return "hello";
-    //     $orders = Owner::with('orders','delivery', 'deliveryAddress','user')->all();
-    //     return response()->json(['success' => true, $orders]);
-    // }
+    public function get()
+    {
+        // return response()->json(['success' => true]);
+        $orders = Owner::with('orders.product','delivery','user')->get();
+        return response()->json(['success' => true, $orders]);
+    }
 
     public function updateStatus(Request $request,Owner $owner)
     {
