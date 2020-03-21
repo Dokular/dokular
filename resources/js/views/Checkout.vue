@@ -25,6 +25,7 @@
                         :amount="amount"
                         :rave-key="raveKey"
                         :custom-logo="raveLogo"
+                        :custom-title="raveTitle"
                         payment-options="card"
                         :on-close="close"
                         currency="NGN"
@@ -59,6 +60,7 @@ export default {
             raveKey: process.env.MIX_RAVE_PUBLIC_KEY,
             production: process.env.MIX_RAVE_ENVIRONMENT,
             raveLogo: process.env.MIX_RAVE_LOGO,
+            raveTitle: process.env.MIX_RAVE_TITLE,
             stateObject: null,
             user: 0,
             states: [],

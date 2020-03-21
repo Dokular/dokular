@@ -38,7 +38,7 @@ export default {
             type: String,
             default: "NG"
         },
-        custom_title: {
+        customTitle: {
             type: String,
             default: "Dokular"
         },
@@ -76,6 +76,7 @@ export default {
     },
     methods: {
         ...mapMutations(['PAYSTACK_REFERENCE']),
+        
         payWithRave() {
            var x = getpaidSetup({
                 customer_email: this.email,
@@ -86,8 +87,8 @@ export default {
                 callback: function() { x.close(); },
                 currency: this.currency,
                 country: this.country,
-                custom_title: this.custom_title,
-                custom_logo: this.custom_logo,
+                customTitle: this.custom_title,
+                customLogo: this.custom_logo,
                 payment_method: this.payment_method
             });
         }
