@@ -21,8 +21,10 @@
                         :embed="false"
                     /> -->
                     <RavePay
+                        :is-production="production"
                         :amount="amount"
                         :rave-key="raveKey"
+                        :custom-logo="raveLogo"
                         payment-options="card"
                         :on-close="close"
                         currency="NGN"
@@ -55,6 +57,8 @@ export default {
         return {
             paystackkey: process.env.MIX_PAYSTACK_PK,
             raveKey: process.env.MIX_RAVE_PUBLIC_KEY,
+            production: process.env.MIX_RAVE_ENVIRONMENT,
+            raveLogo: process.env.MIX_RAVE_LOGO,
             stateObject: null,
             user: 0,
             states: [],

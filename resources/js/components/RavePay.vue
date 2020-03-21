@@ -42,7 +42,7 @@ export default {
             type: String,
             default: "Dokular"
         },
-        custom_logo: {
+        customLogo: {
             type: String,
             default: "https://res.cloudinary.com/rapulu/image/upload/v1584503176/dokularfavicon.png"
         },
