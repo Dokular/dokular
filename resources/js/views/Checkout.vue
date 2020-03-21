@@ -54,8 +54,8 @@ export default {
     data() {
         return {
             paystackkey: process.env.MIX_PAYSTACK_PK,
+            raveKey: process.env.MIX_RAVE_PUBLIC_KEY,
             stateObject: null,
-            raveKey: "FLWPUBK_TEST-8c0215a65daca57549847d959dfe2564-X",
             user: 0,
             states: [],
             successModal: false,
