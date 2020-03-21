@@ -17,7 +17,7 @@ class RavePay{
     protected $body;
     protected $request;
     protected $urls = [
-        "live" => "https://api.ravepay.co",
+        "production" => "https://api.ravepay.co",
         "others" => "https://ravesandboxapi.flutterwave.com",
     ];
 
@@ -30,7 +30,7 @@ class RavePay{
         $this->secretKey = Config::get('rave.secretKey');
         $this->env = Config::get('rave.env');
 
-        $this->baseUrl = $this->urls[($this->env === "live" ? "$this->env" : "others")];
+        $this->baseUrl = $this->urls[($this->env === "production" ? "$this->env" : "others")];
 
     }
 
