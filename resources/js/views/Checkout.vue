@@ -21,14 +21,12 @@
                         :embed="false"
                     /> -->
                     <RavePay
-                        :is-production="production"
+                        :is-production="raveProduction"
                         :amount="amount"
                         :rave-key="raveKey"
                         :custom-logo="raveLogo"
                         :custom-title="raveTitle"
-                        payment-options="card"
                         :on-close="close"
-                        currency="NGN"
                     />
                 </div>
             </div>
@@ -85,6 +83,10 @@ export default {
             "reference",
             "serviceCharge"
         ]),
+
+        raveProduction(){
+            return this.production == "true" ? true : false;
+        },
 
         totalServiceCharge() {
             return this.carts.length * this.serviceCharge;

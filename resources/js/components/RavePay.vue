@@ -46,7 +46,7 @@ export default {
             type: String,
             default: "https://res.cloudinary.com/rapulu/image/upload/v1584503176/dokularfavicon.png"
         },
-        payment_method: {
+        paymentOptions: {
             type: String,
             default: "card"
         }
@@ -76,7 +76,7 @@ export default {
     },
     methods: {
         ...mapMutations(['PAYSTACK_REFERENCE']),
-        
+
         payWithRave() {
            var x = getpaidSetup({
                 customer_email: this.email,
@@ -87,9 +87,9 @@ export default {
                 callback: function() { x.close(); },
                 currency: this.currency,
                 country: this.country,
-                customTitle: this.custom_title,
-                customLogo: this.custom_logo,
-                payment_method: this.payment_method
+                custom_title: this.customTitle,
+                custom_logo: this.customLogo,
+                payment_options: "card"
             });
         }
     }
