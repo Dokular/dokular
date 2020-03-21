@@ -1,0 +1,96 @@
+<template>
+    <button
+      variant="primary"
+      class="btn btn-primary btn-lg btn-block"
+      @click="payWithRave"
+      :disabled="payable"
+    >
+        <slot>Make Payment</slot>
+    </button>
+</template>
+<script>
+import { mapGetters, mapMutations } from "vuex";
+export default {
+    props: {
+        isProduction: {
+            type: Boolean,
+            required: false,
+            default: false //set to true if you are going live
+        },
+        amount: {
+            type: Number,
+            required: true
+        },
+        raveKey: {
+            type: String,
+            required: true
+        },
+        onClose: {
+            type: Function,
+            required: true,
+            default: () => {}
+        },
+        currency: {
+            type: String,
+            default: "NGN"
+        },
+        country: {
+            type: String,
+            default: "NG"
+        },
+        custom_title: {
+            type: String,
+            default: "Dokular"
+        },
+        custom_logo: {
+            type: String,
+            default: "https://res.cloudinary.com/rapulu/image/upload/v1584503176/dokularfavicon.png"
+        },
+        payment_method: {
+            type: String,
+            default: "card"
+        }
+    },
+    created() {
+        const script = document.createElement("script");
+        script.src = !this.isProduction
+            ? "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"
+            : "https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    },
+    computed: {
+        ...mapGetters(["payable", "email"]),
+        reference() {
+            let text = "";
+            let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for (let i = 0; i < 10; i++)
+                text += possible.charAt(
+                    Math.floor(Math.random() * possible.length)
+                );
+
+            this.PAYSTACK_REFERENCE(text);
+
+            return text;
+        }
+    },
+    methods: {
+        ...mapMutations(['PAYSTACK_REFERENCE']),
+        payWithRave() {
+           var x = getpaidSetup({
+                customer_email: this.email,
+                amount: this.amount,
+                txref: this.reference,
+                PBFPubKey: this.raveKey,
+                onclose: () => this.onClose(),
+                callback: function() { x.close(); },
+                currency: this.currency,
+                country: this.country,
+                custom_title: this.custom_title,
+                custom_logo: this.custom_logo,
+                payment_method: this.payment_method
+            });
+        }
+    }
+};
+</script>
