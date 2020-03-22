@@ -89,21 +89,18 @@ export default {
                 txref: this.reference,
                 PBFPubKey: this.raveKey,
                 onclose: () => this.onClose(),
-                callback: function(response) {
-                        var txref = response.data.txRef; // collect txRef returned and pass to a 					server page to complete status check.
-                        console.log("This is the response returned after a charge", response);
-                        if (
-                            response.data.chargeResponseCode == "00" ||
-                            response.data.chargeResponseCode == "0"
-                        ) {
+                callback: (response) => {
+                        var txref = response.data.tx.txRef; // collect txRef returned and pass to a server page to complete status check.
+                        const resdata = response.data.data.responsecode;
+                        if (resdata == "00" || resdata == "0") {
+                            console.log("This is the response returned after a charge", response);
                             // redirect to a success page
                             x.close();
-                            this.onPayment();
+                            this.onPayment(txref);
                         } else {
-                            console.log(response)
+                            console.log("error response block",response)
                             // redirect to a failure page.
                         }
-
                     },
                 currency: this.currency,
                 country: this.country,

@@ -107,20 +107,23 @@ export default {
     methods: {
         ...mapMutations(["CLEAR_CART", "CLEAR_DELIVERY"]),
         ...mapActions(["getServiceCharge"]),
-        
-        onPayment: function(response) {
+
+        onPayment: function(reference) {
             this.isLoading = true;
+            
             axios.post(process.env.MIX_API + "order", {
                 order: this.carts,
-                reference: this.reference,
+                reference: reference,
                 delivery: this.getDelivery
             }).then(response => {
                 this.isLoading = false;
                 this.successModal = true;
                 //this.CLEAR_DELIVERY();
                 //this.CLEAR_CART();
+                return true;
             }).catch(error => {
                 console.log(error);
+                return false;
             });
         },
         close: function() {
