@@ -110,7 +110,7 @@ export default {
 
         onPayment: function(reference) {
             this.isLoading = true;
-            
+
             axios.post(process.env.MIX_API + "order", {
                 order: this.carts,
                 reference: reference,
@@ -120,14 +120,12 @@ export default {
                 this.successModal = true;
                 //this.CLEAR_DELIVERY();
                 //this.CLEAR_CART();
-                return true;
             }).catch(error => {
                 console.log(error);
-                return false;
             });
         },
-        close: function() {
-
+        close: function(response) {
+            console.log("closed modal", response)
         },
         getState() {
             axios
@@ -143,7 +141,12 @@ export default {
         successModalClosed() {
             this.$router.push({ name: "landing" });
         }
+    },
+    destroyed() {
+        //this.CLEAR_DELIVERY();
+        console.log("Checkout drestroyed")
     }
+
 };
 </script>
 <style scoped>
