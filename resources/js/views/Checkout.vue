@@ -26,6 +26,7 @@
                         :rave-key="raveKey"
                         :custom-logo="raveLogo"
                         :custom-title="raveTitle"
+                        :on-payment="onPayment"
                         :on-close="close"
                     />
                 </div>
@@ -106,8 +107,8 @@ export default {
     methods: {
         ...mapMutations(["CLEAR_CART", "CLEAR_DELIVERY"]),
         ...mapActions(["getServiceCharge"]),
-
-        close: function(response) {
+        
+        onPayment: function(response) {
             this.isLoading = true;
             axios.post(process.env.MIX_API + "order", {
                 order: this.carts,
@@ -121,6 +122,9 @@ export default {
             }).catch(error => {
                 console.log(error);
             });
+        },
+        close: function() {
+
         },
         getState() {
             axios

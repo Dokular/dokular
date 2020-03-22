@@ -30,6 +30,11 @@ export default {
             required: true,
             default: () => {}
         },
+        onPayment: {
+            type: Function,
+            required: true,
+            default: () => {}
+        },
         currency: {
             type: String,
             default: "NGN"
@@ -84,7 +89,22 @@ export default {
                 txref: this.reference,
                 PBFPubKey: this.raveKey,
                 onclose: () => this.onClose(),
-                callback: function() { x.close(); },
+                callback: function(response) {
+                        var txref = response.data.txRef; // collect txRef returned and pass to a 					server page to complete status check.
+                        console.log("This is the response returned after a charge", response);
+                        if (
+                            response.data.chargeResponseCode == "00" ||
+                            response.data.chargeResponseCode == "0"
+                        ) {
+                            // redirect to a success page
+                            x.close();
+                            this.onPayment();
+                        } else {
+                            console.log(response)
+                            // redirect to a failure page.
+                        }
+
+                    },
                 currency: this.currency,
                 country: this.country,
                 custom_title: this.customTitle,
