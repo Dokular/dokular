@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
-/dokular-admin
+/admin
 .env
 .env.backup
 .phpunit.result.cache

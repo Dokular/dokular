@@ -114,8 +114,10 @@ export const store = new Vuex.Store({
         getServiceCharge({commit}) {
             axios.get(process.env.MIX_API+'charge')
             .then(response => {
-                console.log(response.data.charge)
-                commit('SET_SERVICE_CHARGE',response.data.charge)
+                console.log()
+                if (Object.keys(response.data.data).length > 0){
+                    commit('SET_SERVICE_CHARGE',response.data.data.charge)
+                }
             }).catch(error => {
                 console.log(error)
             })
