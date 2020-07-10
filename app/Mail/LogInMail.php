@@ -32,7 +32,6 @@ class LogInMail extends Mailable
         $url = Config('app.frontend_url');
         $loginlink = $url.'login/email/'.$this->login->token;
         return $this->markdown('emails.auth.login')
-                    ->from('noreply@dokular.com')
                     ->subject('Sign in link')
                     ->with('url', $loginlink );;
     }
