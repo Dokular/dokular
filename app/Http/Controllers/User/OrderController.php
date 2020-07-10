@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Owner;
 use Illuminate\Support\Facades\Auth;
 use App\Events\NewOrderEvent;
+use App\Jobs\Email;
 use App\Traits\PaymentTrait;
 
 class OrderController extends Controller
@@ -35,8 +36,8 @@ class OrderController extends Controller
             foreach($order['products'] as $product ){
                 $owner->createOrders($product);
             }
-
-            event(new NewOrderEvent($owner));
+            dispatch(new Email($owner));
+            //event(new NewOrderEvent($owner));
         }
         return response()->json(['success' => true]);
     }
