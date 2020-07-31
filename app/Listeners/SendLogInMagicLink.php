@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\LogInEvent;
+use App\Jobs\LoginEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
@@ -29,6 +30,7 @@ class SendLogInMagicLink
      */
     public function handle(LogInEvent $event)
     {
-        Mail::to($event->login->email)->send(new LogInMail($event->login));
+        //dispatch(new LoginEmail($event));
+        //Mail::to($event->login->email)->send(new LogInMail($event->login));
     }
 }
