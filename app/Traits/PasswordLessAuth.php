@@ -2,12 +2,12 @@
 namespace App\Traits;
 
 use App\Models\Login;
-use App\Mail\LoginEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\LoginEmail;
 
 trait PasswordLessAuth{
 
@@ -87,10 +87,11 @@ trait PasswordLessAuth{
             'email' => $email,
             'token' => Str::random(40) . time(),
         ]);
-        
-        if(!$authorize){
-            return response()->json(['success' => false], 400);
-        }
+
+        // if(!$authorize){
+        //     return response()->json(['success' => false], 400);
+        // }
+        dispatch(new LoginEmail($authorize));
         return response()->json(['success' => true], 200);
     }
 

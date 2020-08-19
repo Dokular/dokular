@@ -161,7 +161,7 @@ button {
 }
 
 .au-btn--green {
-    background: #63c76a;
+    background: #1075bc;
 }
 .au-btn--block {
     display: block;
