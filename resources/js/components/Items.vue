@@ -29,13 +29,14 @@
                     <hr />
                 </span>
             </div>
-            <button
-              type="button"
+            <a
+              type="submit"
               class="btn btn-outline-secondary"
-              @click="openPreCart(category)"
+              href="https://api.whatsapp.com/send?phone=+2349067002225"
+              target="_blank"
             >
                 Renew
-            </button>
+            </a>
         </div>
         </div>
     </div>
