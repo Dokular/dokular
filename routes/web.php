@@ -11,10 +11,10 @@
 |
 */
 
-// Route::get('{any}', function () {
-//     return view('welcome');
-// })->where('any','.*');
+Route::get('{any}', function () {
+    return view('welcome');
+})->where('any','.*');
 
-Route::get('/', function(){
-    echo "Hello world";
-});
+// Route::get('/', function(){
+//     echo "Hello world";
+// });
